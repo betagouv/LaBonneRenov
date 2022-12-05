@@ -7,7 +7,7 @@ import {
 } from '@dataesr/react-dsfr';
 import Link from 'next/link';
 
-const Header = () => {
+function Header() {
   return (
     <DSFRHeader>
       <HeaderBody>
@@ -20,6 +20,6 @@ const Header = () => {
       </HeaderBody>
     </DSFRHeader>
   );
-};
+}
 
 export default Header;

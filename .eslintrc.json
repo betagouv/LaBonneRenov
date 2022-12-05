@@ -1,17 +1,10 @@
 {
-  "extends": ["airbnb", "next/core-web-vitals", "prettier"],
-  "parser": "@babel/eslint-parser",
+  "extends": ["airbnb", "airbnb-typescript", "next", "prettier"],
   "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true,
-      "legacyDecorators": true
-    }
+    "project": "./tsconfig.json"
   },
+  "ignorePatterns": ["**/*.js", "**/*.jsx"],
   "rules": {
-    "import/extensions": ["error", "never", { "json": "always" }],
-    "react/jsx-filename-extension": [
-      "off",
-      { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
-    ]
+    "react/jsx-props-no-spreading": "off"
   }
 }

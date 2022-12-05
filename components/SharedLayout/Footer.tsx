@@ -5,12 +5,11 @@ import {
   FooterBottom,
   FooterCopy,
   FooterLink,
-  Icon,
   Logo,
 } from '@dataesr/react-dsfr';
 import Link from 'next/link';
 
-const Footer = () => {
+function Footer() {
   return (
     <FooterDSFR>
       <FooterBody description="Mesurer l’impact des travaux de rénovation énergétique">
@@ -30,6 +29,6 @@ const Footer = () => {
       </FooterBottom>
     </FooterDSFR>
   );
-};
+}
 
 export default Footer;
