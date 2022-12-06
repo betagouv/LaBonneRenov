@@ -1,4 +1,4 @@
-import { Button } from '@dataesr/react-dsfr';
+import { Button, ButtonGroup } from '@dataesr/react-dsfr';
 import { observer } from 'mobx-react';
 import React, { useEffect, useMemo, useState } from 'react';
 import { useStore } from '../../frontend/stores';
@@ -10,6 +10,7 @@ import Radio from './Radio';
 import Text from './Text';
 import YesNo from './YesNo';
 import Number from './Number';
+import { firstQuestion } from '../../frontend/data/questions';
 
 const getQuestion = (
   question: Question,
@@ -32,7 +33,7 @@ const getQuestion = (
 };
 
 function MainForm() {
-  const { currentQuestion, answer } = useStore();
+  const { currentQuestion, answer, previous } = useStore();
   const [value, setValue] = useState<string | string[]>();
   const [showError, setShowError] = useState(false);
 
@@ -59,18 +60,25 @@ function MainForm() {
   return (
     <FormContainer>
       {getQuestion(currentQuestion, setValue)}
-      <Button
-        onClick={() => {
-          if (hasError) {
-            setShowError(true);
-          } else if (value !== undefined) {
-            answer(currentQuestion.id, value);
-          }
-        }}
-        disabled={value === undefined}
-      >
-        Suivant
-      </Button>
+      <ButtonGroup isInlineFrom="sm">
+        {currentQuestion.id !== firstQuestion && (
+          <Button secondary onClick={previous}>
+            Précédent
+          </Button>
+        )}
+        <Button
+          onClick={() => {
+            if (hasError) {
+              setShowError(true);
+            } else if (value !== undefined) {
+              answer(currentQuestion.id, value);
+            }
+          }}
+          disabled={value === undefined}
+        >
+          Suivant
+        </Button>
+      </ButtonGroup>
       {showError && <Error>{currentQuestion.error}</Error>}
     </FormContainer>
   );

@@ -74,4 +74,6 @@ const questions: Question[] = [
   },
 ];
 
+export const firstQuestion = questions[0].id;
+
 export default questions;
