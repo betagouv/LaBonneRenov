@@ -1,19 +1,13 @@
 import React from 'react';
 import { Radio as RadioDSFR, RadioGroup } from '@dataesr/react-dsfr';
-import { RadioQuestion } from '../../types/question';
+import { QuestionProps, RadioQuestion } from '../../types/question';
 
-function Radio({
-  question,
-  answer,
-}: {
-  question: RadioQuestion;
-  answer: (id: string, value: string) => void;
-}) {
+function Radio({ question, answer }: QuestionProps<RadioQuestion>) {
   return (
     <RadioGroup
       name={question.id}
       legend={question.label}
-      onChange={(value) => answer(question.id, value)}
+      onChange={(value) => answer(value)}
     >
       {question.options.map((option) => (
         <RadioDSFR
