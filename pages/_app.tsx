@@ -13,10 +13,6 @@ export default function App({ Component, pageProps }: AppProps) {
           content="Mesurer l’impact des travaux de rénovation énergétique"
         />
         <link rel="icon" href="/favicon.ico" />
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
-        />
       </Head>
 
       <Header />
