@@ -7,7 +7,9 @@ function Text({ question, answer }: QuestionProps<TextQuestion>) {
     <TextInput
       label={question.label}
       placeholder={question.placeholder}
-      onChange={(e) => answer(e.target.value)}
+      onChange={(e) => {
+        answer(e.target.value);
+      }}
     />
   );
 }

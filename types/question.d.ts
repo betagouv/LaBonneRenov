@@ -3,12 +3,25 @@ import QuestionType from './enum/questionType';
 type BaseQuestion = {
   id: string;
   label: string;
+  error?: string;
   validate?: (value: string | string[]) => boolean;
 };
 
 export type TextQuestion = BaseQuestion & {
   type: QuestionType.TEXT;
   placeholder?: string;
+};
+
+export type YesNoQuestion = BaseQuestion & {
+  type: QuestionType.YESNO;
+};
+
+export type NumberQuestion = BaseQuestion & {
+  type: QuestionType.NUMBER;
+  step: number;
+  placeholder?: string;
+  min?: number;
+  max?: number;
 };
 
 export type RadioQuestion = BaseQuestion & {
@@ -27,7 +40,12 @@ export type CheckBoxQuestion = BaseQuestion & {
   }[];
 };
 
-export type Question = TextQuestion | RadioQuestion | CheckBoxQuestion;
+export type Question =
+  | TextQuestion
+  | YesNoQuestion
+  | RadioQuestion
+  | CheckBoxQuestion
+  | NumberQuestion;
 
 export type QuestionProps<T> = {
   question: T;
