@@ -8,9 +8,11 @@ export default class AnswerStore {
     makeObservable(this, {
       currentAnswers: observable,
 
+      init: action.bound,
       answer: action.bound,
       changeAnswer: action.bound,
       previous: action.bound,
+      reset: action.bound,
     });
   }
 
@@ -21,6 +23,12 @@ export default class AnswerStore {
           (answer) => answer.id === question.id && answer.value !== null
         )
     );
+  }
+
+  init(answers: string | null) {
+    if (answers) {
+      this.currentAnswers = JSON.parse(answers);
+    }
   }
 
   answer(id: string, value: string | string[]) {
@@ -41,5 +49,9 @@ export default class AnswerStore {
 
   previous() {
     this.currentAnswers.pop();
+  }
+
+  reset() {
+    this.currentAnswers = [];
   }
 }

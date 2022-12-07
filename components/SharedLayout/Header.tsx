@@ -4,10 +4,16 @@ import {
   HeaderBody,
   Logo,
   Service,
+  Tool,
+  ToolItem,
+  ToolItemGroup,
 } from '@dataesr/react-dsfr';
 import Link from 'next/link';
+import { observer } from 'mobx-react';
+import { useStore } from '../../frontend/stores';
 
 function Header() {
+  const { currentAnswers, reset } = useStore();
   return (
     <DSFRHeader>
       <HeaderBody>
@@ -17,9 +23,18 @@ function Header() {
           description="Mesurer l’impact des travaux de rénovation énergétique"
           asLink={<Link href="/" title="Revenir à l'accueil" />}
         />
+        <Tool>
+          <ToolItemGroup>
+            {currentAnswers.length > 0 && (
+              <ToolItem onClick={() => reset()}>
+                Commencer un nouveau questionnaire
+              </ToolItem>
+            )}
+          </ToolItemGroup>
+        </Tool>
       </HeaderBody>
     </DSFRHeader>
   );
 }
 
-export default Header;
+export default observer(Header);
