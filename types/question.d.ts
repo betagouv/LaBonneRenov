@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import QuestionType from './enum/questionType';
 
 type BaseQuestion = {
@@ -10,10 +11,12 @@ type BaseQuestion = {
 export type TextQuestion = BaseQuestion & {
   type: QuestionType.TEXT;
   placeholder?: string;
+  recap: (value: string) => ReactNode;
 };
 
 export type YesNoQuestion = BaseQuestion & {
   type: QuestionType.YESNO;
+  recap: (value: string) => ReactNode;
 };
 
 export type NumberQuestion = BaseQuestion & {
@@ -22,6 +25,7 @@ export type NumberQuestion = BaseQuestion & {
   placeholder?: string;
   min?: number;
   max?: number;
+  recap: (value: string) => ReactNode;
 };
 
 export type RadioQuestion = BaseQuestion & {
@@ -29,6 +33,7 @@ export type RadioQuestion = BaseQuestion & {
   options: {
     label: string;
     value: string;
+    recap: ReactNode;
   }[];
 };
 
@@ -37,7 +42,9 @@ export type CheckBoxQuestion = BaseQuestion & {
   options: {
     label: string;
     value: string;
+    recap: string;
   }[];
+  recap: (values: string[]) => ReactNode;
 };
 
 export type Question =
