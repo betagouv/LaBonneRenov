@@ -1,5 +1,12 @@
 import { action, makeObservable, observable } from 'mobx';
-import questions from '../data/questions';
+import { Question } from '../../types/question';
+import { questions, steps } from '../data/questions';
+
+const answered = (
+  answers: { id: string; value: string | string[] | null }[],
+  question: Question
+) =>
+  answers.some((answer) => answer.id === question.id && answer.value !== null);
 
 export default class AnswerStore {
   currentAnswers: { id: string; value: string | string[] | null }[] = [];
@@ -18,11 +25,28 @@ export default class AnswerStore {
 
   get currentQuestion() {
     return questions.find(
-      (question) =>
-        !this.currentAnswers.some(
-          (answer) => answer.id === question.id && answer.value !== null
-        )
+      (question) => !answered(this.currentAnswers, question)
     );
+  }
+
+  get stepInfo() {
+    const currentIndex = steps.findIndex((step) =>
+      step.questions.some(
+        (question) => !answered(this.currentAnswers, question)
+      )
+    );
+
+    return currentIndex < 0
+      ? null
+      : {
+          currentStep: currentIndex + 1,
+          steps: steps.length,
+          currentTitle: steps[currentIndex].label,
+          nextStepTitle:
+            currentIndex + 1 < steps.length
+              ? steps[currentIndex + 1].label
+              : undefined,
+        };
   }
 
   init(answers: string | null) {

@@ -57,4 +57,5 @@ export type Question =
 export type QuestionProps<T> = {
   question: T;
   answer: (value: string | string[]) => void;
+  showError: boolean;
 };

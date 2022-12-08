@@ -1,3 +1,4 @@
+import { Stepper } from '@dataesr/react-dsfr';
 import styled from 'styled-components';
 
 export const FormContainer = styled.form`
@@ -8,6 +9,6 @@ export const FormContainer = styled.form`
   flex-direction: column;
 `;
 
-export const Error = styled.div`
-  color: red;
+export const Step = styled(Stepper)`
+  width: 100%;
 `;

@@ -2,7 +2,11 @@ import React, { ChangeEvent, useEffect, useState } from 'react';
 import { Checkbox, CheckboxGroup } from '@dataesr/react-dsfr';
 import { CheckBoxQuestion, QuestionProps } from '../../types/question';
 
-function CheckBox({ question, answer }: QuestionProps<CheckBoxQuestion>) {
+function CheckBox({
+  question,
+  answer,
+  showError,
+}: QuestionProps<CheckBoxQuestion>) {
   const [selected, setSelected] = useState<string[]>();
   useEffect(() => {
     if (selected) {
@@ -23,7 +27,11 @@ function CheckBox({ question, answer }: QuestionProps<CheckBoxQuestion>) {
   };
 
   return (
-    <CheckboxGroup legend={question.label}>
+    <CheckboxGroup
+      legend={question.label}
+      message={question.error}
+      messageType={showError ? 'error' : undefined}
+    >
       {question.options.map((option) => (
         <Checkbox
           key={option.value}

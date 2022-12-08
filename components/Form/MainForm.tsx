@@ -12,7 +12,7 @@ import { useStore } from '../../frontend/stores';
 import QuestionType from '../../types/enum/questionType';
 import { Question } from '../../types/question';
 import CheckBox from './CheckBox';
-import { Error, FormContainer } from './MainForm.styles';
+import { FormContainer, Step } from './MainForm.styles';
 import Radio from './Radio';
 import Text from './Text';
 import YesNo from './YesNo';
@@ -22,19 +22,28 @@ import Recap from './Recap';
 
 const getQuestion = (
   question: Question,
-  answer: (value: string | string[]) => void
+  answer: (value: string | string[]) => void,
+  showError: boolean
 ) => {
   switch (question.type) {
     case QuestionType.RADIO:
-      return <Radio question={question} answer={answer} />;
+      return (
+        <Radio question={question} answer={answer} showError={showError} />
+      );
     case QuestionType.CHECKBOX:
-      return <CheckBox question={question} answer={answer} />;
+      return (
+        <CheckBox question={question} answer={answer} showError={showError} />
+      );
     case QuestionType.TEXT:
-      return <Text question={question} answer={answer} />;
+      return <Text question={question} answer={answer} showError={showError} />;
     case QuestionType.YESNO:
-      return <YesNo question={question} answer={answer} />;
+      return (
+        <YesNo question={question} answer={answer} showError={showError} />
+      );
     case QuestionType.NUMBER:
-      return <Number question={question} answer={answer} />;
+      return (
+        <Number question={question} answer={answer} showError={showError} />
+      );
     default:
       return <>Type inconnue</>;
   }
@@ -42,7 +51,7 @@ const getQuestion = (
 
 function MainForm() {
   const formRef = useRef<HTMLFormElement>(null);
-  const { currentQuestion, answer, previous, init } = useStore();
+  const { currentQuestion, answer, previous, init, stepInfo } = useStore();
   const [value, setValue] = useState<string | string[]>();
   const [showError, setShowError] = useState(false);
 
@@ -95,7 +104,8 @@ function MainForm() {
     <FormContainer ref={formRef} onKeyUp={onKeyUp} tabIndex={0} onSubmit={next}>
       {currentQuestion ? (
         <>
-          {getQuestion(currentQuestion, setValue)}
+          {stepInfo && <Step {...stepInfo} />}
+          {getQuestion(currentQuestion, setValue, showError)}
           <ButtonGroup isInlineFrom="sm">
             {currentQuestion.id !== firstQuestion && (
               <Button secondary onClick={previous}>
@@ -106,7 +116,6 @@ function MainForm() {
               Suivant
             </Button>
           </ButtonGroup>
-          {showError && <Error>{currentQuestion.error}</Error>}
         </>
       ) : (
         <Recap />

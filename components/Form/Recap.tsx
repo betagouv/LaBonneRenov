@@ -1,5 +1,5 @@
 import React from 'react';
-import questions from '../../frontend/data/questions';
+import { questions, steps } from '../../frontend/data/questions';
 import { useStore } from '../../frontend/stores';
 import QuestionType from '../../types/enum/questionType';
 import { Answer, ValidateButton } from './Recap.styles';
@@ -37,13 +37,22 @@ function Recap() {
   return (
     <>
       <h1>Mes réponses</h1>
-      {Object.values(currentAnswers)
-        .filter((answer) => answer.value !== null)
-        .map((answer) => (
-          <Answer key={answer.id} onClick={() => changeAnswer(answer.id)}>
-            {getRecap(answer.id, answer.value)}
-          </Answer>
-        ))}
+      {steps.map((step) => (
+        <>
+          <h2>{step.label}</h2>
+          {step.questions.map((question) => {
+            const answer = currentAnswers.find((a) => a.id === question.id);
+            if (answer && answer.value !== undefined) {
+              return (
+                <Answer key={answer.id} onClick={() => changeAnswer(answer.id)}>
+                  {getRecap(answer.id, answer.value)}
+                </Answer>
+              );
+            }
+            return null;
+          })}
+        </>
+      ))}
       <ValidateButton>Valider</ValidateButton>
     </>
   );
