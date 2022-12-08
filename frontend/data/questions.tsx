@@ -173,6 +173,177 @@ const questions: Question[] = [
       </>
     ),
   },
+  {
+    id: 'etage',
+    label: "Nombre d'étage habités ?",
+    type: QuestionType.RADIO,
+    options: [
+      {
+        value: '1',
+        label: '1',
+        recap: (
+          <>
+            j&lsquo;habite <b>1 étage</b>
+          </>
+        ),
+      },
+      {
+        value: '2',
+        label: '2',
+        recap: (
+          <>
+            j&lsquo;habite <b>2 étages</b>
+          </>
+        ),
+      },
+      {
+        value: '3',
+        label: '3',
+        recap: (
+          <>
+            j&lsquo;habite <b>3 étages</b>
+          </>
+        ),
+      },
+      {
+        value: '4',
+        label: '4+',
+        recap: (
+          <>
+            j&lsquo;habite <b>au moins 4 étages</b>
+          </>
+        ),
+      },
+    ],
+  },
+  {
+    id: 'mur',
+    label: 'Vos mur sont-ils isolés ?',
+    type: QuestionType.RADIO,
+    options: [
+      {
+        value: 'no',
+        label: "Pas d'isolation du tout",
+        recap: (
+          <>
+            Mes murs <b>ne sont pas isolés</b>
+          </>
+        ),
+      },
+      {
+        value: 'old',
+        label: 'Isolation de + de 20 ans',
+        recap: (
+          <>
+            Mes murs ont été isolés il y a <b>plus de 20 ans</b>
+          </>
+        ),
+      },
+      {
+        value: 'new',
+        label: 'Isolation de moins de 20 ans',
+        recap: (
+          <>
+            Mes murs ont été isolés il y a <b>moins de 20 ans</b>
+          </>
+        ),
+      },
+    ],
+  },
+  {
+    id: 'plancher haut',
+    label: 'Plancher haut',
+    type: QuestionType.RADIO,
+    options: [
+      {
+        value: 'perdus/isoles',
+        label: 'Combles perdus, isolés',
+        recap: (
+          <>
+            Mes combles sont <b>perdus et isolés</b>
+          </>
+        ),
+      },
+      {
+        value: 'perdus/non isoles',
+        label: 'Combles perdus, non isolés',
+        recap: (
+          <>
+            Mes combles sont <b>perdus et non isolés</b>
+          </>
+        ),
+      },
+      {
+        value: 'amenages/isoles',
+        label: 'Combles aménagés, isolés',
+        recap: (
+          <>
+            Mes combles sont <b>aménagés et isolés</b>
+          </>
+        ),
+      },
+      {
+        value: 'amenages/non isoles',
+        label: 'Combles aménagés, non isolés',
+        recap: (
+          <>
+            Mes combles sont <b>aménagés et non isolés</b>
+          </>
+        ),
+      },
+    ],
+  },
+  {
+    id: 'plancher bas',
+    label: 'Plancher bas',
+    type: QuestionType.RADIO,
+    options: [
+      {
+        value: 'tbd',
+        label: 'A voir...',
+        recap: (
+          <>
+            Vous avez un plancher bas (heureusement d&lsquo;ailleurs sinon vous
+            tomberiez)
+          </>
+        ),
+      },
+    ],
+  },
+  {
+    id: 'menuiseries',
+    label: 'Menuiseries',
+    type: QuestionType.RADIO,
+    options: [
+      {
+        value: 'double',
+        label: 'Principalement double vitrage',
+        recap: (
+          <>
+            J&lsquo;ai principalement <b>du double vitrage</b>
+          </>
+        ),
+      },
+      {
+        value: 'simple',
+        label: 'Principalement simple vitrage',
+        recap: (
+          <>
+            J&lsquo;ai principalement <b>du simple vitrage</b>
+          </>
+        ),
+      },
+      {
+        value: 'mix',
+        label: 'Un mixte des deux',
+        recap: (
+          <>
+            J&lsquo;ai <b>un mix</b> de simple et double vitrage
+          </>
+        ),
+      },
+    ],
+  },
 ];
 
 export const firstQuestion = questions[0].id;
