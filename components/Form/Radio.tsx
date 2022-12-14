@@ -5,6 +5,7 @@ import { QuestionProps, RadioQuestion } from '../../types/question';
 function Radio({ question, answer, showError }: QuestionProps<RadioQuestion>) {
   return (
     <RadioGroup
+      key={question.id}
       name={question.id}
       legend={question.label}
       onChange={(value) => answer(value)}

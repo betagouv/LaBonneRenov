@@ -23,8 +23,11 @@ const getRecap = (key: string, currentAnswer: string | string[] | null) => {
           .filter((option) => currentAnswer.includes(option.value))
           .map((option) => option.recap)
       );
-    case QuestionType.TEXT:
     case QuestionType.YESNO:
+      return question.recap(currentAnswer === 'true');
+    case QuestionType.YESNOUNKNOWN:
+      return question.recap(currentAnswer as string);
+    case QuestionType.TEXT:
     case QuestionType.NUMBER:
       return question.recap(currentAnswer as string);
     default:

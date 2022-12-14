@@ -6,6 +6,8 @@ type BaseQuestion = {
   label: string;
   error?: string;
   validate?: (value: string | string[]) => boolean;
+  disabled?: boolean;
+  dependsOn?: { id: string; value?: string; values?: string[] }[];
 };
 
 export type TextQuestion = BaseQuestion & {
@@ -14,9 +16,14 @@ export type TextQuestion = BaseQuestion & {
   recap: (value: string) => ReactNode;
 };
 
+export type YesNoUnknownQuestion = BaseQuestion & {
+  type: QuestionType.YESNOUNKNOWN;
+  recap: (value: string) => ReactNode;
+};
+
 export type YesNoQuestion = BaseQuestion & {
   type: QuestionType.YESNO;
-  recap: (value: string) => ReactNode;
+  recap: (value: boolean) => ReactNode;
 };
 
 export type NumberQuestion = BaseQuestion & {
@@ -50,6 +57,7 @@ export type CheckBoxQuestion = BaseQuestion & {
 export type Question =
   | TextQuestion
   | YesNoQuestion
+  | YesNoUnknownQuestion
   | RadioQuestion
   | CheckBoxQuestion
   | NumberQuestion;

@@ -24,15 +24,31 @@ export default class AnswerStore {
   }
 
   get currentQuestion() {
-    return questions.find(
-      (question) => !answered(this.currentAnswers, question)
-    );
+    return questions
+      .filter((question) => !question.disabled)
+      .filter(
+        (question) =>
+          !question.dependsOn ||
+          question.dependsOn.every((previous) => {
+            const previousAnswer = this.currentAnswers.find(
+              (answer) => answer.id === previous.id
+            );
+            if (!previousAnswer) {
+              return false;
+            }
+
+            return previous.values
+              ? previous.values.includes(previousAnswer.value as string)
+              : previousAnswer.value === previous.value;
+          })
+      )
+      .find((question) => !answered(this.currentAnswers, question));
   }
 
   get stepInfo() {
     const currentIndex = steps.findIndex((step) =>
       step.questions.some(
-        (question) => !answered(this.currentAnswers, question)
+        (question) => question.id === this.currentQuestion?.id
       )
     );
 

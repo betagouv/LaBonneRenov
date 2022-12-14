@@ -3,6 +3,7 @@ enum QuestionType {
   RADIO = 'radio',
   CHECKBOX = 'checkbox',
   YESNO = 'yesno',
+  YESNOUNKNOWN = 'yesnounknown',
   NUMBER = 'number',
 }
 

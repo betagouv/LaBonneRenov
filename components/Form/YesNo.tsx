@@ -1,10 +1,22 @@
 import React from 'react';
 import { Radio, RadioGroup } from '@dataesr/react-dsfr';
-import { QuestionProps, YesNoQuestion } from '../../types/question';
+import {
+  QuestionProps,
+  YesNoQuestion,
+  YesNoUnknownQuestion,
+} from '../../types/question';
 
-function YesNo({ question, answer, showError }: QuestionProps<YesNoQuestion>) {
+function YesNo({
+  question,
+  answer,
+  showError,
+  withUnknown,
+}: QuestionProps<YesNoQuestion | YesNoUnknownQuestion> & {
+  withUnknown?: boolean;
+}) {
   return (
     <RadioGroup
+      key={question.id}
       name={question.id}
       legend={question.label}
       onChange={(value) => answer(value)}
@@ -13,8 +25,13 @@ function YesNo({ question, answer, showError }: QuestionProps<YesNoQuestion>) {
     >
       <Radio label="Oui" value="true" />
       <Radio label="Non" value="false" />
+      {withUnknown && <Radio label="Je ne sais pas" value="unknown" />}
     </RadioGroup>
   );
 }
+
+YesNo.defaultProps = {
+  withUnknown: false,
+};
 
 export default YesNo;

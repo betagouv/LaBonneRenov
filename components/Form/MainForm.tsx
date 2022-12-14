@@ -40,6 +40,15 @@ const getQuestion = (
       return (
         <YesNo question={question} answer={answer} showError={showError} />
       );
+    case QuestionType.YESNOUNKNOWN:
+      return (
+        <YesNo
+          question={question}
+          answer={answer}
+          showError={showError}
+          withUnknown
+        />
+      );
     case QuestionType.NUMBER:
       return (
         <Number question={question} answer={answer} showError={showError} />

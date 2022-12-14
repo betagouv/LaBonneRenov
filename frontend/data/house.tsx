@@ -19,33 +19,33 @@ const house: QuestionGroup = {
     },
     {
       id: 'année',
-      label: 'Année de construction',
+      label: 'Votre maison a été construite ...',
       type: QuestionType.RADIO,
       options: [
         {
           value: 'very old',
-          label: 'Avant 1950',
+          label: 'Avant 1948',
           recap: (
             <>
-              Ma maison a été construite <b>avant 1950</b>
+              Ma maison a été construite <b>avant 1948</b>
             </>
           ),
         },
         {
           value: 'old',
-          label: 'Entre 1950 et 1970',
+          label: 'Entre 1948 et 1974',
           recap: (
             <>
-              Ma maison a été construite <b>entre 1950 et 1970</b>
+              Ma maison a été construite <b>entre 1948 et 1974</b>
             </>
           ),
         },
         {
           value: 'recent',
-          label: 'Entre 1970 et 2000',
+          label: 'Entre 1975 et 2000',
           recap: (
             <>
-              Ma maison a été construite <b>entre 1970 et 2000</b>
+              Ma maison a été construite <b>entre 1975 et 2000</b>
             </>
           ),
         },
@@ -61,16 +61,18 @@ const house: QuestionGroup = {
       ],
     },
     {
+      disabled: true,
       id: 'exterieur',
       label: "Disposez-vous d'un extérieur ?",
       type: QuestionType.YESNO,
-      recap: (value: string) => (
+      recap: (value: boolean) => (
         <>
           Je <b>{value ? 'dispose' : 'ne dispose pas'}</b> d&lsquo;un extérieur
         </>
       ),
     },
     {
+      disabled: true,
       id: 'surface',
       label: 'Surface habitable de votre maison (m²)',
       type: QuestionType.NUMBER,
@@ -87,6 +89,7 @@ const house: QuestionGroup = {
       ),
     },
     {
+      disabled: true,
       id: 'etage',
       label: "Nombre d'étage habités ?",
       type: QuestionType.RADIO,
@@ -161,97 +164,302 @@ const house: QuestionGroup = {
             </>
           ),
         },
+        {
+          value: 'unknow',
+          label: 'Je ne sais pas',
+          recap: (
+            <>
+              <b>Je ne sais pas</b> quand mes murs ont été isolés
+            </>
+          ),
+        },
       ],
     },
     {
-      id: 'plancher haut',
-      label: 'Plancher haut',
-      type: QuestionType.RADIO,
-      options: [
-        {
-          value: 'perdus/isoles',
-          label: 'Combles perdus, isolés',
-          recap: (
+      id: 'combles amenages',
+      label: 'Vos combles sont-ils aménagés ?',
+      type: QuestionType.YESNO,
+      recap: (value) => (
+        <>
+          Mes combles <b>{value ? 'sont' : 'ne sont pas'}</b>aménagés
+        </>
+      ),
+    },
+    {
+      id: 'toiture',
+      label: 'Votre toiture est-elle isolée ?',
+      type: QuestionType.YESNOUNKNOWN,
+      dependsOn: [{ id: 'combles amenages', value: 'true' }],
+      recap: (value: string) => {
+        if (value === 'unknwon') {
+          return (
             <>
-              Mes combles sont <b>perdus et isolés</b>
+              <b>Je ne sais pas</b> si ma toiture est isolée
             </>
-          ),
-        },
-        {
-          value: 'perdus/non isoles',
-          label: 'Combles perdus, non isolés',
-          recap: (
+          );
+        }
+        return (
+          <>
+            Ma toiture <b>{value === 'true' ? 'est' : "n'est pas"}</b> isolée
+          </>
+        );
+      },
+    },
+    {
+      id: 'combles',
+      label: 'Vos combles perdus sont-ils isolés ?',
+      type: QuestionType.YESNOUNKNOWN,
+      dependsOn: [{ id: 'combles amenages', value: 'false' }],
+      recap: (value: string) => {
+        if (value === 'unknwon') {
+          return (
             <>
-              Mes combles sont <b>perdus et non isolés</b>
+              <b>Je ne sais pas</b> si mes combles perdus sont isolés
             </>
-          ),
-        },
-        {
-          value: 'amenages/isoles',
-          label: 'Combles aménagés, isolés',
-          recap: (
+          );
+        }
+        return (
+          <>
+            Mes combles perdus{' '}
+            <b>{value === 'true' ? 'sont' : 'ne sont pas'}</b> isolés
+          </>
+        );
+      },
+    },
+    {
+      id: 'cave',
+      label:
+        'Votre maison est-elle construite sur une cave ou un vide sanitaire ?',
+      type: QuestionType.YESNOUNKNOWN,
+      recap: (value: string) => {
+        if (value === 'unknwon') {
+          return (
             <>
-              Mes combles sont <b>aménagés et isolés</b>
+              <b>Je ne sais pas</b> si ma maison est construite sur une cave ou
+              un vide sanitaire
             </>
-          ),
-        },
-        {
-          value: 'amenages/non isoles',
-          label: 'Combles aménagés, non isolés',
-          recap: (
-            <>
-              Mes combles sont <b>aménagés et non isolés</b>
-            </>
-          ),
-        },
-      ],
+          );
+        }
+        return (
+          <>
+            Ma maison <b>{value === 'true' ? 'est' : "n'est pas"}</b> construite
+            sur une cave ou un vide sanitaire
+          </>
+        );
+      },
     },
     {
       id: 'plancher bas',
-      label: 'Plancher bas',
+      label:
+        "Le plancher au dessus de la cave ou d'une vide sanitaire est-il isolé ?",
+      type: QuestionType.YESNOUNKNOWN,
+      dependsOn: [{ id: 'cave', value: 'true' }],
+      recap: (value: string) => {
+        if (value === 'unknwon') {
+          return (
+            <>
+              <b>Je ne sais pas</b> si mon plancher est isolé
+            </>
+          );
+        }
+        return (
+          <>
+            Mon plancher <b>{value === 'true' ? 'est' : "n'est pas"}</b> isolé
+          </>
+        );
+      },
+    },
+    {
+      id: 'menuiseries',
+      label: 'Vos menuiseries sont-elle en double vitrage ?',
+      type: QuestionType.YESNOUNKNOWN,
+      recap: (value: string) => {
+        if (value === 'unknwon') {
+          return (
+            <>
+              <b>Je ne sais pas</b> si mes menuiseries sont en double vitrage
+            </>
+          );
+        }
+        return (
+          <>
+            Mes menuiseries <b>{value === 'true' ? 'sont' : 'ne sont pas'}</b>{' '}
+            en double vitrage
+          </>
+        );
+      },
+    },
+    {
+      id: 'menuiseries age',
+      label: 'Vos menuiseries ont-elles moins de 10 ans ?',
+      type: QuestionType.YESNOUNKNOWN,
+      recap: (value: string) => {
+        if (value === 'unknwon') {
+          return (
+            <>
+              <b>Je ne connais pas</b> l&lsquo;age de mes menuiseries
+            </>
+          );
+        }
+        return (
+          <>
+            Mes menuiseries ont{' '}
+            <b>{value === 'true' ? 'moins' : 'plus'} de 10 ans</b>
+          </>
+        );
+      },
+    },
+    {
+      id: 'ventilation',
+      label: "Disposez-vous d'une ventilation mécanique (VMC) ?",
+      type: QuestionType.YESNOUNKNOWN,
+      recap: (value: string) => {
+        if (value === 'unknwon') {
+          return (
+            <>
+              <b>Je ne sais pas</b> si je dispose d&lsquo;une ventilation
+              mécanique
+            </>
+          );
+        }
+        return (
+          <>
+            <b>{value === 'true' ? "J'ai une" : "Je n'ai pas de"}</b>{' '}
+            ventilation mécanique
+          </>
+        );
+      },
+    },
+    {
+      id: 'chauffage',
+      label: 'Quel est votre système de chauffage principal ?',
       type: QuestionType.RADIO,
       options: [
         {
-          value: 'tbd',
-          label: 'A voir...',
+          label: 'Chaudière gaz',
+          value: 'chaudiere gaz',
           recap: (
             <>
-              Vous avez un plancher bas (heureusement d&lsquo;ailleurs sinon
-              vous tomberiez)
+              Je me chauffe avec une <b>chaudière à gaz</b>
+            </>
+          ),
+        },
+        {
+          label: 'Chaudière fioul',
+          value: 'chaudiere fioul',
+          recap: (
+            <>
+              Je me chauffe avec une <b>chaudière à fioul</b>
+            </>
+          ),
+        },
+        {
+          label: 'Electrique',
+          value: 'electrique',
+          recap: (
+            <>
+              Je me chauffe à <b>l&lsquo;éléctricité</b>
+            </>
+          ),
+        },
+        {
+          label: 'Bois - poêle - insert',
+          value: 'bois poele insert',
+          recap: (
+            <>
+              Je me chauffe au <b>bois poêle insert</b>
+            </>
+          ),
+        },
+        {
+          label: 'Bois - Chaudière',
+          value: 'chaudiere bois',
+          recap: (
+            <>
+              Je me chauffe avec une <b>chaudière à bois</b>
+            </>
+          ),
+        },
+        {
+          label: 'Autre',
+          value: 'autre',
+          recap: (
+            <>
+              Je me chauffe avec <b>un autre type de chauffage</b>
             </>
           ),
         },
       ],
     },
     {
-      id: 'menuiseries',
-      label: 'Menuiseries',
+      id: 'chauffage age',
+      label: 'Votre système de chauffage a été installé il y a ...',
       type: QuestionType.RADIO,
       options: [
         {
-          value: 'double',
-          label: 'Principalement double vitrage',
+          label: '- de 10 ans',
+          value: 'new',
           recap: (
             <>
-              J&lsquo;ai principalement <b>du double vitrage</b>
+              Mon chauffage à <b>moins de 10 ans</b>
             </>
           ),
         },
         {
-          value: 'simple',
-          label: 'Principalement simple vitrage',
+          label: '+ de 10 ans',
+          value: 'old',
           recap: (
             <>
-              J&lsquo;ai principalement <b>du simple vitrage</b>
+              Mon chauffage à <b>plus de 10 ans</b>
             </>
           ),
         },
         {
-          value: 'mix',
-          label: 'Un mixte des deux',
+          label: 'Je ne sais pas',
+          value: 'unknown',
           recap: (
             <>
-              J&lsquo;ai <b>un mix</b> de simple et double vitrage
+              <b>Je ne connais pas</b> l&lsquo;age de mon chauffage
+            </>
+          ),
+        },
+      ],
+    },
+    {
+      id: 'emetteurs',
+      label: 'Quel sont vos émetteurs de chauffage ?',
+      dependsOn: [
+        {
+          id: 'chauffage',
+          values: ['chaudiere gaz', 'chaudiere fioul', 'chaudiere bois'],
+        },
+      ],
+      type: QuestionType.RADIO,
+      options: [
+        {
+          label: 'Radiateur mureaux',
+          value: 'radiateur mureaux',
+          recap: (
+            <>
+              Je me chauffe avec <b>des radiateurs mureaux</b>
+            </>
+          ),
+        },
+        {
+          label: 'Plancher chauffant',
+          value: 'plancher chauffant',
+          recap: (
+            <>
+              Je me chauffe avec <b>un plancher chauffant</b>
+            </>
+          ),
+        },
+        {
+          label: 'Autres',
+          value: 'autres',
+          recap: (
+            <>
+              Je <b>ne connait pas</b>mes émetteurs de chauffage
             </>
           ),
         },

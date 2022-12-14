@@ -5,6 +5,7 @@ const motivations: QuestionGroup = {
   label: 'Vos motivations',
   questions: [
     {
+      disabled: true,
       id: 'projet',
       label: 'Vous avez des projets de travaux ?',
       type: QuestionType.RADIO,
@@ -60,6 +61,7 @@ const motivations: QuestionGroup = {
       ),
     },
     {
+      disabled: true,
       id: 'avancé',
       label: 'Où en êtes vous de ce projet ?',
       type: QuestionType.RADIO,
