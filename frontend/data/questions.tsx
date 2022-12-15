@@ -6,4 +6,6 @@ export const steps = [motivations, house];
 
 export const questions: Question[] = steps.flatMap((step) => step.questions);
 
-export const firstQuestion = questions[0].id;
+export const firstQuestion = questions.filter(
+  (question) => !question.disabled
+)[0].id;
