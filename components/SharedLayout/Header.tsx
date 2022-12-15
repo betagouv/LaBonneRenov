@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Header as DSFRHeader,
   HeaderBody,
+  Icon,
   Logo,
   Service,
   Tool,
@@ -26,8 +27,8 @@ function Header() {
         <Tool>
           <ToolItemGroup>
             {currentAnswers.length > 0 && (
-              <ToolItem onClick={() => reset()}>
-                Commencer un nouveau questionnaire
+              <ToolItem onClick={() => reset()} icon="ri-arrow-left-line">
+                Recommencer la simulation
               </ToolItem>
             )}
           </ToolItemGroup>
