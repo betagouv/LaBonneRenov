@@ -1,4 +1,4 @@
-import MainForm from '../components/Form/MainForm';
+import MainForm from '../components/MainForm';
 
 export default function Home() {
   return <MainForm />;

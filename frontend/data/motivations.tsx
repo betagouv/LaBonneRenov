@@ -1,3 +1,4 @@
+import { ClickableAnswer } from '../../components/Recap/index.styles';
 import QuestionType from '../../types/enum/questionType';
 import { QuestionGroup } from '../../types/questionGroup';
 
@@ -13,16 +14,19 @@ const motivations: QuestionGroup = {
         {
           value: 'pac',
           label: 'Installer une PAC',
-          recap: (
+          recap: (onClick) => (
             <>
-              Je veux <b>installer une PAC</b>
+              Je veux{' '}
+              <ClickableAnswer onClick={onClick}>
+                installer une PAC
+              </ClickableAnswer>
             </>
           ),
         },
         {
           value: 'inconnu',
           label: 'Je ne sais pas',
-          recap: "Je n'ai pas de projet précis",
+          recap: () => "Je n'ai pas de projet précis",
         },
       ],
     },
@@ -54,9 +58,12 @@ const motivations: QuestionGroup = {
           recap: 'changer un appareil défectueux (cf. chaudière)',
         },
       ],
-      recap: (values: string[]) => (
+      recap: (values: string[], onClick) => (
         <>
-          je veux <b>{values.join(', ')}</b>
+          je veux{' '}
+          <ClickableAnswer onClick={onClick}>
+            {values.join(', ')}
+          </ClickableAnswer>
         </>
       ),
     },
@@ -69,27 +76,35 @@ const motivations: QuestionGroup = {
         {
           value: 'renseigne',
           label: 'Je me renseigne',
-          recap: (
+          recap: (onClick) => (
             <>
-              Je <b>me renseigne</b> pour ce projet
+              Je{' '}
+              <ClickableAnswer onClick={onClick}>me renseigne</ClickableAnswer>{' '}
+              pour ce projet
             </>
           ),
         },
         {
           value: 'commence',
           label: 'Je commence mes démarches',
-          recap: (
+          recap: (onClick) => (
             <>
-              J&lsquo;ai <b>commencer mes démarches</b>
+              J&lsquo;ai{' '}
+              <ClickableAnswer onClick={onClick}>
+                commencer mes démarches
+              </ClickableAnswer>
             </>
           ),
         },
         {
           value: 'devis',
           label: "J'ai déjà fait des devis",
-          recap: (
+          recap: (onClick) => (
             <>
-              J&lsquo;ai <b>déjà fait des devis</b>
+              J&lsquo;ai{' '}
+              <ClickableAnswer onClick={onClick}>
+                déjà fait des devis
+              </ClickableAnswer>
             </>
           ),
         },

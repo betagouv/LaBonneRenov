@@ -28,13 +28,13 @@ function CheckBox({
 
   return (
     <CheckboxGroup
-      legend={question.label}
       message={question.error}
       messageType={showError ? 'error' : undefined}
     >
       {question.options.map((option) => (
         <Checkbox
           key={option.value}
+          id={option.value}
           label={option.label}
           value={option.value}
           onChange={select}

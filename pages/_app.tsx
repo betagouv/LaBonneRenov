@@ -2,6 +2,8 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import Header from '../components/SharedLayout/Header';
 import Footer from '../components/SharedLayout/Footer';
+import '@gouvfr/dsfr/dist/utility/icons/icons-system/icons-system.min.css';
+import GlobalStyle from '../components/SharedLayout/Global.styles';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -16,6 +18,7 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
 
       <Header />
+      <GlobalStyle />
       <Component {...pageProps} />
       <Footer />
     </>

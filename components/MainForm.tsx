@@ -1,4 +1,11 @@
-import { Button, ButtonGroup } from '@dataesr/react-dsfr';
+import {
+  Button,
+  ButtonGroup,
+  Callout,
+  CalloutText,
+  CalloutTitle,
+  Icon,
+} from '@dataesr/react-dsfr';
 import { observer } from 'mobx-react';
 import React, {
   FormEvent,
@@ -8,16 +15,16 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import { useStore } from '../../frontend/stores';
-import QuestionType from '../../types/enum/questionType';
-import { Question } from '../../types/question';
-import CheckBox from './CheckBox';
-import { FormContainer, Step } from './MainForm.styles';
-import Radio from './Radio';
-import Text from './Text';
-import YesNo from './YesNo';
-import Number from './Number';
-import { firstQuestion } from '../../frontend/data/questions';
+import { useStore } from '../frontend/stores';
+import QuestionType from '../types/enum/questionType';
+import { Question } from '../types/question';
+import { FormContainer, Hint } from './MainForm.styles';
+import CheckBox from './Form/CheckBox';
+import Radio from './Form/Radio';
+import Text from './Form/Text';
+import YesNo from './Form/YesNo';
+import Number from './Form/Number';
+import { firstQuestion } from '../frontend/data/questions';
 import Recap from './Recap';
 
 const getQuestion = (
@@ -60,7 +67,7 @@ const getQuestion = (
 
 function MainForm() {
   const formRef = useRef<HTMLFormElement>(null);
-  const { currentQuestion, answer, previous, init, stepInfo } = useStore();
+  const { currentQuestion, answer, previous, init } = useStore();
   const [value, setValue] = useState<string | string[]>();
   const [showError, setShowError] = useState(false);
 
@@ -113,18 +120,66 @@ function MainForm() {
     <FormContainer ref={formRef} onKeyUp={onKeyUp} tabIndex={0} onSubmit={next}>
       {currentQuestion ? (
         <>
-          {stepInfo && <Step {...stepInfo} />}
+          <h1>Est-ce qu’une pompe à chaleur correspond à votre maison ?</h1>
+          <h3>{currentQuestion.label}</h3>
+          {!currentQuestion.hint && (
+            <Hint>
+              <div>
+                <Icon name="ri-question-fill" size="xl" />
+              </div>
+              <div>
+                <b>Pourquoi cette question ?</b>
+                <br />
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua
+              </div>
+            </Hint>
+          )}
           {getQuestion(currentQuestion, setValue, showError)}
-          <ButtonGroup isInlineFrom="sm">
+          <ButtonGroup isInlineFrom="sm" className="fr-mb-2w">
             {currentQuestion.id !== firstQuestion && (
-              <Button secondary onClick={previous}>
-                Précédent
+              <Button
+                secondary
+                onClick={previous}
+                icon="ri-arrow-left-line"
+                iconPosition="left"
+              >
+                Revenir à la question précédente
               </Button>
             )}
-            <Button submit disabled={value === undefined}>
-              Suivant
+            <Button
+              submit
+              disabled={value === undefined}
+              icon="ri-arrow-right-line"
+              iconPosition="right"
+            >
+              Continuer
             </Button>
           </ButtonGroup>
+          <Callout>
+            <CalloutTitle as="h4">Le saviez-vous ?</CalloutTitle>
+            <CalloutText as="div">
+              <b>
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip ex ea commodo consequat.
+              </b>
+              <ul>
+                <li>
+                  Dolor sed viverra ipsum nunc aliquet bibendum enim facilisis.
+                  Elit ut aliquam purus sit amet luctus venenatis lectus.
+                </li>
+                <li>
+                  Diam volutpat commodo sed egestas egestas fringilla phasellus
+                  faucibus scelerisque. Ultricies tristique nulla aliquet enim
+                  tortor at auctor urna nunc.
+                </li>
+                <li>
+                  Eget aliquet nibh praesent tristique magna sit amet purus
+                  gravida.
+                </li>
+              </ul>
+            </CalloutText>
+          </Callout>
         </>
       ) : (
         <Recap />

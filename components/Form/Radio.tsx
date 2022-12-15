@@ -4,10 +4,10 @@ import { QuestionProps, RadioQuestion } from '../../types/question';
 
 function Radio({ question, answer, showError }: QuestionProps<RadioQuestion>) {
   return (
+    // @ts-ignore: Optionnal legend in react-dsfr
     <RadioGroup
       key={question.id}
       name={question.id}
-      legend={question.label}
       onChange={(value) => answer(value)}
       message={question.error}
       messageType={showError ? 'error' : undefined}

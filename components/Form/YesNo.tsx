@@ -15,10 +15,10 @@ function YesNo({
   withUnknown?: boolean;
 }) {
   return (
+    // @ts-ignore: Optionnal legend in react-dsfr
     <RadioGroup
       key={question.id}
       name={question.id}
-      legend={question.label}
       onChange={(value) => answer(value)}
       message={question.error}
       messageType={showError ? 'error' : undefined}

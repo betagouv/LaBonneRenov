@@ -10,7 +10,6 @@ function Number({
   return (
     <TextInput
       type="number"
-      label={question.label}
       placeholder={question.placeholder}
       step={question.step}
       min={question.min}

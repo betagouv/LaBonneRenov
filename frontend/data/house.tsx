@@ -1,3 +1,4 @@
+import { ClickableAnswer } from '../../components/Recap/index.styles';
 import QuestionType from '../../types/enum/questionType';
 import { QuestionGroup } from '../../types/questionGroup';
 
@@ -11,9 +12,10 @@ const house: QuestionGroup = {
       validate: (value) => /^(([0-9]{2}|2A|2B)[0-9]{3})$/.test(value as string),
       error: 'Code postal invalide.',
       placeholder: '75015',
-      recap: (value) => (
+      recap: (value, onClick) => (
         <>
-          J&lsquo;habite dans le <b>{value}</b>
+          J&lsquo;habite dans le{' '}
+          <ClickableAnswer onClick={onClick}>{value}</ClickableAnswer>
         </>
       ),
     },
@@ -25,36 +27,44 @@ const house: QuestionGroup = {
         {
           value: 'very old',
           label: 'Avant 1948',
-          recap: (
+          recap: (onClick) => (
             <>
-              Ma maison a été construite <b>avant 1948</b>
+              Ma maison a été construite{' '}
+              <ClickableAnswer onClick={onClick}>avant 1948</ClickableAnswer>
             </>
           ),
         },
         {
           value: 'old',
           label: 'Entre 1948 et 1974',
-          recap: (
+          recap: (onClick) => (
             <>
-              Ma maison a été construite <b>entre 1948 et 1974</b>
+              Ma maison a été construite{' '}
+              <ClickableAnswer onClick={onClick}>
+                entre 1948 et 1974
+              </ClickableAnswer>
             </>
           ),
         },
         {
           value: 'recent',
           label: 'Entre 1975 et 2000',
-          recap: (
+          recap: (onClick) => (
             <>
-              Ma maison a été construite <b>entre 1975 et 2000</b>
+              Ma maison a été construite{' '}
+              <ClickableAnswer onClick={onClick}>
+                entre 1975 et 2000
+              </ClickableAnswer>
             </>
           ),
         },
         {
           value: 'very recent',
           label: 'Après 2000',
-          recap: (
+          recap: (onClick) => (
             <>
-              Ma maison a été construite <b>après 2000</b>
+              Ma maison a été construite{' '}
+              <ClickableAnswer onClick={onClick}>après 2000</ClickableAnswer>
             </>
           ),
         },
@@ -65,9 +75,13 @@ const house: QuestionGroup = {
       id: 'exterieur',
       label: "Disposez-vous d'un extérieur ?",
       type: QuestionType.YESNO,
-      recap: (value: boolean) => (
+      recap: (value: boolean, onClick) => (
         <>
-          Je <b>{value ? 'dispose' : 'ne dispose pas'}</b> d&lsquo;un extérieur
+          Je{' '}
+          <ClickableAnswer onClick={onClick}>
+            {value ? 'dispose' : 'ne dispose pas'}
+          </ClickableAnswer>{' '}
+          d&lsquo;un extérieur
         </>
       ),
     },
@@ -82,9 +96,10 @@ const house: QuestionGroup = {
       },
       error: 'Surface invalide.',
       step: 1,
-      recap: (value: string) => (
+      recap: (value: string, onClick) => (
         <>
-          Ma maison fait <b>{value}</b>m²
+          Ma maison fait{' '}
+          <ClickableAnswer onClick={onClick}>{value}</ClickableAnswer>m²
         </>
       ),
     },
@@ -97,36 +112,42 @@ const house: QuestionGroup = {
         {
           value: '1',
           label: '1',
-          recap: (
+          recap: (onClick) => (
             <>
-              j&lsquo;habite <b>1 étage</b>
+              j&lsquo;habite{' '}
+              <ClickableAnswer onClick={onClick}>1 étage</ClickableAnswer>
             </>
           ),
         },
         {
           value: '2',
           label: '2',
-          recap: (
+          recap: (onClick) => (
             <>
-              j&lsquo;habite <b>2 étages</b>
+              j&lsquo;habite{' '}
+              <ClickableAnswer onClick={onClick}>2 étages</ClickableAnswer>
             </>
           ),
         },
         {
           value: '3',
           label: '3',
-          recap: (
+          recap: (onClick) => (
             <>
-              j&lsquo;habite <b>3 étages</b>
+              j&lsquo;habite{' '}
+              <ClickableAnswer onClick={onClick}>3 étages</ClickableAnswer>
             </>
           ),
         },
         {
           value: '4',
           label: '4+',
-          recap: (
+          recap: (onClick) => (
             <>
-              j&lsquo;habite <b>au moins 4 étages</b>
+              j&lsquo;habite{' '}
+              <ClickableAnswer onClick={onClick}>
+                au moins 4 étages
+              </ClickableAnswer>
             </>
           ),
         },
@@ -140,36 +161,48 @@ const house: QuestionGroup = {
         {
           value: 'no',
           label: "Pas d'isolation du tout",
-          recap: (
+          recap: (onClick) => (
             <>
-              Mes murs <b>ne sont pas isolés</b>
+              Mes murs{' '}
+              <ClickableAnswer onClick={onClick}>
+                ne sont pas isolés
+              </ClickableAnswer>
             </>
           ),
         },
         {
           value: 'old',
           label: 'Isolation de + de 20 ans',
-          recap: (
+          recap: (onClick) => (
             <>
-              Mes murs ont été isolés il y a <b>plus de 20 ans</b>
+              Mes murs ont été isolés il y a{' '}
+              <ClickableAnswer onClick={onClick}>
+                plus de 20 ans
+              </ClickableAnswer>
             </>
           ),
         },
         {
           value: 'new',
           label: 'Isolation de moins de 20 ans',
-          recap: (
+          recap: (onClick) => (
             <>
-              Mes murs ont été isolés il y a <b>moins de 20 ans</b>
+              Mes murs ont été isolés il y a{' '}
+              <ClickableAnswer onClick={onClick}>
+                moins de 20 ans
+              </ClickableAnswer>
             </>
           ),
         },
         {
           value: 'unknow',
           label: 'Je ne sais pas',
-          recap: (
+          recap: (onClick) => (
             <>
-              <b>Je ne sais pas</b> quand mes murs ont été isolés
+              <ClickableAnswer onClick={onClick}>
+                Je ne sais pas
+              </ClickableAnswer>{' '}
+              quand mes murs ont été isolés
             </>
           ),
         },
@@ -179,9 +212,13 @@ const house: QuestionGroup = {
       id: 'combles amenages',
       label: 'Vos combles sont-ils aménagés ?',
       type: QuestionType.YESNO,
-      recap: (value) => (
+      recap: (value, onClick) => (
         <>
-          Mes combles <b>{value ? 'sont' : 'ne sont pas'}</b>aménagés
+          Mes combles{' '}
+          <ClickableAnswer onClick={onClick}>
+            {value ? 'sont' : 'ne sont pas'}
+          </ClickableAnswer>
+          aménagés
         </>
       ),
     },
@@ -190,17 +227,24 @@ const house: QuestionGroup = {
       label: 'Votre toiture est-elle isolée ?',
       type: QuestionType.YESNOUNKNOWN,
       dependsOn: [{ id: 'combles amenages', value: 'true' }],
-      recap: (value: string) => {
+      recap: (value: string, onClick) => {
         if (value === 'unknwon') {
           return (
             <>
-              <b>Je ne sais pas</b> si ma toiture est isolée
+              <ClickableAnswer onClick={onClick}>
+                Je ne sais pas
+              </ClickableAnswer>{' '}
+              si ma toiture est isolée
             </>
           );
         }
         return (
           <>
-            Ma toiture <b>{value === 'true' ? 'est' : "n'est pas"}</b> isolée
+            Ma toiture{' '}
+            <ClickableAnswer onClick={onClick}>
+              {value === 'true' ? 'est' : "n'est pas"}
+            </ClickableAnswer>{' '}
+            isolée
           </>
         );
       },
@@ -210,18 +254,24 @@ const house: QuestionGroup = {
       label: 'Vos combles perdus sont-ils isolés ?',
       type: QuestionType.YESNOUNKNOWN,
       dependsOn: [{ id: 'combles amenages', value: 'false' }],
-      recap: (value: string) => {
+      recap: (value: string, onClick) => {
         if (value === 'unknwon') {
           return (
             <>
-              <b>Je ne sais pas</b> si mes combles perdus sont isolés
+              <ClickableAnswer onClick={onClick}>
+                Je ne sais pas
+              </ClickableAnswer>{' '}
+              si mes combles perdus sont isolés
             </>
           );
         }
         return (
           <>
             Mes combles perdus{' '}
-            <b>{value === 'true' ? 'sont' : 'ne sont pas'}</b> isolés
+            <ClickableAnswer onClick={onClick}>
+              {value === 'true' ? 'sont' : 'ne sont pas'}
+            </ClickableAnswer>{' '}
+            isolés
           </>
         );
       },
@@ -231,19 +281,24 @@ const house: QuestionGroup = {
       label:
         'Votre maison est-elle construite sur une cave ou un vide sanitaire ?',
       type: QuestionType.YESNOUNKNOWN,
-      recap: (value: string) => {
+      recap: (value: string, onClick) => {
         if (value === 'unknwon') {
           return (
             <>
-              <b>Je ne sais pas</b> si ma maison est construite sur une cave ou
-              un vide sanitaire
+              <ClickableAnswer onClick={onClick}>
+                Je ne sais pas
+              </ClickableAnswer>{' '}
+              si ma maison est construite sur une cave ou un vide sanitaire
             </>
           );
         }
         return (
           <>
-            Ma maison <b>{value === 'true' ? 'est' : "n'est pas"}</b> construite
-            sur une cave ou un vide sanitaire
+            Ma maison{' '}
+            <ClickableAnswer onClick={onClick}>
+              {value === 'true' ? 'est' : "n'est pas"}
+            </ClickableAnswer>{' '}
+            construite sur une cave ou un vide sanitaire
           </>
         );
       },
@@ -254,17 +309,24 @@ const house: QuestionGroup = {
         "Le plancher au dessus de la cave ou d'une vide sanitaire est-il isolé ?",
       type: QuestionType.YESNOUNKNOWN,
       dependsOn: [{ id: 'cave', value: 'true' }],
-      recap: (value: string) => {
+      recap: (value: string, onClick) => {
         if (value === 'unknwon') {
           return (
             <>
-              <b>Je ne sais pas</b> si mon plancher est isolé
+              <ClickableAnswer onClick={onClick}>
+                Je ne sais pas
+              </ClickableAnswer>{' '}
+              si mon plancher est isolé
             </>
           );
         }
         return (
           <>
-            Mon plancher <b>{value === 'true' ? 'est' : "n'est pas"}</b> isolé
+            Mon plancher{' '}
+            <ClickableAnswer onClick={onClick}>
+              {value === 'true' ? 'est' : "n'est pas"}
+            </ClickableAnswer>{' '}
+            isolé
           </>
         );
       },
@@ -273,17 +335,23 @@ const house: QuestionGroup = {
       id: 'menuiseries',
       label: 'Vos menuiseries sont-elle en double vitrage ?',
       type: QuestionType.YESNOUNKNOWN,
-      recap: (value: string) => {
+      recap: (value: string, onClick) => {
         if (value === 'unknwon') {
           return (
             <>
-              <b>Je ne sais pas</b> si mes menuiseries sont en double vitrage
+              <ClickableAnswer onClick={onClick}>
+                Je ne sais pas
+              </ClickableAnswer>{' '}
+              si mes menuiseries sont en double vitrage
             </>
           );
         }
         return (
           <>
-            Mes menuiseries <b>{value === 'true' ? 'sont' : 'ne sont pas'}</b>{' '}
+            Mes menuiseries{' '}
+            <ClickableAnswer onClick={onClick}>
+              {value === 'true' ? 'sont' : 'ne sont pas'}
+            </ClickableAnswer>{' '}
             en double vitrage
           </>
         );
@@ -293,18 +361,23 @@ const house: QuestionGroup = {
       id: 'menuiseries age',
       label: 'Vos menuiseries ont-elles moins de 10 ans ?',
       type: QuestionType.YESNOUNKNOWN,
-      recap: (value: string) => {
+      recap: (value: string, onClick) => {
         if (value === 'unknwon') {
           return (
             <>
-              <b>Je ne connais pas</b> l&lsquo;age de mes menuiseries
+              <ClickableAnswer onClick={onClick}>
+                Je ne connais pas
+              </ClickableAnswer>{' '}
+              l&lsquo;age de mes menuiseries
             </>
           );
         }
         return (
           <>
             Mes menuiseries ont{' '}
-            <b>{value === 'true' ? 'moins' : 'plus'} de 10 ans</b>
+            <ClickableAnswer onClick={onClick}>
+              {value === 'true' ? 'moins' : 'plus'} de 10 ans
+            </ClickableAnswer>
           </>
         );
       },
@@ -313,18 +386,22 @@ const house: QuestionGroup = {
       id: 'ventilation',
       label: "Disposez-vous d'une ventilation mécanique (VMC) ?",
       type: QuestionType.YESNOUNKNOWN,
-      recap: (value: string) => {
+      recap: (value: string, onClick) => {
         if (value === 'unknwon') {
           return (
             <>
-              <b>Je ne sais pas</b> si je dispose d&lsquo;une ventilation
-              mécanique
+              <ClickableAnswer onClick={onClick}>
+                Je ne sais pas
+              </ClickableAnswer>{' '}
+              si je dispose d&lsquo;une ventilation mécanique
             </>
           );
         }
         return (
           <>
-            <b>{value === 'true' ? "J'ai une" : "Je n'ai pas de"}</b>{' '}
+            <ClickableAnswer onClick={onClick}>
+              {value === 'true' ? "J'ai une" : "Je n'ai pas de"}
+            </ClickableAnswer>{' '}
             ventilation mécanique
           </>
         );
@@ -338,54 +415,72 @@ const house: QuestionGroup = {
         {
           label: 'Chaudière gaz',
           value: 'chaudiere gaz',
-          recap: (
+          recap: (onClick) => (
             <>
-              Je me chauffe avec une <b>chaudière à gaz</b>
+              Je me chauffe avec une{' '}
+              <ClickableAnswer onClick={onClick}>
+                chaudière à gaz
+              </ClickableAnswer>
             </>
           ),
         },
         {
           label: 'Chaudière fioul',
           value: 'chaudiere fioul',
-          recap: (
+          recap: (onClick) => (
             <>
-              Je me chauffe avec une <b>chaudière à fioul</b>
+              Je me chauffe avec une{' '}
+              <ClickableAnswer onClick={onClick}>
+                chaudière à fioul
+              </ClickableAnswer>
             </>
           ),
         },
         {
           label: 'Electrique',
           value: 'electrique',
-          recap: (
+          recap: (onClick) => (
             <>
-              Je me chauffe à <b>l&lsquo;éléctricité</b>
+              Je me chauffe à{' '}
+              <ClickableAnswer onClick={onClick}>
+                l&lsquo;éléctricité
+              </ClickableAnswer>
             </>
           ),
         },
         {
           label: 'Bois - poêle - insert',
           value: 'bois poele insert',
-          recap: (
+          recap: (onClick) => (
             <>
-              Je me chauffe au <b>bois poêle insert</b>
+              Je me chauffe au{' '}
+              <ClickableAnswer onClick={onClick}>
+                bois poêle insert
+              </ClickableAnswer>
             </>
           ),
         },
         {
           label: 'Bois - Chaudière',
           value: 'chaudiere bois',
-          recap: (
+          recap: (onClick) => (
             <>
-              Je me chauffe avec une <b>chaudière à bois</b>
+              Je me chauffe avec une{' '}
+              <ClickableAnswer onClick={onClick}>
+                chaudière à bois
+              </ClickableAnswer>
             </>
           ),
         },
         {
           label: 'Autre',
           value: 'autre',
-          recap: (
+          recap: (onClick) => (
             <>
-              Je me chauffe avec <b>un autre type de chauffage</b>
+              Je me chauffe avec{' '}
+              <ClickableAnswer onClick={onClick}>
+                un autre type de chauffage
+              </ClickableAnswer>
             </>
           ),
         },
@@ -399,27 +494,36 @@ const house: QuestionGroup = {
         {
           label: '- de 10 ans',
           value: 'new',
-          recap: (
+          recap: (onClick) => (
             <>
-              Mon chauffage à <b>moins de 10 ans</b>
+              Mon chauffage à{' '}
+              <ClickableAnswer onClick={onClick}>
+                moins de 10 ans
+              </ClickableAnswer>
             </>
           ),
         },
         {
           label: '+ de 10 ans',
           value: 'old',
-          recap: (
+          recap: (onClick) => (
             <>
-              Mon chauffage à <b>plus de 10 ans</b>
+              Mon chauffage à{' '}
+              <ClickableAnswer onClick={onClick}>
+                plus de 10 ans
+              </ClickableAnswer>
             </>
           ),
         },
         {
           label: 'Je ne sais pas',
           value: 'unknown',
-          recap: (
+          recap: (onClick) => (
             <>
-              <b>Je ne connais pas</b> l&lsquo;age de mon chauffage
+              <ClickableAnswer onClick={onClick}>
+                Je ne connais pas
+              </ClickableAnswer>{' '}
+              l&lsquo;age de mon chauffage
             </>
           ),
         },
@@ -439,27 +543,37 @@ const house: QuestionGroup = {
         {
           label: 'Radiateur mureaux',
           value: 'radiateur mureaux',
-          recap: (
+          recap: (onClick) => (
             <>
-              Je me chauffe avec <b>des radiateurs mureaux</b>
+              Je me chauffe avec{' '}
+              <ClickableAnswer onClick={onClick}>
+                des radiateurs mureaux
+              </ClickableAnswer>
             </>
           ),
         },
         {
           label: 'Plancher chauffant',
           value: 'plancher chauffant',
-          recap: (
+          recap: (onClick) => (
             <>
-              Je me chauffe avec <b>un plancher chauffant</b>
+              Je me chauffe avec{' '}
+              <ClickableAnswer onClick={onClick}>
+                un plancher chauffant
+              </ClickableAnswer>
             </>
           ),
         },
         {
           label: 'Autres',
           value: 'autres',
-          recap: (
+          recap: (onClick) => (
             <>
-              Je <b>ne connait pas</b>mes émetteurs de chauffage
+              Je{' '}
+              <ClickableAnswer onClick={onClick}>
+                ne connait pas
+              </ClickableAnswer>
+              mes émetteurs de chauffage
             </>
           ),
         },
