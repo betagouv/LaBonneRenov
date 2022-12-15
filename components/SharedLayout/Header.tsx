@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Header as DSFRHeader,
   HeaderBody,
-  Icon,
   Logo,
   Service,
   Tool,
