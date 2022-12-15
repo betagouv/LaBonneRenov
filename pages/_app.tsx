@@ -9,7 +9,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Outibat</title>
+        <title>La bonne rénov&lsquo;</title>
         <meta
           name="description"
           content="Mesurer l’impact des travaux de rénovation énergétique"

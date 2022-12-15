@@ -19,7 +19,7 @@ function Header() {
       <HeaderBody>
         <Logo splitCharacter={10}>République Française</Logo>
         <Service
-          title="Outibat"
+          title="La bonne rénov'"
           description="Mesurer l’impact des travaux de rénovation énergétique"
           asLink={<Link href="/" title="Revenir à l'accueil" />}
         />
