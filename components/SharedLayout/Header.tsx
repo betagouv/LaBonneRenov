@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Badge,
   Header as DSFRHeader,
   HeaderBody,
   Logo,
@@ -19,7 +20,12 @@ function Header() {
       <HeaderBody>
         <Logo splitCharacter={10}>République Française</Logo>
         <Service
-          title="La bonne rénov'"
+          title={
+            <>
+              La bonne rénov&lsquo;
+              <Badge text="Bêta" colorFamily="green-emeraude" />
+            </>
+          }
           description="Mesurer l’impact des travaux de rénovation énergétique"
           asLink={<Link href="/" title="Revenir à l'accueil" />}
         />
