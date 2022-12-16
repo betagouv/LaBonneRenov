@@ -4,7 +4,6 @@ import {
   Callout,
   CalloutText,
   CalloutTitle,
-  Icon,
 } from '@dataesr/react-dsfr';
 import { observer } from 'mobx-react';
 import React, {
@@ -18,7 +17,7 @@ import React, {
 import { useStore } from '../frontend/stores';
 import QuestionType from '../types/enum/questionType';
 import { Question } from '../types/question';
-import { FormContainer, Hint } from './MainForm.styles';
+import { FormContainer } from './MainForm.styles';
 import CheckBox from './Form/CheckBox';
 import Radio from './Form/Radio';
 import Text from './Form/Text';
@@ -129,19 +128,6 @@ function MainForm() {
         <>
           <h1>Est-ce qu’une pompe à chaleur correspond à votre maison ?</h1>
           <h3>{currentQuestion.label}</h3>
-          {!currentQuestion.hint && (
-            <Hint>
-              <div>
-                <Icon name="ri-question-fill" size="xl" />
-              </div>
-              <div>
-                <b>Pourquoi cette question ?</b>
-                <br />
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua
-              </div>
-            </Hint>
-          )}
           {getQuestion(currentQuestion, setValue, showError)}
           <ButtonGroup isInlineFrom="sm" className="fr-mb-2w">
             {currentQuestion.id !== firstQuestion && (
