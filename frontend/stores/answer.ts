@@ -73,6 +73,7 @@ export default class AnswerStore {
     if (id) {
       const response = await agent.Answers.get(id);
       if (response) {
+        this.id = id;
         this.currentAnswers = JSON.parse(response.values);
       }
     }

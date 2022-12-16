@@ -10,7 +10,6 @@ export const useStore = () => useContext(StoreContext);
 reaction(
   () => JSON.stringify(store.currentAnswers),
   async () => {
-    console.log(store.id);
     if (store.id) {
       agent.Answers.update(store.id, JSON.stringify(store.currentAnswers));
     } else {
