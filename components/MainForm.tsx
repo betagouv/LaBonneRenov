@@ -70,9 +70,13 @@ function MainForm() {
   const { currentQuestion, answer, previous, init } = useStore();
   const [value, setValue] = useState<string | string[]>();
   const [showError, setShowError] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    init(window.localStorage.getItem('answers'));
+    init(window.localStorage.getItem('questionnaires_id')).then(() => {
+      setLoading(false);
+    });
+    setLoading(false);
   }, [init]);
 
   useEffect(() => {
@@ -116,6 +120,9 @@ function MainForm() {
     }
   };
 
+  if (loading) {
+    return <h2>Chargement de vos réponses en cours</h2>;
+  }
   return (
     <FormContainer ref={formRef} onKeyUp={onKeyUp} tabIndex={0} onSubmit={next}>
       {currentQuestion ? (
