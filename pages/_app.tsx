@@ -1,11 +1,19 @@
+import { useEffect } from 'react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import Header from '../components/SharedLayout/Header';
 import Footer from '../components/SharedLayout/Footer';
 import '@gouvfr/dsfr/dist/utility/icons/icons-system/icons-system.min.css';
 import GlobalStyle from '../components/SharedLayout/Global.styles';
+import { useStore } from '../frontend/stores';
 
 export default function App({ Component, pageProps }: AppProps) {
+  const { init } = useStore();
+
+  useEffect(() => {
+    init(window.localStorage.getItem('questionnaires_id'));
+  }, [init]);
+
   return (
     <>
       <Head>

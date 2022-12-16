@@ -1,5 +1,8 @@
-import MainForm from '../components/MainForm';
+import React from 'react';
+import Home from '../components/Home';
 
-export default function Home() {
-  return <MainForm />;
+function HomePage() {
+  return <Home />;
 }
+
+export default HomePage;
