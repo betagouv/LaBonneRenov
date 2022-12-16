@@ -1,4 +1,4 @@
-import { action, makeObservable, observable } from 'mobx';
+import { action, makeObservable, observable, runInAction } from 'mobx';
 import { Question } from '../../types/question';
 import { questions, steps } from '../data/questions';
 import agent from '../services/agent';
@@ -12,12 +12,15 @@ const answered = (
 export default class AnswerStore {
   currentAnswers: { id: string; value: string | string[] | null }[] = [];
 
-  id: string = '';
+  id = '';
+
+  loading = true;
 
   constructor() {
     makeObservable(this, {
       currentAnswers: observable,
       id: observable,
+      loading: observable,
 
       init: action.bound,
       answer: action.bound,
@@ -73,10 +76,16 @@ export default class AnswerStore {
     if (id) {
       const response = await agent.Answers.get(id);
       if (response) {
-        this.id = id;
-        this.currentAnswers = JSON.parse(response.values);
+        runInAction(() => {
+          this.id = id;
+          this.currentAnswers = JSON.parse(response.values);
+        });
       }
     }
+
+    runInAction(() => {
+      this.loading = false;
+    });
   }
 
   answer(id: string, value: string | string[]) {

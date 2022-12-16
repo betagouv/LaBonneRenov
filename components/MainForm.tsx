@@ -66,16 +66,12 @@ const getQuestion = (
 
 function MainForm() {
   const formRef = useRef<HTMLFormElement>(null);
-  const { currentQuestion, answer, previous, init } = useStore();
+  const { currentQuestion, answer, previous, init, loading } = useStore();
   const [value, setValue] = useState<string | string[]>();
   const [showError, setShowError] = useState(false);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    init(window.localStorage.getItem('questionnaires_id')).then(() => {
-      setLoading(false);
-    });
-    setLoading(false);
+    init(window.localStorage.getItem('questionnaires_id'));
   }, [init]);
 
   useEffect(() => {
