@@ -1,4 +1,5 @@
 import { action, makeObservable, observable, runInAction } from 'mobx';
+import { NextRouter, Router } from 'next/router';
 import { Question } from '../../types/question';
 import { questions, steps } from '../data/questions';
 import agent from '../services/agent';
@@ -10,7 +11,29 @@ const answered = (
   answers.some((answer) => answer.id === question.id && answer.value !== null);
 
 export default class AnswerStore {
+  getCurrentQuestion = () => questions
+  .filter((question) => !question.disabled)
+  .filter(
+    (question) =>
+      !question.dependsOn ||
+      question.dependsOn.every((previous) => {
+        const previousAnswer = this.currentAnswers.find(
+          (a) => a.id === previous.id
+        );
+        if (!previousAnswer) {
+          return false;
+        }
+
+        return previous.values
+          ? previous.values.includes(previousAnswer.value as string)
+          : previousAnswer.value === previous.value;
+      })
+  )
+  .find((question) => !answered(this.currentAnswers, question));
+
   currentAnswers: { id: string; value: string | string[] | null }[] = [];
+
+  currentQuestion: Question | undefined = this.getCurrentQuestion();
 
   id = '';
 
@@ -19,37 +42,15 @@ export default class AnswerStore {
   constructor() {
     makeObservable(this, {
       currentAnswers: observable,
+      currentQuestion: observable,
       id: observable,
       loading: observable,
 
       init: action.bound,
       answer: action.bound,
-      changeAnswer: action.bound,
-      previous: action.bound,
       reset: action.bound,
+      setCurrentQuestion: action.bound,
     });
-  }
-
-  get currentQuestion() {
-    return questions
-      .filter((question) => !question.disabled)
-      .filter(
-        (question) =>
-          !question.dependsOn ||
-          question.dependsOn.every((previous) => {
-            const previousAnswer = this.currentAnswers.find(
-              (answer) => answer.id === previous.id
-            );
-            if (!previousAnswer) {
-              return false;
-            }
-
-            return previous.values
-              ? previous.values.includes(previousAnswer.value as string)
-              : previousAnswer.value === previous.value;
-          })
-      )
-      .find((question) => !answered(this.currentAnswers, question));
   }
 
   get stepInfo() {
@@ -88,28 +89,30 @@ export default class AnswerStore {
     });
   }
 
-  answer(id: string, value: string | string[]) {
+  setCurrentQuestion(id: string) {
+    this.currentQuestion = questions.find(question => question.id === id)
+  }
+
+  answer(id: string, value: string | string[], router: NextRouter) {
     const answer = this.currentAnswers.find((a) => a.id === id);
     if (answer) {
       answer.value = value;
     } else {
       this.currentAnswers.push({ id, value });
     }
-  }
 
-  changeAnswer(id: string) {
-    const answer = this.currentAnswers.find((a) => a.id === id);
-    if (answer) {
-      answer.value = null;
+    this.currentQuestion = this.getCurrentQuestion()
+    if (this.currentQuestion){
+      router.push(`/pac/${this.currentQuestion.id}`);
+    } else {
+      router.push('/pac/recap');
     }
   }
 
-  previous() {
-    this.currentAnswers.pop();
-  }
-
-  reset() {
+  reset(router: NextRouter) {
     this.id = '';
     this.currentAnswers = [];
+    this.currentQuestion = this.getCurrentQuestion()
+    router.push(`/pac/${this.currentQuestion?.id}`);
   }
 }

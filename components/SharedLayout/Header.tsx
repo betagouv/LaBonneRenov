@@ -11,10 +11,12 @@ import {
 } from '@dataesr/react-dsfr';
 import Link from 'next/link';
 import { observer } from 'mobx-react';
+import { useRouter } from 'next/router';
 import { useStore } from '../../frontend/stores';
 
 function Header() {
   const { currentAnswers, reset } = useStore();
+  const router = useRouter();
   return (
     <DSFRHeader>
       <HeaderBody>
@@ -32,7 +34,7 @@ function Header() {
         <Tool>
           <ToolItemGroup>
             {currentAnswers.length > 0 && (
-              <ToolItem onClick={() => reset()} icon="ri-arrow-left-line">
+              <ToolItem onClick={() => reset(router)} icon="ri-arrow-left-line">
                 Recommencer la simulation
               </ToolItem>
             )}

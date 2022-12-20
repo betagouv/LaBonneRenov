@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import React from 'react';
 import { questions, steps } from '../../frontend/data/questions';
 import { useStore } from '../../frontend/stores';
@@ -42,7 +43,8 @@ const getRecap = (
 };
 
 function Recap() {
-  const { currentAnswers, changeAnswer } = useStore();
+  const { currentAnswers } = useStore();
+  const router = useRouter();
   return (
     <>
       <h1>Vérifier qu’une pompe à chaleur est adaptée à votre maison</h1>
@@ -55,7 +57,7 @@ function Recap() {
               return (
                 <Answer key={answer.id}>
                   {getRecap(answer.id, answer.value, () =>
-                    changeAnswer(answer.id)
+                    router.push(`/pac/${answer.id}`)
                   )}
                 </Answer>
               );

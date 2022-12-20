@@ -14,6 +14,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
+import { useRouter } from 'next/router';
 import { useStore } from '../frontend/stores';
 import QuestionType from '../types/enum/questionType';
 import { Question } from '../types/question';
@@ -65,8 +66,9 @@ const getQuestion = (
 };
 
 function MainForm() {
+  const router = useRouter();
   const formRef = useRef<HTMLFormElement>(null);
-  const { currentQuestion, answer, previous, loading } = useStore();
+  const { currentQuestion, answer, loading } = useStore();
   const [value, setValue] = useState<string | string[]>();
   const [showError, setShowError] = useState(false);
 
@@ -99,7 +101,7 @@ function MainForm() {
     if (hasError) {
       setShowError(true);
     } else if (value !== undefined && currentQuestion) {
-      answer(currentQuestion.id, value);
+      answer(currentQuestion.id, value, router);
     }
   };
 
@@ -122,16 +124,6 @@ function MainForm() {
           <h3>{currentQuestion.label}</h3>
           {getQuestion(currentQuestion, setValue, showError)}
           <ButtonGroup isInlineFrom="sm" className="fr-mb-2w">
-            {currentQuestion.id !== firstQuestion && (
-              <Button
-                secondary
-                onClick={previous}
-                icon="ri-arrow-left-line"
-                iconPosition="left"
-              >
-                Revenir à la question précédente
-              </Button>
-            )}
             <Button
               submit
               disabled={value === undefined}
