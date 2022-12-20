@@ -217,7 +217,7 @@ const house: QuestionGroup = {
           Mes combles{' '}
           <ClickableAnswer onClick={onClick}>
             {value ? 'sont' : 'ne sont pas'}
-          </ClickableAnswer>
+          </ClickableAnswer>{' '}
           aménagés
         </>
       ),

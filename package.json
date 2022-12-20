@@ -10,7 +10,7 @@
     "lint:fix": "next lint --fix"
   },
   "dependencies": {
-    "@dataesr/react-dsfr": "^3.4.14",
+    "@dataesr/react-dsfr": "^3.4.15",
     "@gouvfr/dsfr": "^1.7.2",
     "@types/node": "18.11.15",
     "@types/react": "18.0.26",
