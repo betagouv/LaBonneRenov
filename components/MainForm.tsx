@@ -21,7 +21,7 @@ import Link from 'next/link';
 import { useStore } from '../frontend/stores';
 import QuestionType from '../types/enum/questionType';
 import { Question } from '../types/question';
-import { FormContainer, Container } from './MainForm.styles';
+import { FormContainer, Container, Step } from './MainForm.styles';
 import CheckBox from './Form/CheckBox';
 import Radio from './Form/Radio';
 import Text from './Form/Text';
@@ -70,7 +70,7 @@ const getQuestion = (
 function MainForm() {
   const router = useRouter();
   const formRef = useRef<HTMLFormElement>(null);
-  const { currentQuestion, answer, loading } = useStore();
+  const { currentQuestion, answer, loading, stepInfo } = useStore();
   const [value, setValue] = useState<string | string[]>();
   const [showError, setShowError] = useState(false);
 
@@ -134,6 +134,7 @@ function MainForm() {
       >
         {currentQuestion ? (
           <>
+            {stepInfo && <Step {...stepInfo} />}
             <h3>{currentQuestion.label}</h3>
             {getQuestion(currentQuestion, setValue, showError)}
             <ButtonGroup isInlineFrom="sm" className="fr-mb-2w">
