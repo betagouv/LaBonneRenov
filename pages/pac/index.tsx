@@ -1,15 +1,18 @@
+import { observer } from 'mobx-react';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { useStore } from '../../frontend/stores';
 
-export default function Pac() {
+function Pac() {
   const router = useRouter();
-  const { currentQuestion } = useStore();
+  const { loading, updateQuestion } = useStore();
 
   useEffect(() => {
-    if (currentQuestion) {
-      router.push(`/pac/${currentQuestion.id}`);
+    if (!loading) {
+      updateQuestion(router);
     }
-  }, [currentQuestion, router]);
+  }, [loading, updateQuestion, router]);
   return null;
 }
+
+export default observer(Pac);

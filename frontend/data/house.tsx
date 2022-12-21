@@ -235,7 +235,7 @@ const house: QuestionGroup[] = [
         id: QuestionId.TOITURE_ISOLE,
         label: 'Votre toiture est-elle isolée ?',
         type: QuestionType.YESNOUNKNOWN,
-        dependsOn: [{ id: 'combles amenages', value: 'true' }],
+        dependsOn: [{ id: QuestionId.COMBLES_AMENAGES, value: 'true' }],
         recap: (value: string, onClick) => {
           if (value === UNKNOWN) {
             return (
@@ -262,7 +262,7 @@ const house: QuestionGroup[] = [
         id: QuestionId.COMBLES_ISOLES,
         label: 'Vos combles perdus sont-ils isolés ?',
         type: QuestionType.YESNOUNKNOWN,
-        dependsOn: [{ id: 'combles amenages', value: 'false' }],
+        dependsOn: [{ id: QuestionId.COMBLES_AMENAGES, value: 'false' }],
         recap: (value: string, onClick) => {
           if (value === UNKNOWN) {
             return (
@@ -317,7 +317,7 @@ const house: QuestionGroup[] = [
         label:
           "Le plancher au dessus de la cave ou d'une vide sanitaire est-il isolé ?",
         type: QuestionType.YESNOUNKNOWN,
-        dependsOn: [{ id: 'cave', value: 'true' }],
+        dependsOn: [{ id: QuestionId.CAVE, value: 'true' }],
         recap: (value: string, onClick) => {
           if (value === UNKNOWN) {
             return (
@@ -548,7 +548,7 @@ const house: QuestionGroup[] = [
         label: 'Quel sont vos émetteurs de chauffage ?',
         dependsOn: [
           {
-            id: 'chauffage',
+            id: QuestionId.CHAUFFAGE_PRINCIPAL,
             values: ['chaudiere gaz', 'chaudiere fioul', 'chaudiere bois'],
           },
         ],

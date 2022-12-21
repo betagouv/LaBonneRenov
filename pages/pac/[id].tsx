@@ -1,17 +1,18 @@
+import { observer } from 'mobx-react';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import MainForm from '../../components/MainForm';
 import { useStore } from '../../frontend/stores';
 
-export default function Pac() {
+function Pac() {
   const router = useRouter();
-  const { currentQuestion, setCurrentQuestion } = useStore();
+  const { setCurrentQuestion } = useStore();
 
   useEffect(() => {
-    if (!currentQuestion || router.query.id !== currentQuestion.id) {
-      setCurrentQuestion(router.query.id as string);
-    }
-  }, [router.query.id, currentQuestion, setCurrentQuestion]);
+    setCurrentQuestion(router.query.id as string);
+  }, [router.query.id, setCurrentQuestion]);
 
   return <MainForm />;
 }
+
+export default observer(Pac);

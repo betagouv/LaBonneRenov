@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { questions, steps } from '../../frontend/data/questions';
@@ -81,4 +82,4 @@ function Recap() {
   );
 }
 
-export default Recap;
+export default observer(Recap);

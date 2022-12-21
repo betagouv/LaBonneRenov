@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import Result from '../../components/Result';
@@ -26,4 +27,4 @@ function Resultat() {
   );
 }
 
-export default Resultat;
+export default observer(Resultat);

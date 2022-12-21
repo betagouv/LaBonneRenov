@@ -33,7 +33,7 @@ export default class AnswerStore {
 
   currentAnswers: Answer[] = [];
 
-  currentQuestion: Question | undefined = this.getCurrentQuestion();
+  currentQuestion: Question | undefined;
 
   id = '';
 
@@ -50,6 +50,7 @@ export default class AnswerStore {
       answer: action.bound,
       reset: action.bound,
       setCurrentQuestion: action.bound,
+      updateQuestion: action.bound,
     });
   }
 
@@ -73,6 +74,15 @@ export default class AnswerStore {
         };
   }
 
+  updateQuestion(router: NextRouter) {
+    const question = this.getCurrentQuestion();
+    if (question) {
+      router.push(`/pac/${question.id}`);
+    } else {
+      router.push('/pac/recap');
+    }
+  }
+
   async init(id: string | null) {
     if (id) {
       const response = await agent.Answers.get(id);
@@ -80,7 +90,6 @@ export default class AnswerStore {
         runInAction(() => {
           this.id = id;
           this.currentAnswers = JSON.parse(response.values);
-          this.currentQuestion = this.getCurrentQuestion();
         });
       }
     }
@@ -101,19 +110,12 @@ export default class AnswerStore {
     } else {
       this.currentAnswers.push({ id, value });
     }
-
-    this.currentQuestion = this.getCurrentQuestion();
-    if (this.currentQuestion) {
-      router.push(`/pac/${this.currentQuestion.id}`);
-    } else {
-      router.push('/pac/recap');
-    }
+    this.updateQuestion(router);
   }
 
   reset(router: NextRouter) {
     this.id = '';
     this.currentAnswers = [];
-    this.currentQuestion = this.getCurrentQuestion();
-    router.push(`/pac/${this.currentQuestion?.id}`);
+    this.updateQuestion(router);
   }
 }

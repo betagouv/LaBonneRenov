@@ -8,7 +8,7 @@ type BaseQuestion = {
   error?: string;
   validate?: (value: string | string[]) => boolean;
   disabled?: boolean;
-  dependsOn?: { id: string; value?: string; values?: string[] }[];
+  dependsOn?: { id: QuestionId; value?: string; values?: string[] }[];
 };
 
 export type TextQuestion = BaseQuestion & {
