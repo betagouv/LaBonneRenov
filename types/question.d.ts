@@ -1,8 +1,9 @@
 import { ReactNode } from 'react';
+import QuestionId from './enum/QuestionId';
 import QuestionType from './enum/questionType';
 
 type BaseQuestion = {
-  id: string;
+  id: QuestionId;
   label: string;
   error?: string;
   validate?: (value: string | string[]) => boolean;

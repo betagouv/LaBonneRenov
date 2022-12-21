@@ -6,6 +6,8 @@ import {
   YesNoUnknownQuestion,
 } from '../../types/question';
 
+export const UNKNOWN = 'unknown';
+
 function YesNo({
   question,
   answer,
@@ -25,7 +27,7 @@ function YesNo({
     >
       <Radio label="Oui" value="true" />
       <Radio label="Non" value="false" />
-      {withUnknown && <Radio label="Je ne sais pas" value="unknown" />}
+      {withUnknown && <Radio label="Je ne sais pas" value={UNKNOWN} />}
     </RadioGroup>
   );
 }

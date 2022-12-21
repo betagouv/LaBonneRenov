@@ -1,37 +1,37 @@
 import { action, makeObservable, observable, runInAction } from 'mobx';
-import { NextRouter, Router } from 'next/router';
+import { NextRouter } from 'next/router';
+import { Answer } from '../../types/answer';
+import QuestionId from '../../types/enum/QuestionId';
 import { Question } from '../../types/question';
 import { questions, steps } from '../data/questions';
 import agent from '../services/agent';
 
-const answered = (
-  answers: { id: string; value: string | string[] | null }[],
-  question: Question
-) =>
+const answered = (answers: Answer[], question: Question) =>
   answers.some((answer) => answer.id === question.id && answer.value !== null);
 
 export default class AnswerStore {
-  getCurrentQuestion = () => questions
-  .filter((question) => !question.disabled)
-  .filter(
-    (question) =>
-      !question.dependsOn ||
-      question.dependsOn.every((previous) => {
-        const previousAnswer = this.currentAnswers.find(
-          (a) => a.id === previous.id
-        );
-        if (!previousAnswer) {
-          return false;
-        }
+  getCurrentQuestion = () =>
+    questions
+      .filter((question) => !question.disabled)
+      .filter(
+        (question) =>
+          !question.dependsOn ||
+          question.dependsOn.every((previous) => {
+            const previousAnswer = this.currentAnswers.find(
+              (a) => a.id === previous.id
+            );
+            if (!previousAnswer) {
+              return false;
+            }
 
-        return previous.values
-          ? previous.values.includes(previousAnswer.value as string)
-          : previousAnswer.value === previous.value;
-      })
-  )
-  .find((question) => !answered(this.currentAnswers, question));
+            return previous.values
+              ? previous.values.includes(previousAnswer.value as string)
+              : previousAnswer.value === previous.value;
+          })
+      )
+      .find((question) => !answered(this.currentAnswers, question));
 
-  currentAnswers: { id: string; value: string | string[] | null }[] = [];
+  currentAnswers: Answer[] = [];
 
   currentQuestion: Question | undefined = this.getCurrentQuestion();
 
@@ -80,6 +80,7 @@ export default class AnswerStore {
         runInAction(() => {
           this.id = id;
           this.currentAnswers = JSON.parse(response.values);
+          this.currentQuestion = this.getCurrentQuestion();
         });
       }
     }
@@ -90,10 +91,10 @@ export default class AnswerStore {
   }
 
   setCurrentQuestion(id: string) {
-    this.currentQuestion = questions.find(question => question.id === id)
+    this.currentQuestion = questions.find((question) => question.id === id);
   }
 
-  answer(id: string, value: string | string[], router: NextRouter) {
+  answer(id: QuestionId, value: string | string[], router: NextRouter) {
     const answer = this.currentAnswers.find((a) => a.id === id);
     if (answer) {
       answer.value = value;
@@ -101,8 +102,8 @@ export default class AnswerStore {
       this.currentAnswers.push({ id, value });
     }
 
-    this.currentQuestion = this.getCurrentQuestion()
-    if (this.currentQuestion){
+    this.currentQuestion = this.getCurrentQuestion();
+    if (this.currentQuestion) {
       router.push(`/pac/${this.currentQuestion.id}`);
     } else {
       router.push('/pac/recap');
@@ -112,7 +113,7 @@ export default class AnswerStore {
   reset(router: NextRouter) {
     this.id = '';
     this.currentAnswers = [];
-    this.currentQuestion = this.getCurrentQuestion()
+    this.currentQuestion = this.getCurrentQuestion();
     router.push(`/pac/${this.currentQuestion?.id}`);
   }
 }

@@ -70,7 +70,11 @@ function Recap() {
         <b>Cela ne vous correspond pas ?</b> Cliquez sur la valeur que vous
         souhaitez modifier.
       </Explanation>
-      <ValidateButton icon="ri-arrow-right-line" iconPosition="right">
+      <ValidateButton
+        icon="ri-arrow-right-line"
+        iconPosition="right"
+        onClick={() => router.push('/pac/resultat')}
+      >
         Voir le résultat
       </ValidateButton>
     </>

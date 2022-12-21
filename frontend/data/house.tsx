@@ -1,4 +1,6 @@
+import { UNKNOWN } from '../../components/Form/YesNo';
 import { ClickableAnswer } from '../../components/Recap/index.styles';
+import QuestionId from '../../types/enum/QuestionId';
 import QuestionType from '../../types/enum/questionType';
 import { QuestionGroup } from '../../types/questionGroup';
 
@@ -6,7 +8,7 @@ const house: QuestionGroup = {
   label: 'Votre maison',
   questions: [
     {
-      id: 'code postal',
+      id: QuestionId.CODE_POSTAL,
       label: 'Quel est le code postal de votre maison ?',
       type: QuestionType.TEXT,
       validate: (value) => /^(([0-9]{2}|2A|2B)[0-9]{3})$/.test(value as string),
@@ -20,7 +22,7 @@ const house: QuestionGroup = {
       ),
     },
     {
-      id: 'année',
+      id: QuestionId.CONSTRUCTION,
       label: 'Votre maison a été construite ...',
       type: QuestionType.RADIO,
       options: [
@@ -72,7 +74,7 @@ const house: QuestionGroup = {
     },
     {
       disabled: true,
-      id: 'exterieur',
+      id: QuestionId.EXTERIEUR,
       label: "Disposez-vous d'un extérieur ?",
       type: QuestionType.YESNO,
       recap: (value: boolean, onClick) => (
@@ -87,7 +89,7 @@ const house: QuestionGroup = {
     },
     {
       disabled: true,
-      id: 'surface',
+      id: QuestionId.SURFACE,
       label: 'Surface habitable de votre maison (m²)',
       type: QuestionType.NUMBER,
       validate: (value) => {
@@ -105,7 +107,7 @@ const house: QuestionGroup = {
     },
     {
       disabled: true,
-      id: 'etage',
+      id: QuestionId.ETAGE,
       label: "Nombre d'étage habités ?",
       type: QuestionType.RADIO,
       options: [
@@ -154,7 +156,7 @@ const house: QuestionGroup = {
       ],
     },
     {
-      id: 'mur',
+      id: QuestionId.MUR_ISOLES,
       label: 'Vos mur sont-ils isolés ?',
       type: QuestionType.RADIO,
       options: [
@@ -183,7 +185,7 @@ const house: QuestionGroup = {
           ),
         },
         {
-          value: 'new',
+          value: 'recent',
           label: 'Isolation de moins de 20 ans',
           recap: (onClick) => (
             <>
@@ -195,7 +197,7 @@ const house: QuestionGroup = {
           ),
         },
         {
-          value: 'unknow',
+          value: UNKNOWN,
           label: 'Je ne sais pas',
           recap: (onClick) => (
             <>
@@ -209,7 +211,7 @@ const house: QuestionGroup = {
       ],
     },
     {
-      id: 'combles amenages',
+      id: QuestionId.COMBLES_AMENAGES,
       label: 'Vos combles sont-ils aménagés ?',
       type: QuestionType.YESNO,
       recap: (value, onClick) => (
@@ -223,12 +225,12 @@ const house: QuestionGroup = {
       ),
     },
     {
-      id: 'toiture',
+      id: QuestionId.TOITURE_ISOLE,
       label: 'Votre toiture est-elle isolée ?',
       type: QuestionType.YESNOUNKNOWN,
       dependsOn: [{ id: 'combles amenages', value: 'true' }],
       recap: (value: string, onClick) => {
-        if (value === 'unknwon') {
+        if (value === UNKNOWN) {
           return (
             <>
               <ClickableAnswer onClick={onClick}>
@@ -250,12 +252,12 @@ const house: QuestionGroup = {
       },
     },
     {
-      id: 'combles',
+      id: QuestionId.COMBLES_ISOLES,
       label: 'Vos combles perdus sont-ils isolés ?',
       type: QuestionType.YESNOUNKNOWN,
       dependsOn: [{ id: 'combles amenages', value: 'false' }],
       recap: (value: string, onClick) => {
-        if (value === 'unknwon') {
+        if (value === UNKNOWN) {
           return (
             <>
               <ClickableAnswer onClick={onClick}>
@@ -277,12 +279,12 @@ const house: QuestionGroup = {
       },
     },
     {
-      id: 'cave',
+      id: QuestionId.CAVE,
       label:
         'Votre maison est-elle construite sur une cave ou un vide sanitaire ?',
       type: QuestionType.YESNOUNKNOWN,
       recap: (value: string, onClick) => {
-        if (value === 'unknwon') {
+        if (value === UNKNOWN) {
           return (
             <>
               <ClickableAnswer onClick={onClick}>
@@ -304,13 +306,13 @@ const house: QuestionGroup = {
       },
     },
     {
-      id: 'plancher bas',
+      id: QuestionId.PLANCHER_BAS_ISOLE,
       label:
         "Le plancher au dessus de la cave ou d'une vide sanitaire est-il isolé ?",
       type: QuestionType.YESNOUNKNOWN,
       dependsOn: [{ id: 'cave', value: 'true' }],
       recap: (value: string, onClick) => {
-        if (value === 'unknwon') {
+        if (value === UNKNOWN) {
           return (
             <>
               <ClickableAnswer onClick={onClick}>
@@ -332,11 +334,11 @@ const house: QuestionGroup = {
       },
     },
     {
-      id: 'menuiseries',
+      id: QuestionId.MENUISERIES_DOUBLE_VITRAGE,
       label: 'Vos menuiseries sont-elle en double vitrage ?',
       type: QuestionType.YESNOUNKNOWN,
       recap: (value: string, onClick) => {
-        if (value === 'unknwon') {
+        if (value === UNKNOWN) {
           return (
             <>
               <ClickableAnswer onClick={onClick}>
@@ -358,11 +360,11 @@ const house: QuestionGroup = {
       },
     },
     {
-      id: 'menuiseries age',
+      id: QuestionId.MENUISERIES_RECENT,
       label: 'Vos menuiseries ont-elles moins de 10 ans ?',
       type: QuestionType.YESNOUNKNOWN,
       recap: (value: string, onClick) => {
-        if (value === 'unknwon') {
+        if (value === UNKNOWN) {
           return (
             <>
               <ClickableAnswer onClick={onClick}>
@@ -383,11 +385,11 @@ const house: QuestionGroup = {
       },
     },
     {
-      id: 'ventilation',
+      id: QuestionId.VMC,
       label: "Disposez-vous d'une ventilation mécanique (VMC) ?",
       type: QuestionType.YESNOUNKNOWN,
       recap: (value: string, onClick) => {
-        if (value === 'unknwon') {
+        if (value === UNKNOWN) {
           return (
             <>
               <ClickableAnswer onClick={onClick}>
@@ -408,7 +410,7 @@ const house: QuestionGroup = {
       },
     },
     {
-      id: 'chauffage',
+      id: QuestionId.CHAUFFAGE_PRINCIPAL,
       label: 'Quel est votre système de chauffage principal ?',
       type: QuestionType.RADIO,
       options: [
@@ -487,13 +489,13 @@ const house: QuestionGroup = {
       ],
     },
     {
-      id: 'chauffage age',
+      id: QuestionId.CHAUFFAGE_AGE,
       label: 'Votre système de chauffage a été installé il y a ...',
       type: QuestionType.RADIO,
       options: [
         {
           label: '- de 10 ans',
-          value: 'new',
+          value: 'recent',
           recap: (onClick) => (
             <>
               Mon chauffage à{' '}
@@ -530,7 +532,7 @@ const house: QuestionGroup = {
       ],
     },
     {
-      id: 'emetteurs',
+      id: QuestionId.EMETTEURS,
       label: 'Quel sont vos émetteurs de chauffage ?',
       dependsOn: [
         {

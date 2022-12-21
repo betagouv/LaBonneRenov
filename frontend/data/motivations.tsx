@@ -1,4 +1,5 @@
 import { ClickableAnswer } from '../../components/Recap/index.styles';
+import QuestionId from '../../types/enum/QuestionId';
 import QuestionType from '../../types/enum/questionType';
 import { QuestionGroup } from '../../types/questionGroup';
 
@@ -7,7 +8,7 @@ const motivations: QuestionGroup = {
   questions: [
     {
       disabled: true,
-      id: 'projet',
+      id: QuestionId.PROJET,
       label: 'Vous avez des projets de travaux ?',
       type: QuestionType.RADIO,
       options: [
@@ -31,7 +32,7 @@ const motivations: QuestionGroup = {
       ],
     },
     {
-      id: 'objectif',
+      id: QuestionId.OBJECTIF,
       label: 'Quel est votre principal objectif ?',
       type: QuestionType.CHECKBOX,
       validate: (values) => values.length > 0,
@@ -69,7 +70,7 @@ const motivations: QuestionGroup = {
     },
     {
       disabled: true,
-      id: 'avancé',
+      id: QuestionId.AVANCEMENT,
       label: 'Où en êtes vous de ce projet ?',
       type: QuestionType.RADIO,
       options: [
