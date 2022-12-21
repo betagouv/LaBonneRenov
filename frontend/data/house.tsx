@@ -164,7 +164,7 @@ const house: QuestionGroup[] = [
     questions: [
       {
         id: QuestionId.MUR_ISOLES,
-        label: 'Vos mur sont-ils isolés ?',
+        label: 'Vos murs sont-ils isolés ?',
         type: QuestionType.RADIO,
         options: [
           {
@@ -342,7 +342,7 @@ const house: QuestionGroup[] = [
       },
       {
         id: QuestionId.MENUISERIES_DOUBLE_VITRAGE,
-        label: 'Vos menuiseries sont-elle en double vitrage ?',
+        label: 'Vos menuiseries sont-elles en double vitrage ?',
         type: QuestionType.YESNOUNKNOWN,
         recap: (value: string, onClick) => {
           if (value === UNKNOWN) {
