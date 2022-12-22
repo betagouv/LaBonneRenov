@@ -22,6 +22,9 @@ const agent = {
         .post<AnswersResponse>('answers', { values })
         .then(({ data }) => data),
   },
+  Sondage: {
+    post: (result: string) => client.post('/sondage', { result }),
+  },
 };
 
 export default agent;

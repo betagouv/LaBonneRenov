@@ -8,10 +8,10 @@ import { Result as ResultType } from '../../types/result';
 
 function Resultat() {
   const [result, setResult] = useState<ResultType>();
-  const { currentAnswers } = useStore();
+  const { loading, currentAnswers } = useStore();
   const router = useRouter();
   useEffect(() => {
-    if (currentAnswers) {
+    if (!loading && currentAnswers) {
       try {
         setResult(simulator(currentAnswers));
       } catch (e) {
@@ -19,7 +19,7 @@ function Resultat() {
         router.push('/pac');
       }
     }
-  }, [currentAnswers, router]);
+  }, [loading, currentAnswers, router]);
   return result ? (
     <Result result={result} />
   ) : (

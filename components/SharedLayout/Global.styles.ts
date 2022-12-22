@@ -12,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 32px !important;
     font-weight: 700 !important;
     line-height: 40px !important;
-    margin-bottom: 32px !important;
+    margin-bottom: 24px !important;
   }
 
   h3 {
