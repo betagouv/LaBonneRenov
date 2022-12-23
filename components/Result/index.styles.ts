@@ -8,10 +8,3 @@ export const WithIcon = styled.div`
     margin-top: 16px;
   }
 `;
-
-export const SubTitle = styled.h2`
-  font-size: 32px !important;
-  font-weight: 700 !important;
-  line-height: 40px !important;
-  margin-bottom: 24px !important;
-`;

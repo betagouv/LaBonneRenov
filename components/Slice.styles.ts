@@ -13,7 +13,13 @@ const colors = {
     h1, h2, h3, h4 ,span, p {
       color: #B34000;
     }
-  `,
+    `,
+  [Color.GRAY]: `
+    background-color: #F6F6F6;
+    h1, h2, h3, h4 ,span, p {
+      color: #161616;
+    }
+    `,
 };
 
 export const Background = styled.div<{ color?: Color; fullHeight?: boolean }>`
@@ -34,6 +40,7 @@ export const Background = styled.div<{ color?: Color; fullHeight?: boolean }>`
 `;
 
 export const Container = styled.div`
+  width: 100%;
   padding: 32px;
   max-width: 1036px;
 `;
