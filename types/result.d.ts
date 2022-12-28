@@ -1,3 +1,5 @@
+import { RennovationResult } from './answer';
+
 export type Result = {
   compatibility: 'ok' | 'nok' | 'sok';
   syntheses: {
@@ -14,4 +16,5 @@ export type Result = {
   pacAsFirstStep: boolean;
   todo: string;
   investment: number;
+  rennovation?: RennovationResult;
 };

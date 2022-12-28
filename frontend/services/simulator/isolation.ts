@@ -1,5 +1,5 @@
 import { UNKNOWN } from '../../../components/Form/YesNo';
-import { Answers } from '../../../types/answer';
+import { Answers, IsolationResult } from '../../../types/answer';
 import QuestionId from '../../../types/enum/QuestionId';
 import { getValue } from './utils';
 
@@ -43,7 +43,7 @@ const plancherBasRating = (answers: Answers): number => {
   return construction === 'very old' ? 0 : 1;
 };
 
-const menuiseriesRating = (answers: Answers): number => {
+const menuiserieRating = (answers: Answers): number => {
   const recent = getValue(answers, QuestionId.MENUISERIES_RECENT);
   const doubleVitrage = getValue(
     answers,
@@ -60,15 +60,12 @@ const vmcRating = (answers: Answers): number => {
   return vmc === 'true' ? 0.5 : 0;
 };
 
-const computeIsolationRating = (answers: Answers): number => {
-  const mur = murRating(answers);
-  const plancherHaut = plancherHautRating(answers);
-  const plancherBas = plancherBasRating(answers);
-  const menuiseries = menuiseriesRating(answers);
-  const vmc = vmcRating(answers);
-
-  const sum = mur + plancherHaut + plancherBas + menuiseries + vmc;
-  return Math.max(Math.min(Math.floor(sum), 3), 1);
-};
+const computeIsolationRating = (answers: Answers): IsolationResult => ({
+  mur: murRating(answers),
+  plancherHaut: plancherHautRating(answers),
+  plancherBas: plancherBasRating(answers),
+  menuiserie: menuiserieRating(answers),
+  vmc: vmcRating(answers),
+});
 
 export default computeIsolationRating;

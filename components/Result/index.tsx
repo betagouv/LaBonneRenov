@@ -1,5 +1,6 @@
 import React from 'react';
 import { Result as ResultType } from '../../types/result';
+import Gain from './Gain';
 import Justifications from './Justifications';
 import Synthese from './Syntheses';
 
@@ -8,7 +9,7 @@ function Result({ result }: { result: ResultType }) {
     <>
       <Synthese result={result} />
       <Justifications result={result} />
-      {JSON.stringify(result)}
+      <Gain result={result} />
     </>
   );
 }

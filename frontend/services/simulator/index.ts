@@ -3,9 +3,9 @@ import { Result } from '../../../types/result';
 import computeChauffageRating from './chauffage';
 import computeConstuctionRating from './construction';
 import computeIsolationRating from './isolation';
+import computeRenovation from './renovation';
 
-const basseTemperature = (answers: Answers): Result => {
-  const isolation = computeIsolationRating(answers);
+const basseTemperature = (answers: Answers, isolation: number): Result => {
   switch (isolation) {
     case 1:
       return {
@@ -82,10 +82,9 @@ const basseTemperature = (answers: Answers): Result => {
   }
 };
 
-const hauteTemperature = (answers: Answers): Result => {
+const hauteTemperature = (answers: Answers, isolation: number): Result => {
   const construction = computeConstuctionRating(answers);
   if (construction === 1 || construction === 2) {
-    const isolation = computeIsolationRating(answers);
     switch (isolation) {
       case 1:
         return {
@@ -207,8 +206,7 @@ const hauteTemperature = (answers: Answers): Result => {
   }
 };
 
-const other = (answers: Answers): Result => {
-  const isolation = computeIsolationRating(answers);
+const other = (answers: Answers, isolation: number): Result => {
   switch (isolation) {
     case 1:
       return {
@@ -288,14 +286,40 @@ const simulator = (arrayAnswers: Answer[]): Result => {
   });
 
   const chauffageRating = computeChauffageRating(answers);
+  const isolationResult = computeIsolationRating(answers);
+  const isolation = Math.max(
+    Math.min(
+      Math.floor(
+        isolationResult.mur +
+          isolationResult.plancherHaut +
+          isolationResult.plancherBas +
+          isolationResult.menuiserie +
+          isolationResult.vmc
+      ),
+      3
+    ),
+    1
+  );
+
+  let result;
   switch (chauffageRating) {
     case 1:
-      return basseTemperature(answers);
+      result = basseTemperature(answers, isolation);
+      break;
     case 2:
-      return hauteTemperature(answers);
+      result = hauteTemperature(answers, isolation);
+      break;
     default:
-      return other(answers);
+      result = other(answers, isolation);
+      break;
   }
+
+  const rennovation = computeRenovation(answers, isolationResult, result);
+
+  return {
+    ...result,
+    rennovation,
+  };
 };
 
 export default simulator;
