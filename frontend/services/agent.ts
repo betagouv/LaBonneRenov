@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { parse, stringify } from 'qs';
 import { AnswersResponse } from '../../types/answersResponse';
+import { FranceRennovResult } from '../../types/franceRennovResult';
 
 const client = axios.create({
   baseURL: '/api/',
@@ -12,6 +13,12 @@ const client = axios.create({
 });
 
 const agent = {
+  Addresse: {
+    getFranceRennov: (cp: string) =>
+      client
+        .get<FranceRennovResult>(`/france-rennov/${cp}`)
+        .then(({ data }) => data),
+  },
   Answers: {
     get: (id: string) =>
       client.get<AnswersResponse>(`answers/${id}`).then(({ data }) => data),

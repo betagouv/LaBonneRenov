@@ -13,3 +13,10 @@ export const Logo = styled.div`
     margin: auto 32px;
   }
 `;
+
+export const Info = styled.div`
+  margin-top: 24px;
+  display: flex;
+  gap: 32px;
+  justify-content: space-between;
+`;
