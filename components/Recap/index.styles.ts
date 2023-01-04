@@ -25,4 +25,5 @@ export const Explanation = styled.div`
 
 export const ValidateButton = styled(Button)`
   margin-top: 32px;
+  margin-bottom: 24px;
 `;
