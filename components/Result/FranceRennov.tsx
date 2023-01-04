@@ -96,22 +96,14 @@ function FranceRennov() {
                 <h4>Coordonées</h4>
                 {info.tel && (
                   <Contact>
-                    <Link
-                      isSimple
-                      target="_blank"
-                      href={`tel:${info.tel.replace(' ', '')}`}
-                    >
+                    <Link isSimple href={`tel:${info.tel.replace(/ /g, '')}`}>
                       {info.tel}
                     </Link>
                   </Contact>
                 )}
                 {info.email && (
                   <Contact>
-                    <Link
-                      target="_blank"
-                      href={`mailto:${info.email}`}
-                      isSimple
-                    >
+                    <Link href={`mailto:${info.email}`} isSimple>
                       {info.email}
                     </Link>
                   </Contact>
