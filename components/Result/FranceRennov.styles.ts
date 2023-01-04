@@ -20,3 +20,9 @@ export const Info = styled.div`
   gap: 32px;
   justify-content: space-between;
 `;
+
+export const Contact = styled.div`
+  :not(:last-child) {
+    margin-bottom: 8px;
+  }
+`;

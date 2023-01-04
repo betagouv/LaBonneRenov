@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Color from '../../types/enum/Color';
 import Slice from '../Slice';
-import { Container, Info, Logo } from './FranceRennov.styles';
+import { Contact, Container, Info, Logo } from './FranceRennov.styles';
 import { useStore } from '../../frontend/stores';
 import QuestionId from '../../types/enum/QuestionId';
 import agent from '../../frontend/services/agent';
@@ -21,7 +21,9 @@ function FranceRennov() {
       (answer) => answer.id === QuestionId.CODE_POSTAL
     );
     if (cp && cp.value) {
-      agent.Addresse.getFranceRennov(cp.value as string).then(setInfo);
+      agent.Addresse.getFranceRennov(cp.value as string)
+        .then(setInfo)
+        .catch(console.log);
     }
   }, [currentAnswers, setInfo]);
 
@@ -58,6 +60,7 @@ function FranceRennov() {
             </Link>
             <Button
               className="fr-mt-3w"
+              disabled={!info}
               onClick={() => {
                 setDisplayInfo(true);
                 infoRef.current?.scrollIntoView({
@@ -73,42 +76,52 @@ function FranceRennov() {
       <div ref={infoRef}>
         {displayInfo && info && (
           <Slice color={Color.GRAY}>
+            <h3>Le conseiller France Rénov’ le plus proche de chez vous</h3>
             <h4>{info.raison_sociale}</h4>
-            <Link
-              target="_blank"
-              href={`https://www.google.com/maps/search/?api=1&query=${encodeURI(
-                `${info.raison_sociale} ${info.adresse_postale.adresse1} ${info.adresse_postale.code_postal} ${info.adresse_postale.ville}`
-              )}`}
-            >
-              {`${info.adresse_postale.adresse1} ${info.adresse_postale.code_postal} ${info.adresse_postale.ville}`}
-            </Link>
+            <span>
+              {`${info.adresse_postale.adresse1} ${info.adresse_postale.code_postal} ${info.adresse_postale.ville} `}
+              <Link
+                isSimple
+                target="_blank"
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURI(
+                  `${info.raison_sociale} ${info.adresse_postale.adresse1} ${info.adresse_postale.code_postal} ${info.adresse_postale.ville}`
+                )}`}
+              >
+                Localiser
+              </Link>
+            </span>
             <Separator className="fr-mt-3w" />
             <Info>
               <div>
                 <h4>Coordonées</h4>
                 {info.tel && (
-                  <div>
+                  <Contact>
                     <Link
+                      isSimple
                       target="_blank"
                       href={`tel:${info.tel.replace(' ', '')}`}
                     >
                       {info.tel}
                     </Link>
-                  </div>
+                  </Contact>
                 )}
                 {info.email && (
-                  <div>
-                    <Link target="_blank" href={`mailto:${info.email}`}>
+                  <Contact>
+                    <Link
+                      target="_blank"
+                      href={`mailto:${info.email}`}
+                      isSimple
+                    >
                       {info.email}
                     </Link>
-                  </div>
+                  </Contact>
                 )}
                 {info.web && (
-                  <div>
-                    <Link target="_blank" href={info.web}>
+                  <Contact>
+                    <Link target="_blank" href={info.web} isSimple>
                       {info.web}
                     </Link>
-                  </div>
+                  </Contact>
                 )}
               </div>
               {info.horaire && info.horaire.length > 0 && (
