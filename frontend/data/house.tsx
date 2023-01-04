@@ -552,44 +552,30 @@ const house: QuestionGroup[] = [
             values: ['chaudiere gaz', 'chaudiere fioul', 'chaudiere bois'],
           },
         ],
-        type: QuestionType.RADIO,
+        type: QuestionType.CHECKBOX,
+        recap: (values: string[], onClick) => (
+          <>
+            Je me chauffe avec{' '}
+            <ClickableAnswer onClick={onClick}>
+              {values.join(', ')}
+            </ClickableAnswer>
+          </>
+        ),
         options: [
           {
             label: 'Radiateur mureaux',
             value: 'radiateur mureaux',
-            recap: (onClick) => (
-              <>
-                Je me chauffe avec{' '}
-                <ClickableAnswer onClick={onClick}>
-                  des radiateurs mureaux
-                </ClickableAnswer>
-              </>
-            ),
+            recap: 'des radiateurs mureaux',
           },
           {
             label: 'Plancher chauffant',
             value: 'plancher chauffant',
-            recap: (onClick) => (
-              <>
-                Je me chauffe avec{' '}
-                <ClickableAnswer onClick={onClick}>
-                  un plancher chauffant
-                </ClickableAnswer>
-              </>
-            ),
+            recap: 'un plancher chauffant',
           },
           {
             label: 'Autres',
             value: 'autres',
-            recap: (onClick) => (
-              <>
-                Je{' '}
-                <ClickableAnswer onClick={onClick}>
-                  ne connait pas
-                </ClickableAnswer>
-                mes émetteurs de chauffage
-              </>
-            ),
+            recap: 'un autre mode de chauffage',
           },
         ],
       },

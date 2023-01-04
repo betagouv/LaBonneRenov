@@ -9,16 +9,18 @@ const efficientChauffages = [
 ];
 
 const emetteurRating = (answers: Answers): number => {
-  const emetteur = getValue(answers, QuestionId.EMETTEURS);
-  switch (emetteur) {
-    case 'autres':
-    case 'radiateur mureaux':
-      return 2;
-    case 'plancher chauffant':
-      return 1;
-    default:
-      throw new Error(`Unknown ${QuestionId.EMETTEURS} value: ${emetteur}`);
+  const emetteurs = getValue(answers, QuestionId.EMETTEURS);
+  if (emetteurs?.includes('radiateur mureaux')) {
+    return 2;
   }
+  if (emetteurs?.includes('plancher chauffant')) {
+    return 1;
+  }
+  if (emetteurs?.includes('autres')) {
+    return 0;
+  }
+
+  throw new Error(`Unknown ${QuestionId.EMETTEURS} values: ${emetteurs}`);
 };
 
 const computeChauffageRating = (answers: Answers): number => {
