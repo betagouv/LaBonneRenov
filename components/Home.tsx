@@ -43,10 +43,7 @@ function Home() {
         <h3>Est-ce qu’une pompe à chaleur est adaptée à ma maison ?</h3>
         <Card href="/pac" isHorizontal>
           <CardHeader>
-            <CardImage
-              alt="pac"
-              src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fconstructeurtravaux.fr%2Fwp-content%2Fuploads%2F2018%2F06%2Fpompe-a-chaleur-300x200.jpg&f=1&nofb=1&ipt=43e014732e3146157f0696fe5620356866b5f86e19e5ea8dc572e5b22cb3a6e0&ipo=images"
-            />
+            <CardImage alt="pac" src="/images/pac.jpg" />
           </CardHeader>
           <CardTitle>Simulateur pompe à chaleur</CardTitle>
           <CardDescription>
