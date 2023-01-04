@@ -3,6 +3,8 @@ import axios from 'axios';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { FranceRennovResult } from '../../../types/franceRennovResult';
 
+const buffer: Record<string, FranceRennovResult> = {};
+
 const search = (cp: string) =>
   axios
     .get(`https://api-adresse.data.gouv.fr/search?q=${cp}&&limit=1`)
@@ -28,13 +30,18 @@ const franceRennov = (citycode: string, city: string, postcode: string) => {
 };
 
 const get = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { cp } = req.query;
+  const cp = req.query.cp as string;
+  const existingValue = buffer[cp];
+  if (existingValue) {
+    return res.status(200).json(existingValue);
+  }
 
-  return search(cp as string).then((data) => {
+  return search(cp).then((data) => {
     const { citycode, city, postcode } = data.features[0].properties;
-    franceRennov(citycode, city, postcode).then((result) =>
-      res.status(200).json(result)
-    );
+    franceRennov(citycode, city, postcode).then((result) => {
+      buffer[cp] = result;
+      return res.status(200).json(result);
+    });
   });
 };
 
