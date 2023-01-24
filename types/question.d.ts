@@ -9,6 +9,10 @@ type BaseQuestion = {
   validate?: (value: string | string[]) => boolean;
   disabled?: boolean;
   dependsOn?: { id: QuestionId; value?: string; values?: string[] }[];
+  context?: {
+    title: string;
+    description: ReactNode;
+  };
 };
 
 export type TextQuestion = BaseQuestion & {

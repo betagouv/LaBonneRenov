@@ -11,6 +11,24 @@ const house: QuestionGroup[] = [
       {
         id: QuestionId.CODE_POSTAL,
         label: 'Quel est le code postal de votre maison ?',
+        context: {
+          title: 'Pourquoi cette question ?',
+          description: (
+            <>
+              <p>
+                Le fonctionnement d’une pompe a chaleur est impacté par
+                l’altitude et les témpérature trop rigoureuses. En répondant à
+                cette question, nous prennons en compte la situation de votre
+                maison.
+              </p>
+              <p>
+                Cette information nous permettra également de vous orienter vers
+                les conseillers du réseaux France Rénov’ les plus proche de
+                votre domicile.
+              </p>
+            </>
+          ),
+        },
         type: QuestionType.TEXT,
         validate: (value) =>
           /^(([0-9]{2}|2A|2B)[0-9]{3})$/.test(value as string),
@@ -26,6 +44,11 @@ const house: QuestionGroup[] = [
       {
         id: QuestionId.CONSTRUCTION,
         label: 'Votre maison a été construite ...',
+        context: {
+          title: 'Pourquoi cette question ?',
+          description:
+            'Les normes liées à l’isolation ont évoluées dans le temps pour devenir de plus en plus performante. Connaitre la période de construction nous permet de faire une première évaluation de la performance énergétiques de votre maison. Les prochaines questions nous permettrons d’affiner cette évaluation pour obtenir un résultats personnalisé.',
+        },
         type: QuestionType.RADIO,
         options: [
           {
@@ -165,61 +188,42 @@ const house: QuestionGroup[] = [
       {
         id: QuestionId.MUR_ISOLES,
         label: 'Vos murs sont-ils isolés ?',
-        type: QuestionType.RADIO,
-        options: [
-          {
-            value: 'no',
-            label: "Pas d'isolation du tout",
-            recap: (onClick) => (
-              <>
-                Mes murs{' '}
-                <ClickableAnswer onClick={onClick}>
-                  ne sont pas isolés
-                </ClickableAnswer>
-              </>
-            ),
-          },
-          {
-            value: 'old',
-            label: 'Isolation de + de 20 ans',
-            recap: (onClick) => (
-              <>
-                Mes murs ont été isolés il y a{' '}
-                <ClickableAnswer onClick={onClick}>
-                  plus de 20 ans
-                </ClickableAnswer>
-              </>
-            ),
-          },
-          {
-            value: 'recent',
-            label: 'Isolation de moins de 20 ans',
-            recap: (onClick) => (
-              <>
-                Mes murs ont été isolés il y a{' '}
-                <ClickableAnswer onClick={onClick}>
-                  moins de 20 ans
-                </ClickableAnswer>
-              </>
-            ),
-          },
-          {
-            value: UNKNOWN,
-            label: 'Je ne sais pas',
-            recap: (onClick) => (
+        context: {
+          title: 'Comment répondre à cette question ?',
+          description:
+            'Cette information peut être indiqué dans le DPE. En cas de doute, indiquez “je ne sais”. L’évaluation se basera sur l’année de construction de votre maison.',
+        },
+        type: QuestionType.YESNOUNKNOWN,
+        recap: (value: string, onClick) => {
+          if (value === UNKNOWN) {
+            return (
               <>
                 <ClickableAnswer onClick={onClick}>
                   Je ne sais pas
                 </ClickableAnswer>{' '}
-                quand mes murs ont été isolés
+                si mes murs sont isolés
               </>
-            ),
-          },
-        ],
+            );
+          }
+          return (
+            <>
+              Mes murs{' '}
+              <ClickableAnswer onClick={onClick}>
+                {value === 'true' ? 'sont' : 'ne sont pas'}
+              </ClickableAnswer>{' '}
+              isolés
+            </>
+          );
+        },
       },
       {
         id: QuestionId.COMBLES_AMENAGES,
         label: 'Vos combles sont-ils aménagés ?',
+        context: {
+          title: 'Comment répondre à cette question ?',
+          description:
+            'Les combles sont l’espace situés sous la charpente d’une habitation. On dit qu’il sont “aménagés” lorsque cet espace est utilisé comme une pièce chauffée et habitée de la maison. Par exemple, un grenier utilisé pour le stockage, n’est pas un comble aménage.',
+        },
         type: QuestionType.YESNO,
         recap: (value, onClick) => (
           <>
@@ -234,6 +238,21 @@ const house: QuestionGroup[] = [
       {
         id: QuestionId.TOITURE_ISOLE,
         label: 'Votre toiture est-elle isolée ?',
+        context: {
+          title: 'Comment répondre à cette question ?',
+          description: (
+            <>
+              <p>
+                Cette information peut être indiqué dans le DPE. En cas de
+                doute, indiquez “non”.
+              </p>
+              <p>
+                Le saviez-vous ? Une toiture non isolée peut représenter jusque
+                30% des déperditions énergétiques d’un logement.
+              </p>
+            </>
+          ),
+        },
         type: QuestionType.YESNOUNKNOWN,
         dependsOn: [{ id: QuestionId.COMBLES_AMENAGES, value: 'true' }],
         recap: (value: string, onClick) => {
@@ -260,7 +279,22 @@ const house: QuestionGroup[] = [
       },
       {
         id: QuestionId.COMBLES_ISOLES,
-        label: 'Vos combles perdus sont-ils isolés ?',
+        label: 'Vos combles sont-ils isolés ?',
+        context: {
+          title: 'Comment répondre à cette question ?',
+          description: (
+            <>
+              <p>
+                Cette information peut être indiqué dans le DPE. En cas de
+                doute, indiquez “non”.
+              </p>
+              <p>
+                Le saviez-vous ? Une toiture non isolée peut représenter jusque
+                30% des déperditions énergétiques d’un logement.
+              </p>
+            </>
+          ),
+        },
         type: QuestionType.YESNOUNKNOWN,
         dependsOn: [{ id: QuestionId.COMBLES_AMENAGES, value: 'false' }],
         recap: (value: string, onClick) => {
@@ -270,13 +304,13 @@ const house: QuestionGroup[] = [
                 <ClickableAnswer onClick={onClick}>
                   Je ne sais pas
                 </ClickableAnswer>{' '}
-                si mes combles perdus sont isolés
+                si mes combles sont isolés
               </>
             );
           }
           return (
             <>
-              Mes combles perdus{' '}
+              Mes combles{' '}
               <ClickableAnswer onClick={onClick}>
                 {value === 'true' ? 'sont' : 'ne sont pas'}
               </ClickableAnswer>{' '}
@@ -288,7 +322,12 @@ const house: QuestionGroup[] = [
       {
         id: QuestionId.CAVE,
         label:
-          'Votre maison est-elle construite sur une cave ou un vide sanitaire ?',
+          'Votre maison est-elle construite sur une cave, un garage ou un vide sanitaire ?',
+        context: {
+          title: 'Comment répondre à cette question ?',
+          description:
+            "Le vide sanitaire est l'espace situé entre le sol et le plancher bas de votre logement. Il sert de zone “tampon” entre la maison et le terrain sur laquelle elle est construite. Un vide sanitaire est compris entre 20 cm et 1.80m de hauteur. Si la maison n’est pas construire sur une cave, un garage ou un vide sanitaire, on parle de maison construite “sur terre-plein” ou pilotis.",
+        },
         type: QuestionType.YESNOUNKNOWN,
         recap: (value: string, onClick) => {
           if (value === UNKNOWN) {
@@ -297,7 +336,8 @@ const house: QuestionGroup[] = [
                 <ClickableAnswer onClick={onClick}>
                   Je ne sais pas
                 </ClickableAnswer>{' '}
-                si ma maison est construite sur une cave ou un vide sanitaire
+                si ma maison est construite sur une cave, un garage ou un vide
+                sanitaire
               </>
             );
           }
@@ -307,7 +347,7 @@ const house: QuestionGroup[] = [
               <ClickableAnswer onClick={onClick}>
                 {value === 'true' ? 'est' : "n'est pas"}
               </ClickableAnswer>{' '}
-              construite sur une cave ou un vide sanitaire
+              construite sur une cave, un garage ou un vide sanitaire
             </>
           );
         },
@@ -315,7 +355,22 @@ const house: QuestionGroup[] = [
       {
         id: QuestionId.PLANCHER_BAS_ISOLE,
         label:
-          "Le plancher au dessus de la cave ou d'une vide sanitaire est-il isolé ?",
+          "Le plancher au dessus de la cave, du garage ou d'une vide sanitaire est-il isolé ?",
+        context: {
+          title: 'Comment répondre à cette question ?',
+          description: (
+            <>
+              <p>
+                Cette information peut être indiquée dans le DPE. En cas de
+                doute, indiquez “non”.
+              </p>
+              <p>
+                Une mauvaise isolation d’un vide sanitaire peut causer une perte
+                de 7 à 10% de la chaleur d’une maison.
+              </p>
+            </>
+          ),
+        },
         type: QuestionType.YESNOUNKNOWN,
         dependsOn: [{ id: QuestionId.CAVE, value: 'true' }],
         recap: (value: string, onClick) => {
@@ -342,7 +397,12 @@ const house: QuestionGroup[] = [
       },
       {
         id: QuestionId.MENUISERIES_DOUBLE_VITRAGE,
-        label: 'Vos menuiseries sont-elles en double vitrage ?',
+        label: 'Vos fenêtres sont-elles en double vitrage ?',
+        context: {
+          title: 'Comment répondre à cette question ?',
+          description:
+            'Si votre maison comporte un mixte des deux, répondez “non”.',
+        },
         type: QuestionType.YESNOUNKNOWN,
         recap: (value: string, onClick) => {
           if (value === UNKNOWN) {
@@ -351,13 +411,13 @@ const house: QuestionGroup[] = [
                 <ClickableAnswer onClick={onClick}>
                   Je ne sais pas
                 </ClickableAnswer>{' '}
-                si mes menuiseries sont en double vitrage
+                si mes fenêtres sont en double vitrage
               </>
             );
           }
           return (
             <>
-              Mes menuiseries{' '}
+              Mes fenêtres{' '}
               <ClickableAnswer onClick={onClick}>
                 {value === 'true' ? 'sont' : 'ne sont pas'}
               </ClickableAnswer>{' '}
@@ -368,7 +428,12 @@ const house: QuestionGroup[] = [
       },
       {
         id: QuestionId.MENUISERIES_RECENT,
-        label: 'Vos menuiseries ont-elles moins de 10 ans ?',
+        label: 'Vos fenêtres ont-elles moins de 15 ans ?',
+        context: {
+          title: 'Le saviez vous ?',
+          description:
+            'La performance énergétique des fenêtre au delà de 15 n’est pas optimale.',
+        },
         type: QuestionType.YESNOUNKNOWN,
         recap: (value: string, onClick) => {
           if (value === UNKNOWN) {
@@ -377,15 +442,15 @@ const house: QuestionGroup[] = [
                 <ClickableAnswer onClick={onClick}>
                   Je ne connais pas
                 </ClickableAnswer>{' '}
-                l&lsquo;age de mes menuiseries
+                l&lsquo;age de mes fenêtres
               </>
             );
           }
           return (
             <>
-              Mes menuiseries ont{' '}
+              Mes fenêtres ont{' '}
               <ClickableAnswer onClick={onClick}>
-                {value === 'true' ? 'moins' : 'plus'} de 10 ans
+                {value === 'true' ? 'moins' : 'plus'} de 15 ans
               </ClickableAnswer>
             </>
           );
@@ -399,6 +464,11 @@ const house: QuestionGroup[] = [
       {
         id: QuestionId.VMC,
         label: "Disposez-vous d'une ventilation mécanique (VMC) ?",
+        context: {
+          title: 'Le saviez vous ?',
+          description:
+            'Bien ventiler est logement est essentiel pour maintenir une bonne qualité d’air et assurer le confort des habitants. Une ventilation mécanique contrôlée (VMC) est un équipement qui renouvelle l’air de votre logement.',
+        },
         type: QuestionType.YESNOUNKNOWN,
         recap: (value: string, onClick) => {
           if (value === UNKNOWN) {
@@ -501,6 +571,7 @@ const house: QuestionGroup[] = [
         ],
       },
       {
+        disabled: true,
         id: QuestionId.CHAUFFAGE_AGE,
         label: 'Votre système de chauffage a été installé il y a ...',
         type: QuestionType.RADIO,
@@ -546,6 +617,11 @@ const house: QuestionGroup[] = [
       {
         id: QuestionId.EMETTEURS,
         label: 'Quel sont vos émetteurs de chauffage ?',
+        context: {
+          title: 'Le saviez vous ?',
+          description:
+            "Un émetteur de chauffage est l’appareil ou la surface qui diffuse la chaleur produite par un système de chauffage dans les pièces d'un logement. Dans les maison équipées d’une chaudière au fioul, au gaz ou à bois, les émetteurs sont des radiateurs muraux à eau chaude ou un système de plancher chauffant.",
+        },
         dependsOn: [
           {
             id: QuestionId.CHAUFFAGE_PRINCIPAL,

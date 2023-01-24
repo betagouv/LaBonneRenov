@@ -1,3 +1,4 @@
+import { UNKNOWN } from '../../components/Form/YesNo';
 import { ClickableAnswer } from '../../components/Recap/index.styles';
 import QuestionId from '../../types/enum/QuestionId';
 import QuestionType from '../../types/enum/questionType';
@@ -33,40 +34,51 @@ const motivations: QuestionGroup = {
     },
     {
       id: QuestionId.OBJECTIF,
-      label: 'Quel est votre principal objectif ?',
+      label: 'Pourquoi souhaitez-vous installer une pompe à chaleur ?',
       type: QuestionType.CHECKBOX,
       validate: (values) => values.length > 0,
       error: 'Vous devez choisir au moins une option.',
       options: [
         {
           value: 'factures',
-          label: 'Réduire mes factures',
+          label: 'Pour réduire mes factures',
           recap: 'réduire mes factures',
         },
         {
           value: 'confort',
-          label: 'Améliorer mon confort été / hiver',
+          label: 'Pour améliorer mon confort été / hiver',
           recap: 'améliorer mon confort été / hiver',
         },
         {
           value: 'co2',
-          label: 'Réduire mes émissions de CO2',
+          label: 'Pour réduire mes émissions de CO2',
           recap: 'réduire mes émissions de CO2',
         },
         {
           value: 'appareil',
-          label: 'Changer un appareil défectueux (cf. chaudière)',
+          label: 'Je veux remplacer un appareil défectueux ou en fin de vie',
           recap: 'changer un appareil défectueux (cf. chaudière)',
         },
+        {
+          value: UNKNOWN,
+          label: 'Je ne sais pas',
+          recap: '',
+        },
       ],
-      recap: (values: string[], onClick) => (
-        <>
-          je veux{' '}
+      recap: (values: string[], onClick) =>
+        values.includes(UNKNOWN) ? (
           <ClickableAnswer onClick={onClick}>
-            {values.join(', ')}
+            Je n&lsquo;ai pas d&lsquo;objectif principal pour
+            l&lsquo;installation d&lsquo;une PAC.
           </ClickableAnswer>
-        </>
-      ),
+        ) : (
+          <>
+            je veux{' '}
+            <ClickableAnswer onClick={onClick}>
+              {values.join(', ')}
+            </ClickableAnswer>
+          </>
+        ),
     },
     {
       disabled: true,

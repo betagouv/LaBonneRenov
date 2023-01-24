@@ -5,7 +5,7 @@ import { Savings } from '../../../types/savings';
 
 const unknownValues: Record<string, Answers> = {
   'very old': {
-    [QuestionId.MUR_ISOLES]: 'no',
+    [QuestionId.MUR_ISOLES]: 'false',
     [QuestionId.COMBLES_AMENAGES]: 'true',
     [QuestionId.COMBLES_ISOLES]: 'false',
     [QuestionId.CAVE]: 'false',
@@ -15,7 +15,7 @@ const unknownValues: Record<string, Answers> = {
     [QuestionId.VMC]: 'false',
   },
   old: {
-    [QuestionId.MUR_ISOLES]: 'no',
+    [QuestionId.MUR_ISOLES]: 'false',
     [QuestionId.COMBLES_AMENAGES]: 'false',
     [QuestionId.TOITURE_ISOLE]: 'false',
     [QuestionId.CAVE]: 'true',
@@ -25,7 +25,7 @@ const unknownValues: Record<string, Answers> = {
     [QuestionId.VMC]: 'false',
   },
   recent: {
-    [QuestionId.MUR_ISOLES]: 'recent',
+    [QuestionId.MUR_ISOLES]: 'true',
     [QuestionId.COMBLES_AMENAGES]: 'false',
     [QuestionId.TOITURE_ISOLE]: 'true',
     [QuestionId.CAVE]: 'true',
@@ -35,7 +35,7 @@ const unknownValues: Record<string, Answers> = {
     [QuestionId.VMC]: 'true',
   },
   'very recent': {
-    [QuestionId.MUR_ISOLES]: 'recent',
+    [QuestionId.MUR_ISOLES]: 'true',
     [QuestionId.COMBLES_AMENAGES]: 'true',
     [QuestionId.TOITURE_ISOLE]: 'true',
     [QuestionId.CAVE]: 'true',
@@ -210,7 +210,7 @@ export const getValue = (answers: Answers, id: QuestionId) => {
         | 'old'
         | 'recent'
         | 'very recent'
-    ][QuestionId.MUR_ISOLES];
+    ][id];
   }
   return value;
 };

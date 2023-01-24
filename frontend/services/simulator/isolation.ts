@@ -5,15 +5,7 @@ import { getValue } from './utils';
 
 const murRating = (answers: Answers): number => {
   const value = getValue(answers, QuestionId.MUR_ISOLES);
-  switch (value) {
-    case 'no':
-      return 0;
-    case 'old':
-    case 'recent':
-      return 2;
-    default:
-      throw new Error(`Unknown ${QuestionId.MUR_ISOLES} value: ${value}`);
-  }
+  return value === 'true' ? 2 : 0;
 };
 
 const plancherHautRating = (answers: Answers): number => {

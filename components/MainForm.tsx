@@ -147,31 +147,16 @@ function MainForm() {
                 Continuer
               </Button>
             </ButtonGroup>
-            <Callout>
-              <CalloutTitle as="h4">Le saviez-vous ?</CalloutTitle>
-              <CalloutText as="div">
-                <b>
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.
-                </b>
-                <ul>
-                  <li>
-                    Dolor sed viverra ipsum nunc aliquet bibendum enim
-                    facilisis. Elit ut aliquam purus sit amet luctus venenatis
-                    lectus.
-                  </li>
-                  <li>
-                    Diam volutpat commodo sed egestas egestas fringilla
-                    phasellus faucibus scelerisque. Ultricies tristique nulla
-                    aliquet enim tortor at auctor urna nunc.
-                  </li>
-                  <li>
-                    Eget aliquet nibh praesent tristique magna sit amet purus
-                    gravida.
-                  </li>
-                </ul>
-              </CalloutText>
-            </Callout>
+            {currentQuestion.context && (
+              <Callout>
+                <CalloutTitle as="h4">
+                  {currentQuestion.context.title}
+                </CalloutTitle>
+                <CalloutText as="div">
+                  {currentQuestion.context.description}
+                </CalloutText>
+              </Callout>
+            )}
           </>
         ) : (
           <Recap />

@@ -10,7 +10,7 @@ import { Separator } from './index.styles';
 const steps: Record<keyof IsolationResult, string> = {
   vmc: 'Installer un système de ventilation mécanique contrôlée (VMC)',
   mur: 'Isoler les murs',
-  menuiserie: 'Remplacer vos menuiseries',
+  menuiserie: 'Remplacer vos fenêtres',
   plancherHaut: 'Isoler les combles',
   plancherBas: 'Isoler le plancher au dessus de la cave ou du vide sanitaire',
 };
