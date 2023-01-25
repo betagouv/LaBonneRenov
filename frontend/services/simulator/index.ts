@@ -13,20 +13,22 @@ const basseTemperature = (answers: Answers, isolation: number): Result => {
         syntheses: {
           positiveTitle: 'Bonne nouvelle !',
           positiveDescription:
-            "L'installation d'une pompe à chaleur air/eau est adaptée au plancher chauffant.",
+            "L'installation d'une pompe à chaleur air/eau peut être envisagé pour votre maison.",
           negativeTitle:
-            "Cependant, l'installation d'une pompe à chaleur sans isolation nécessite un investissement important et des factures énergétiques après travaux restant élevée.",
+            "Cependant, nous vous recommandons fortement de réaliser des travaux d'isolation avant de vous équiper d'une PAC.",
           negativeDescription:
-            "Mettre en place un programme de rénovation performante, incluant l'isolation de l'enveloppe permet à la fois de diminuer les factures énergétiques, les émissions GES, ...",
+            "Le manque total d'isolation de votre logement risque d'entrainer des sur-couts à l'installation et en fonctionnement.",
         },
         further:
           "Avant d'aller plus loin dans votre projet, il est important que vous envisagiez d'autres travaux ou une autre source de production. Nous vous proposons de prendre rendez vous auprès d'une Espace France Renov qui peut vous accompagner dans la définition de celui-ci",
         justifications: {
           positives: [
-            'Votre maison possède un plancher chauffant ce qui est favorable à la mise en place de PAC Air / Eau.',
+            "Votre maison possède un plancher chauffant, un systeme de chauffage parfaitement adapté au fonctionnement de la PAC. Les planchers chauffant sont en effet conçus pour fonctionner à température moyenne (35/40°). Il ne sera donc pas nécéssaire de modifier les émétteurs de chaleur, ce qui réduit les coûts d'investissement.",
           ],
           negatives: [
-            "Votre maison n'est pas suffisamment isolée, ce qui va entraîner surconsommation et surinvestissement avec la mise en œuvre de PAC.",
+            "Sans travaux d'isolation, l'investissement initial sur l'installation de la PAC sera plus élévé. Il sera en effet nécéssaire sur-dimensionner l'équipement par rapport aux besoins d'un même logement correctement isolé.",
+            "Avec une mauvaise isolation, les économies sur vos factures énergétiques seront réduites. Les gains apporté par la PAC seront limités à [15%] et limite l'intérêt économique de vos travaux.",
+            "Il est important de respecter une bonne chronologie des travaux ou les combiner. Si vous isolez après l'installation de la PAC, cela peut générer des difficultés de régulation et une perte de performance. En pratique, il y a un risque d'inconfort pour l'occupant (la température n'est pas stable) et dégradation prématurée de l'équipement (augmentation du nombre d'allumage).",
           ],
         },
         pacAsFirstStep: false,

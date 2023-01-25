@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon } from '@dataesr/react-dsfr';
+import Image from 'next/image';
 import { Result } from '../../types/result';
 import Slice from '../Slice';
 import { WithIcon } from './index.styles';
@@ -14,7 +14,7 @@ function Justifications({ result }: { result: Result }) {
         {result.justifications.positives.length > 0 && (
           <Justification>
             <WithIcon>
-              <Icon name="ri-checkbox-circle-line" size="2x" />
+              <Image src="/images/positive.svg" alt="" width={35} height={35} />
               <div>
                 <h3>Points positifs</h3>
                 <ul>
@@ -29,7 +29,7 @@ function Justifications({ result }: { result: Result }) {
         {result.justifications.negatives.length > 0 && (
           <Justification>
             <WithIcon>
-              <Icon name="ri-close-circle-line" size="2x" />
+              <Image src="/images/negative.svg" alt="" width={35} height={35} />
               <div>
                 <h3>Points négatifs</h3>
                 <ul>

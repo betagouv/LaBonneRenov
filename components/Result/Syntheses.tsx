@@ -10,10 +10,9 @@ function Syntheses({ result }: { result: Result }) {
     <>
       {result.syntheses.positiveTitle && (
         <Slice color={Color.BLUE}>
-          <h1>{result.syntheses.positiveTitle}</h1>
           <WithIcon>
             <Icon name="ri-checkbox-circle-fill" size="3x" />
-            <h4>{result.syntheses.positiveDescription}</h4>
+            <h3>{result.syntheses.positiveDescription}</h3>
           </WithIcon>
         </Slice>
       )}
@@ -21,7 +20,7 @@ function Syntheses({ result }: { result: Result }) {
         <Slice color={Color.RED}>
           <WithIcon>
             <Icon name="ri-error-warning-fill" size="3x" />
-            <h2>{result.syntheses.negativeTitle}</h2>
+            <h3>{result.syntheses.negativeTitle}</h3>
           </WithIcon>
           {result.syntheses.negativeDescription && (
             <span>

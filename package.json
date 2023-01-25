@@ -10,13 +10,13 @@
     "lint:fix": "next lint --fix"
   },
   "dependencies": {
-    "@dataesr/react-dsfr": "^3.5.2",
+    "@dataesr/react-dsfr": "^3.5.3",
     "@gouvfr/dsfr": "1.7.2",
     "@types/node": "^18.11.18",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "airtable": "^0.11.6",
-    "axios": "^1.2.3",
+    "axios": "^1.2.4",
     "dotenv": "^16.0.3",
     "form-data": "^4.0.0",
     "mobx": "^6.7.0",
