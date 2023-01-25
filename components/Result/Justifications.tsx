@@ -9,7 +9,7 @@ import { Container, Justification } from './Justifications.styles';
 function Justifications({ result }: { result: Result }) {
   return (
     <Slice color={Color.GRAY}>
-      <h1>Pourquoi ce résultat ?</h1>
+      <h2>Pourquoi ce résultat ?</h2>
       <Container>
         {result.justifications.positives.length > 0 && (
           <Justification>
