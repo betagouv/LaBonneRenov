@@ -48,8 +48,7 @@ function Recap() {
   const router = useRouter();
   return (
     <>
-      <h1>Vérifier qu’une pompe à chaleur est adaptée à votre maison</h1>
-      <h2>Résumé du questionnaire</h2>
+      <h1>Résumé du questionnaire</h1>
       <Answers>
         {steps.map((step) =>
           step.questions.map((question) => {
