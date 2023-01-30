@@ -9,6 +9,9 @@ import QuestionId from '../../types/enum/QuestionId';
 import agent from '../../frontend/services/agent';
 import { Separator } from './index.styles';
 import { FranceRennovResult } from '../../types/franceRennovResult';
+import matomoEvent, {
+  FRANCE_RENNOV,
+} from '../../frontend/services/matomoEvent';
 
 function FranceRennov() {
   const { currentAnswers } = useStore();
@@ -62,6 +65,12 @@ function FranceRennov() {
               className="fr-mt-3w"
               disabled={!info}
               onClick={() => {
+                const cp = currentAnswers.find(
+                  (answer) => answer.id === QuestionId.CODE_POSTAL
+                );
+                if (cp && cp.value) {
+                  matomoEvent([FRANCE_RENNOV, cp.value as string]);
+                }
                 setDisplayInfo(true);
                 infoRef.current?.scrollIntoView({
                   behavior: 'smooth',
