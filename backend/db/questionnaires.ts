@@ -5,4 +5,6 @@ export const columns = {
   values: 'Valeurs',
   createdAt: 'Création',
   updatedAt: 'Mise à jour',
+  finish: 'Fini',
+  result: 'Resultat',
 };

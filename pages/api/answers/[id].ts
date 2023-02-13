@@ -15,6 +15,8 @@ const put = async (req: NextApiRequest, res: NextApiResponse) => {
 
   await airtable(questionnaires).update(id, {
     [columns.values]: req.body.values,
+    [columns.finish]: req.body.finish,
+    [columns.result]: req.body.result,
     [columns.updatedAt]: new Date().toISOString(),
   });
 

@@ -22,6 +22,9 @@ function Footer() {
       </FooterBody>
       <FooterBottom>
         <FooterLink>Accessibilité: non conforme</FooterLink>
+        <FooterLink asLink={<Link href="/statistiques" title="Statistiques" />}>
+          Statistiques
+        </FooterLink>
         <FooterLink target="_blank" href="https://github.com/betagouv/outibat">
           Github
         </FooterLink>

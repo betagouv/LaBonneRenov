@@ -28,9 +28,18 @@ const agent = {
       client
         .post<AnswersResponse>('answers', { values })
         .then(({ data }) => data),
+    finish: (id: string) => client.put(`answers/${id}`, { finish: true }),
+    result: (id: string) => client.put(`answers/${id}`, { result: true }),
   },
   Sondage: {
     post: (result: string) => client.post('/sondage', { result }),
+  },
+  Statistics: {
+    sondage: () => client.get('/statistics/sondage').then(({ data }) => data),
+    questionnaire: () =>
+      client.get('/statistics/questionnaire').then(({ data }) => data),
+    visit: () => client.get('/statistics/visit').then(({ data }) => data),
+    action: () => client.get('/statistics/action').then(({ data }) => data),
   },
 };
 

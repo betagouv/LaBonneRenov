@@ -2,14 +2,16 @@ import { observer } from 'mobx-react';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import Result from '../../components/Result';
+import agent from '../../frontend/services/agent';
 import simulator from '../../frontend/services/simulator';
 import { useStore } from '../../frontend/stores';
 import { Result as ResultType } from '../../types/result';
 
 function Resultat() {
   const [result, setResult] = useState<ResultType>();
-  const { loading, currentAnswers } = useStore();
+  const { loading, currentAnswers, id } = useStore();
   const router = useRouter();
+
   useEffect(() => {
     if (!loading && currentAnswers) {
       try {
@@ -20,6 +22,13 @@ function Resultat() {
       }
     }
   }, [loading, currentAnswers, router]);
+
+  useEffect(() => {
+    if (id && result) {
+      agent.Answers.result(id);
+    }
+  }, [id, result]);
+
   return result ? (
     <Result result={result} />
   ) : (

@@ -80,6 +80,7 @@ export default class AnswerStore {
       router.push(`/pac/${question.id}`);
     } else {
       router.push('/pac/recap');
+      agent.Answers.finish(this.id);
     }
   }
 

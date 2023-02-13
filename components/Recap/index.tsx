@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react';
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { questions, steps } from '../../frontend/data/questions';
 import { useStore } from '../../frontend/stores';
 import QuestionType from '../../types/enum/questionType';
@@ -50,8 +50,13 @@ const getRecap = (
 };
 
 function Recap() {
-  const { currentAnswers } = useStore();
+  const { currentAnswers, updateQuestion } = useStore();
   const router = useRouter();
+
+  useEffect(() => {
+    updateQuestion(router);
+  }, []);
+
   return (
     <>
       <h1>Résumé du questionnaire</h1>
