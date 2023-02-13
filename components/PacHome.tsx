@@ -1,13 +1,7 @@
-import {
-  Accordion,
-  AccordionItem,
-  Breadcrumb,
-  BreadcrumbItem,
-  Button,
-} from '@dataesr/react-dsfr';
-import Link from 'next/link';
+import { Accordion, AccordionItem, Button } from '@dataesr/react-dsfr';
 import { useRouter } from 'next/router';
 import React from 'react';
+import { useStore } from '../frontend/stores';
 import Color from '../types/enum/Color';
 import {
   FaqAnswer,
@@ -15,20 +9,17 @@ import {
   HeaderDescription,
   PacImage,
 } from './PacHome.styles';
+import PacHeader from './SharedLayout/PacHeader';
 import Slice from './Slice';
 
 function Home() {
   const router = useRouter();
+  const { reset } = useStore();
 
   return (
     <>
       <Slice color={Color.GRAY}>
-        <Breadcrumb>
-          <BreadcrumbItem asLink={<Link href="/" />}>Accueil</BreadcrumbItem>
-          <BreadcrumbItem>
-            Vérifier qu’une pompe à chaleur est adaptée à votre maison
-          </BreadcrumbItem>
-        </Breadcrumb>
+        <PacHeader resume />
         <HeaderContent>
           <PacImage
             width={315}
@@ -47,7 +38,10 @@ function Home() {
             <Button
               iconPosition="right"
               icon="ri-arrow-right-line"
-              onClick={() => router.push('/pac/simulateur')}
+              onClick={() => {
+                reset(router);
+                router.push('/pac/simulateur');
+              }}
             >
               Commencer la simulation
             </Button>

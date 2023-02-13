@@ -1,6 +1,4 @@
 import {
-  Breadcrumb,
-  BreadcrumbItem,
   Button,
   ButtonGroup,
   Callout,
@@ -17,7 +15,6 @@ import React, {
   useState,
 } from 'react';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 import { useStore } from '../frontend/stores';
 import QuestionType from '../types/enum/questionType';
 import { Question } from '../types/question';
@@ -28,6 +25,7 @@ import Text from './Form/Text';
 import YesNo from './Form/YesNo';
 import Number from './Form/Number';
 import Recap from './Recap';
+import PacHeader from './SharedLayout/PacHeader';
 
 const getQuestion = (
   question: Question,
@@ -120,12 +118,7 @@ function MainForm() {
   }
   return (
     <Container>
-      <Breadcrumb>
-        <BreadcrumbItem asLink={<Link href="/" />}>Accueil</BreadcrumbItem>
-        <BreadcrumbItem>
-          Vérifier qu’une pompe à chaleur est adaptée à votre maison
-        </BreadcrumbItem>
-      </Breadcrumb>
+      <PacHeader />
       <FormContainer
         ref={formRef}
         onKeyUp={onKeyUp}
