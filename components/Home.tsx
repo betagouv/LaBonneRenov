@@ -32,11 +32,11 @@ function Home() {
         <h4>
           Vous aider à mesurer l’impact des travaux de rénovation énergétique.
         </h4>
-        <span>
+        <div>
           Court laïus sur la promesse du site et de pourquoi qu’il existe. Lorem
           ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua.
-        </span>
+        </div>
       </Slice>
       <Slice>
         <h2>Les simulateurs</h2>

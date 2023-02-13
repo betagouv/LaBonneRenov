@@ -28,6 +28,10 @@ const GlobalStyle = createGlobalStyle`
     line-height: 32px !important;
     margin-bottom: 8px !important;
   }
+
+  .fr-accordion__title {
+    margin: 0px !important;
+  }
 `;
 
 export default GlobalStyle;
