@@ -1,6 +1,12 @@
 import { Button } from '@dataesr/react-dsfr';
 import styled from 'styled-components';
 
+export const Content = styled.div`
+  padding: 32px;
+  border: 1px solid #dddddd;
+  margin: auto;
+`;
+
 export const Answers = styled.div`
   display: flex;
   flex-direction: column;
@@ -25,5 +31,4 @@ export const Explanation = styled.div`
 
 export const ValidateButton = styled(Button)`
   margin-top: 32px;
-  margin-bottom: 24px;
 `;

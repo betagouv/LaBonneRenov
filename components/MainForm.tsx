@@ -1,10 +1,4 @@
-import {
-  Button,
-  ButtonGroup,
-  Callout,
-  CalloutText,
-  CalloutTitle,
-} from '@dataesr/react-dsfr';
+import { Button, CalloutText, CalloutTitle } from '@dataesr/react-dsfr';
 import { observer } from 'mobx-react';
 import React, {
   FormEvent,
@@ -18,7 +12,14 @@ import { useRouter } from 'next/router';
 import { useStore } from '../frontend/stores';
 import QuestionType from '../types/enum/questionType';
 import { Question } from '../types/question';
-import { FormContainer, Container, Step } from './MainForm.styles';
+import {
+  FormContainer,
+  Container,
+  Step,
+  Content,
+  QuestionBox,
+  Explanation,
+} from './MainForm.styles';
 import CheckBox from './Form/CheckBox';
 import Radio from './Form/Radio';
 import Text from './Form/Text';
@@ -128,28 +129,30 @@ function MainForm() {
         {currentQuestion ? (
           <>
             {stepInfo && <Step {...stepInfo} />}
-            <h3>{currentQuestion.label}</h3>
-            {getQuestion(currentQuestion, setValue, showError)}
-            <ButtonGroup isInlineFrom="sm" className="fr-mb-2w">
-              <Button
-                submit
-                disabled={value === undefined}
-                icon="ri-arrow-right-line"
-                iconPosition="right"
-              >
-                Continuer
-              </Button>
-            </ButtonGroup>
-            {currentQuestion.context && (
-              <Callout>
-                <CalloutTitle as="h4">
-                  {currentQuestion.context.title}
-                </CalloutTitle>
-                <CalloutText as="div">
-                  {currentQuestion.context.description}
-                </CalloutText>
-              </Callout>
-            )}
+            <Content>
+              <QuestionBox>
+                <h3>{currentQuestion.label}</h3>
+                {getQuestion(currentQuestion, setValue, showError)}
+                <Button
+                  submit
+                  disabled={value === undefined}
+                  icon="ri-arrow-right-line"
+                  iconPosition="right"
+                >
+                  Continuer
+                </Button>
+              </QuestionBox>
+              {currentQuestion.context && (
+                <Explanation>
+                  <CalloutTitle as="h4">
+                    {currentQuestion.context.title}
+                  </CalloutTitle>
+                  <CalloutText as="div">
+                    {currentQuestion.context.description}
+                  </CalloutText>
+                </Explanation>
+              )}
+            </Content>
           </>
         ) : (
           <Recap />

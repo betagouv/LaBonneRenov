@@ -4,7 +4,13 @@ import React from 'react';
 import { questions, steps } from '../../frontend/data/questions';
 import { useStore } from '../../frontend/stores';
 import QuestionType from '../../types/enum/questionType';
-import { Answer, Answers, Explanation, ValidateButton } from './index.styles';
+import {
+  Answer,
+  Answers,
+  Content,
+  Explanation,
+  ValidateButton,
+} from './index.styles';
 
 const getRecap = (
   key: string,
@@ -49,34 +55,36 @@ function Recap() {
   return (
     <>
       <h1>Résumé du questionnaire</h1>
-      <Answers>
-        {steps.map((step) =>
-          step.questions.map((question) => {
-            const answer = currentAnswers.find((a) => a.id === question.id);
-            if (answer && answer.value !== undefined) {
-              return (
-                <Answer key={answer.id}>
-                  {getRecap(answer.id, answer.value, () =>
-                    router.push(`/pac/${answer.id}`)
-                  )}
-                </Answer>
-              );
-            }
-            return null;
-          })
-        )}
-      </Answers>
-      <Explanation>
-        <b>Cela ne vous correspond pas ?</b> Cliquez sur la valeur que vous
-        souhaitez modifier.
-      </Explanation>
-      <ValidateButton
-        icon="ri-arrow-right-line"
-        iconPosition="right"
-        onClick={() => router.push('/pac/resultat')}
-      >
-        Voir le résultat
-      </ValidateButton>
+      <Content>
+        <Answers>
+          {steps.map((step) =>
+            step.questions.map((question) => {
+              const answer = currentAnswers.find((a) => a.id === question.id);
+              if (answer && answer.value !== undefined) {
+                return (
+                  <Answer key={answer.id}>
+                    {getRecap(answer.id, answer.value, () =>
+                      router.push(`/pac/${answer.id}`)
+                    )}
+                  </Answer>
+                );
+              }
+              return null;
+            })
+          )}
+        </Answers>
+        <Explanation>
+          <b>Cela ne vous correspond pas ?</b> Cliquez sur la valeur que vous
+          souhaitez modifier.
+        </Explanation>
+        <ValidateButton
+          icon="ri-arrow-right-line"
+          iconPosition="right"
+          onClick={() => router.push('/pac/resultat')}
+        >
+          Voir le résultat
+        </ValidateButton>
+      </Content>
     </>
   );
 }
