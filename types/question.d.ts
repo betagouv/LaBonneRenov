@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { Answer } from './answer';
 import QuestionId from './enum/QuestionId';
 import QuestionType from './enum/questionType';
 
@@ -6,6 +7,7 @@ type BaseQuestion = {
   id: QuestionId;
   label: string;
   error?: string;
+  clean?: QuestionId[];
   validate?: (value: string | string[]) => boolean;
   disabled?: boolean;
   dependsOn?: { id: QuestionId; value?: string; values?: string[] }[];
@@ -42,11 +44,17 @@ export type NumberQuestion = BaseQuestion & {
 
 export type RadioQuestion = BaseQuestion & {
   type: QuestionType.RADIO;
-  options: {
-    label: string;
-    value: string;
-    recap: (onClick: () => void) => ReactNode;
-  }[];
+  options:
+    | {
+        label: string;
+        value: string;
+        recap: (onClick: () => void) => ReactNode;
+      }[]
+    | ((answers: Answer[]) => {
+        label: string;
+        value: string;
+        recap: (onClick: () => void) => ReactNode;
+      }[]);
 };
 
 export type CheckBoxQuestion = BaseQuestion & {

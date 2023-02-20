@@ -19,6 +19,8 @@ enum QuestionId {
   CHAUFFAGE_PRINCIPAL = 'chauffage_principal',
   CHAUFFAGE_AGE = 'chauffage_age',
   EMETTEURS = 'emetteurs',
+  NB_PERSONNES = 'nb_personnes',
+  INCOME = 'income',
 }
 
 export default QuestionId;

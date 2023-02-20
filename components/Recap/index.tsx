@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react';
 import { useRouter } from 'next/router';
-import React, { useEffect } from 'react';
-import { questions, steps } from '../../frontend/data/questions';
+import React, { useCallback, useEffect } from 'react';
+import { steps } from '../../frontend/data/questions';
 import { useStore } from '../../frontend/stores';
 import QuestionType from '../../types/enum/questionType';
 import {
@@ -12,50 +12,60 @@ import {
   ValidateButton,
 } from './index.styles';
 
-const getRecap = (
-  key: string,
-  currentAnswer: string | string[] | null,
-  onClick: () => void
-) => {
-  if (currentAnswer === null) {
-    return null;
-  }
-  const question = questions.find((q) => q.id === key);
-  if (!question) {
-    return currentAnswer;
-  }
-
-  switch (question.type) {
-    case QuestionType.RADIO:
-      return question.options
-        .find((option) => option.value === currentAnswer)
-        ?.recap(onClick);
-    case QuestionType.CHECKBOX:
-      return question.recap(
-        question.options
-          .filter((option) => currentAnswer.includes(option.value))
-          .map((option) => option.recap),
-        onClick
-      );
-    case QuestionType.YESNO:
-      return question.recap(currentAnswer === 'true', onClick);
-    case QuestionType.YESNOUNKNOWN:
-      return question.recap(currentAnswer as string, onClick);
-    case QuestionType.TEXT:
-    case QuestionType.NUMBER:
-      return question.recap(currentAnswer as string, onClick);
-    default:
-      return currentAnswer;
-  }
-};
-
 function Recap() {
-  const { currentAnswers, updateQuestion } = useStore();
+  const { currentAnswers, skippedGroup, updateQuestion } = useStore();
   const router = useRouter();
 
   useEffect(() => {
     updateQuestion(router);
   }, []);
+
+  const getRecap = useCallback(
+    (
+      key: string,
+      currentAnswer: string | string[] | null,
+      onClick: () => void
+    ) => {
+      if (currentAnswer === null) {
+        return null;
+      }
+      const question = steps
+        .filter((step) => !skippedGroup.includes(step.id))
+        .flatMap((step) => step.questions)
+        .find((q) => q.id === key);
+      if (!question) {
+        return currentAnswer;
+      }
+
+      switch (question.type) {
+        case QuestionType.RADIO:
+          return (
+            typeof question.options === 'function'
+              ? question.options(currentAnswers)
+              : question.options
+          )
+            .find((option) => option.value === currentAnswer)
+            ?.recap(onClick);
+        case QuestionType.CHECKBOX:
+          return question.recap(
+            question.options
+              .filter((option) => currentAnswer.includes(option.value))
+              .map((option) => option.recap),
+            onClick
+          );
+        case QuestionType.YESNO:
+          return question.recap(currentAnswer === 'true', onClick);
+        case QuestionType.YESNOUNKNOWN:
+          return question.recap(currentAnswer as string, onClick);
+        case QuestionType.TEXT:
+        case QuestionType.NUMBER:
+          return question.recap(currentAnswer as string, onClick);
+        default:
+          return currentAnswer;
+      }
+    },
+    [currentAnswers, skippedGroup]
+  );
 
   return (
     <>

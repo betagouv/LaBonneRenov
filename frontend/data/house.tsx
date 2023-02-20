@@ -1,11 +1,13 @@
 import { UNKNOWN } from '../../components/Form/YesNo';
 import { ClickableAnswer } from '../../components/Recap/index.styles';
+import QuestionGroupId from '../../types/enum/QuestionGroupId';
 import QuestionId from '../../types/enum/QuestionId';
 import QuestionType from '../../types/enum/questionType';
 import { QuestionGroup } from '../../types/questionGroup';
 
 const house: QuestionGroup[] = [
   {
+    id: QuestionGroupId.HOUSE,
     label: 'Ma maison',
     questions: [
       {
@@ -183,6 +185,7 @@ const house: QuestionGroup[] = [
     ],
   },
   {
+    id: QuestionGroupId.ISOLATION,
     label: 'Mon isolation',
     questions: [
       {
@@ -459,6 +462,7 @@ const house: QuestionGroup[] = [
     ],
   },
   {
+    id: QuestionGroupId.EQUIPMENTS,
     label: 'Mes équipements',
     questions: [
       {

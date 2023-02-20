@@ -37,3 +37,8 @@ export const QuestionBox = styled.div`
 export const Explanation = styled(Callout)`
   width: 375px;
 `;
+
+export const SkipLink = styled.button`
+  float: right;
+  text-decoration: underline;
+`;

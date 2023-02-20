@@ -19,6 +19,7 @@ import {
   Content,
   QuestionBox,
   Explanation,
+  SkipLink,
 } from './MainForm.styles';
 import CheckBox from './Form/CheckBox';
 import Radio from './Form/Radio';
@@ -69,7 +70,7 @@ const getQuestion = (
 function MainForm() {
   const router = useRouter();
   const formRef = useRef<HTMLFormElement>(null);
-  const { currentQuestion, answer, loading, stepInfo } = useStore();
+  const { currentQuestion, answer, skip, loading, stepInfo } = useStore();
   const [value, setValue] = useState<string | string[]>();
   const [showError, setShowError] = useState(false);
 
@@ -141,6 +142,14 @@ function MainForm() {
                 >
                   Continuer
                 </Button>
+                {stepInfo && stepInfo.step.skipable && (
+                  <SkipLink
+                    className="fr-link"
+                    onClick={() => skip(stepInfo.step.id, router)}
+                  >
+                    Passer ces questions
+                  </SkipLink>
+                )}
               </QuestionBox>
               {currentQuestion.context && (
                 <Explanation>

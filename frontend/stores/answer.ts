@@ -1,9 +1,10 @@
 import { action, makeObservable, observable, runInAction } from 'mobx';
 import { NextRouter } from 'next/router';
 import { Answer } from '../../types/answer';
+import QuestionGroupId from '../../types/enum/QuestionGroupId';
 import QuestionId from '../../types/enum/QuestionId';
 import { Question } from '../../types/question';
-import { questions, steps } from '../data/questions';
+import { steps } from '../data/questions';
 import agent from '../services/agent';
 
 const answered = (answers: Answer[], question: Question) =>
@@ -11,7 +12,9 @@ const answered = (answers: Answer[], question: Question) =>
 
 export default class AnswerStore {
   getCurrentQuestion = () =>
-    questions
+    steps
+      .filter((step) => !this.skippedGroup.includes(step.id))
+      .flatMap((step) => step.questions)
       .filter((question) => !question.disabled)
       .filter(
         (question) =>
@@ -33,6 +36,8 @@ export default class AnswerStore {
 
   currentAnswers: Answer[] = [];
 
+  skippedGroup: QuestionGroupId[] = [];
+
   currentQuestion: Question | undefined;
 
   id = '';
@@ -42,12 +47,14 @@ export default class AnswerStore {
   constructor() {
     makeObservable(this, {
       currentAnswers: observable,
+      skippedGroup: observable,
       currentQuestion: observable,
       id: observable,
       loading: observable,
 
       init: action.bound,
       answer: action.bound,
+      skip: action.bound,
       reset: action.bound,
       setCurrentQuestion: action.bound,
       updateQuestion: action.bound,
@@ -64,6 +71,7 @@ export default class AnswerStore {
     return currentIndex < 0
       ? null
       : {
+          step: steps[currentIndex],
           currentStep: currentIndex + 1,
           steps: steps.length,
           currentTitle: steps[currentIndex].label,
@@ -101,7 +109,9 @@ export default class AnswerStore {
   }
 
   setCurrentQuestion(id: string) {
-    this.currentQuestion = questions.find((question) => question.id === id);
+    this.currentQuestion = steps
+      .flatMap((step) => step.questions)
+      .find((question) => question.id === id);
   }
 
   answer(id: QuestionId, value: string | string[], router: NextRouter) {
@@ -111,12 +121,27 @@ export default class AnswerStore {
     } else {
       this.currentAnswers.push({ id, value });
     }
+    const question = steps
+      .flatMap((step) => step.questions)
+      .find((q) => q.id === id);
+    if (question && question.clean) {
+      this.currentAnswers = this.currentAnswers.filter(
+        (a) => !question.clean?.includes(a.id)
+      );
+    }
+
+    this.updateQuestion(router);
+  }
+
+  skip(id: QuestionGroupId, router: NextRouter) {
+    this.skippedGroup.push(id);
     this.updateQuestion(router);
   }
 
   reset(router: NextRouter) {
     this.id = '';
     this.currentAnswers = [];
+    this.skippedGroup = [];
     this.updateQuestion(router);
   }
 }

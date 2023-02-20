@@ -1,10 +1,12 @@
 import { UNKNOWN } from '../../components/Form/YesNo';
 import { ClickableAnswer } from '../../components/Recap/index.styles';
+import QuestionGroupId from '../../types/enum/QuestionGroupId';
 import QuestionId from '../../types/enum/QuestionId';
 import QuestionType from '../../types/enum/questionType';
 import { QuestionGroup } from '../../types/questionGroup';
 
 const motivations: QuestionGroup = {
+  id: QuestionGroupId.MOTIVATIONS,
   label: 'Vos motivations',
   questions: [
     {
