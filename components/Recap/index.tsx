@@ -30,9 +30,9 @@ function Recap() {
         return null;
       }
       const question = steps
-        .filter((step) => !skippedGroup.includes(step.id))
         .flatMap((step) => step.questions)
         .find((q) => q.id === key);
+
       if (!question) {
         return currentAnswer;
       }
@@ -64,7 +64,7 @@ function Recap() {
           return currentAnswer;
       }
     },
-    [currentAnswers, skippedGroup]
+    [currentAnswers]
   );
 
   return (
@@ -72,21 +72,23 @@ function Recap() {
       <h1>Résumé du questionnaire</h1>
       <Content>
         <Answers>
-          {steps.map((step) =>
-            step.questions.map((question) => {
-              const answer = currentAnswers.find((a) => a.id === question.id);
-              if (answer && answer.value !== undefined) {
-                return (
-                  <Answer key={answer.id}>
-                    {getRecap(answer.id, answer.value, () =>
-                      router.push(`/pac/${answer.id}`)
-                    )}
-                  </Answer>
-                );
-              }
-              return null;
-            })
-          )}
+          {steps
+            .filter((step) => !skippedGroup.includes(step.id))
+            .map((step) =>
+              step.questions.map((question) => {
+                const answer = currentAnswers.find((a) => a.id === question.id);
+                if (answer && answer.value !== undefined) {
+                  return (
+                    <Answer key={answer.id}>
+                      {getRecap(answer.id, answer.value, () =>
+                        router.push(`/pac/${answer.id}`)
+                      )}
+                    </Answer>
+                  );
+                }
+                return null;
+              })
+            )}
         </Answers>
         <Explanation>
           <b>Cela ne vous correspond pas ?</b> Cliquez sur la valeur que vous

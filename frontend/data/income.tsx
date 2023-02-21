@@ -1,4 +1,5 @@
 import { ClickableAnswer } from '../../components/Recap/index.styles';
+import MaPrimeRenovCategory from '../../types/enum/MaPrimeRenovCategory';
 import QuestionGroupId from '../../types/enum/QuestionGroupId';
 import QuestionId from '../../types/enum/QuestionId';
 import QuestionType from '../../types/enum/questionType';
@@ -76,7 +77,7 @@ const income: QuestionGroup = {
         return [
           {
             label: `Jusqu’à ${blue.toLocaleString()}€`,
-            value: 'bleu',
+            value: MaPrimeRenovCategory.BLUE,
             recap: (onClick) => (
               <>
                 Vôtre dernier revenu de référence est de moins de{' '}
@@ -88,7 +89,7 @@ const income: QuestionGroup = {
           },
           {
             label: `Jusqu’à ${yellow.toLocaleString()}€`,
-            value: 'jaune',
+            value: MaPrimeRenovCategory.YELLOW,
             recap: (onClick) => (
               <>
                 Vôtre dernier revenu de référence est entre{' '}
@@ -100,7 +101,7 @@ const income: QuestionGroup = {
           },
           {
             label: `Jusqu’à ${violet.toLocaleString()}€`,
-            value: 'violet',
+            value: MaPrimeRenovCategory.VIOLET,
             recap: (onClick) => (
               <>
                 Vôtre dernier revenu de référence est entre{' '}
@@ -112,7 +113,7 @@ const income: QuestionGroup = {
           },
           {
             label: `Supérieur à ${violet.toLocaleString()}€`,
-            value: 'rose',
+            value: MaPrimeRenovCategory.PINK,
             recap: (onClick) => (
               <>
                 Vôtre dernier revenu de référence est supérieur à{' '}

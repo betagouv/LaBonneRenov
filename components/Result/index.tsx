@@ -4,6 +4,7 @@ import PacHeader from '../SharedLayout/PacHeader';
 import Slice from '../Slice';
 import FranceRennov from './FranceRennov';
 import Gain from './Gain';
+import Helps from './Helps';
 import Justifications from './Justifications';
 import Synthese from './Syntheses';
 
@@ -18,6 +19,7 @@ function Result({ result }: { result: ResultType }) {
       <Synthese result={result} />
       <Justifications result={result} />
       <Gain result={result} />
+      <Helps />
       <FranceRennov />
     </>
   );

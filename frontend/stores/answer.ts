@@ -55,6 +55,7 @@ export default class AnswerStore {
       init: action.bound,
       answer: action.bound,
       skip: action.bound,
+      unSkip: action.bound,
       reset: action.bound,
       setCurrentQuestion: action.bound,
       updateQuestion: action.bound,
@@ -135,6 +136,11 @@ export default class AnswerStore {
 
   skip(id: QuestionGroupId, router: NextRouter) {
     this.skippedGroup.push(id);
+    this.updateQuestion(router);
+  }
+
+  unSkip(id: QuestionGroupId, router: NextRouter) {
+    this.skippedGroup = this.skippedGroup.filter((x) => x !== id);
     this.updateQuestion(router);
   }
 
