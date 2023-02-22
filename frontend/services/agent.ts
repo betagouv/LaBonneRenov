@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { parse, stringify } from 'qs';
 import { AnswersResponse } from '../../types/answersResponse';
+import { DPEResponse } from '../../types/dpe';
 import { FranceRennovResult } from '../../types/franceRennovResult';
 
 const client = axios.create({
@@ -30,6 +31,12 @@ const agent = {
         .then(({ data }) => data),
     finish: (id: string) => client.put(`answers/${id}`, { finish: true }),
     result: (id: string) => client.put(`answers/${id}`, { result: true }),
+  },
+  DPE: {
+    get: (lon: number, lat: number, distance: number) =>
+      client
+        .get<DPEResponse>(`/dpe?lon=${lon}&lat=${lat}&distance=${distance}`)
+        .then((response) => response.data),
   },
   Sondage: {
     post: (result: string) => client.post('/sondage', { result }),
