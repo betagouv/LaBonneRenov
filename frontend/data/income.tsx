@@ -1,15 +1,127 @@
 import { ClickableAnswer } from '../../components/Recap/index.styles';
 import MaPrimeRenovCategory from '../../types/enum/MaPrimeRenovCategory';
+import Owner from '../../types/enum/Owner';
 import QuestionGroupId from '../../types/enum/QuestionGroupId';
 import QuestionId from '../../types/enum/QuestionId';
 import QuestionType from '../../types/enum/questionType';
+import Residence from '../../types/enum/Residence';
+import UserSatus from '../../types/enum/UserStatus';
 import { QuestionGroup } from '../../types/questionGroup';
+import { getFranceRenovScale } from '../services/simulator/fundings';
 
 const income: QuestionGroup = {
   id: QuestionGroupId.INCOME,
   label: 'Vos revenus',
   skipable: true,
   questions: [
+    {
+      id: QuestionId.CONSTRUCTION_YEAR,
+      label: "En quel année vôtre maison a t'elle été construite ?",
+      type: QuestionType.NUMBER,
+      validate: (value) => {
+        const nb = parseInt(value as string, 10);
+        return !Number.isNaN(nb) && nb > 1800 && nb < 2025;
+      },
+      error: 'Année invalide.',
+      step: 1,
+      recap: (value: string, onClick) => (
+        <>
+          Vôtre maison à été construite en{' '}
+          <ClickableAnswer onClick={onClick}>{value}</ClickableAnswer>
+        </>
+      ),
+    },
+    {
+      id: QuestionId.OWNER,
+      label: 'Vous êtes ?',
+      type: QuestionType.RADIO,
+      options: [
+        {
+          label: 'Propriétaire',
+          value: Owner.PROPRIETAIRE,
+          recap: (onClick) => (
+            <>
+              Vous êtes{' '}
+              <ClickableAnswer onClick={onClick}>propriétaire</ClickableAnswer>
+            </>
+          ),
+        },
+        {
+          label: 'Locataire',
+          value: Owner.LOCATAIRE,
+          recap: (onClick) => (
+            <>
+              Vous êtes{' '}
+              <ClickableAnswer onClick={onClick}>locataire</ClickableAnswer>
+            </>
+          ),
+        },
+      ],
+    },
+    {
+      id: QuestionId.SITUATION,
+      dependsOn: [{ id: QuestionId.OWNER, value: Owner.PROPRIETAIRE }],
+      label: 'Vous êtes ?',
+      type: QuestionType.RADIO,
+      options: [
+        {
+          label: 'Propriétaire occupant',
+          value: UserSatus.PROPRIETAIRE_OCCUPANT,
+          recap: (onClick) => (
+            <>
+              Vous êtes{' '}
+              <ClickableAnswer onClick={onClick}>
+                propriétaire occupant
+              </ClickableAnswer>
+            </>
+          ),
+        },
+        {
+          label: 'Propriétaire bailleur',
+          value: UserSatus.PROPRIETAIRE_BAILLEUR,
+          recap: (onClick) => (
+            <>
+              Vous êtes{' '}
+              <ClickableAnswer onClick={onClick}>
+                propriétaire bailleur
+              </ClickableAnswer>
+            </>
+          ),
+        },
+      ],
+    },
+    {
+      id: QuestionId.RESIDENCE_STATUS,
+      dependsOn: [{ id: QuestionId.OWNER, value: Owner.PROPRIETAIRE }],
+      label: 'Vôtre maison est ?',
+      type: QuestionType.RADIO,
+      options: [
+        {
+          label: 'Vôtre résidence principale',
+          value: Residence.PRINCIPALE,
+          recap: (onClick) => (
+            <>
+              Vôtre maison est{' '}
+              <ClickableAnswer onClick={onClick}>
+                vôtre résidence principale
+              </ClickableAnswer>
+            </>
+          ),
+        },
+        {
+          label: 'Vôtre résidence secondaire',
+          value: Residence.SECONDAIRE,
+          recap: (onClick) => (
+            <>
+              Vôtre maison est{' '}
+              <ClickableAnswer onClick={onClick}>
+                vôtre résidence secondaire
+              </ClickableAnswer>
+            </>
+          ),
+        },
+      ],
+    },
     {
       id: QuestionId.NB_PERSONNES,
       label: 'Combien de personnes vivent dans vôtre foyer ?',
@@ -34,46 +146,7 @@ const income: QuestionGroup = {
       label: 'Quel est vôtre dernier revenu fiscal de référence ?',
       type: QuestionType.RADIO,
       options: (answers) => {
-        const nbPersonnes =
-          (answers.find((answer) => answer.id === QuestionId.NB_PERSONNES)
-            ?.value as string) || '1';
-        let blue = 0;
-        let yellow = 0;
-        let violet = 0;
-        switch (nbPersonnes) {
-          case '1':
-            blue = 16229;
-            yellow = 20805;
-            violet = 29148;
-            break;
-          case '2':
-            blue = 23734;
-            yellow = 30427;
-            violet = 42848;
-            break;
-          case '3':
-            blue = 28545;
-            yellow = 36591;
-            violet = 51592;
-            break;
-          case '4':
-            blue = 33346;
-            yellow = 42748;
-            violet = 60336;
-            break;
-          case '5':
-            blue = 38168;
-            yellow = 48930;
-            violet = 69081;
-            break;
-          default: {
-            const value = Number.parseInt(nbPersonnes, 10);
-            blue = 38168 + (value - 5) * 4813;
-            yellow = 48930 + (value - 5) * 6165;
-            violet = 69081 + (value - 5) * 8744;
-          }
-        }
-
+        const { blue, yellow, violet } = getFranceRenovScale(answers);
         return [
           {
             label: `Jusqu’à ${blue.toLocaleString()}€`,

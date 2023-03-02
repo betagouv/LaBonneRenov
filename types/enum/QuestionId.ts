@@ -21,6 +21,10 @@ enum QuestionId {
   EMETTEURS = 'emetteurs',
   NB_PERSONNES = 'nb_personnes',
   INCOME = 'income',
+  CONSTRUCTION_YEAR = 'construction_year',
+  OWNER = 'owner',
+  SITUATION = 'situation',
+  RESIDENCE_STATUS = 'residence_status',
 }
 
 export default QuestionId;

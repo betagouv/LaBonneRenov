@@ -8,7 +8,8 @@
   "rules": {
     "react/jsx-props-no-spreading": "off",
     "no-irregular-whitespace": "off",
-    "prettier/prettier": 2
+    "prettier/prettier": 2,
+    "import/prefer-default-export": "off"
   },
   "overrides": [
     {

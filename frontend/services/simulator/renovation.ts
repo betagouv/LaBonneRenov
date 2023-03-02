@@ -7,6 +7,14 @@ import QuestionId from '../../../types/enum/QuestionId';
 import { Result } from '../../../types/result';
 import { getSaving, getValue } from './utils';
 
+export const steps: Record<keyof IsolationResult, string> = {
+  vmc: 'Installer un système de ventilation mécanique contrôlée (VMC)',
+  mur: 'Isoler les murs',
+  menuiserie: 'Remplacer vos fenêtres',
+  plancherHaut: 'Isoler les combles',
+  plancherBas: 'Isoler le plancher au dessus de la cave ou du vide sanitaire',
+};
+
 const computeMenuiserie = (answers: Answers): number => {
   const recentDoubleVitrage = getValue(answers, QuestionId.MENUISERIES_RECENT);
   const doubleVitrage = getValue(

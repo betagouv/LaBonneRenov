@@ -1,19 +1,12 @@
 import { TileBody, TileImage } from '@dataesr/react-dsfr';
 import React from 'react';
-import { RennovationResult, IsolationResult } from '../../types/answer';
+import { steps } from '../../frontend/services/simulator/renovation';
+import { RennovationResult } from '../../types/answer';
 import { Result } from '../../types/result';
 import { Savings } from '../../types/savings';
 import Slice from '../Slice';
 import { Gains, GainTile } from './Gain.styles';
 import { Separator } from './index.styles';
-
-const steps: Record<keyof IsolationResult, string> = {
-  vmc: 'Installer un système de ventilation mécanique contrôlée (VMC)',
-  mur: 'Isoler les murs',
-  menuiserie: 'Remplacer vos fenêtres',
-  plancherHaut: 'Isoler les combles',
-  plancherBas: 'Isoler le plancher au dessus de la cave ou du vide sanitaire',
-};
 
 const transformGain = (number: number): string =>
   Math.round(number * 100).toString();
