@@ -36,13 +36,12 @@ const get = async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(200).json(existingValue);
   }
 
-  return search(cp).then((data) => {
-    const { citycode, city, postcode } = data.features[0].properties;
-    franceRennov(citycode, city, postcode).then((result) => {
-      buffer[cp] = result;
-      return res.status(200).json(result);
-    });
-  });
+  const data = await search(cp);
+  const { citycode, city, postcode } = data.features[0].properties;
+  const result = await franceRennov(citycode, city, postcode);
+  buffer[cp] = result;
+
+  return res.status(200).json(result);
 };
 
 export default async function answers(
