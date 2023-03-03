@@ -1,5 +1,10 @@
 import styled from 'styled-components';
-import { SearchableSelect, TextInput } from '@dataesr/react-dsfr';
+import {
+  Accordion,
+  AccordionItem,
+  SearchableSelect,
+  TextInput,
+} from '@dataesr/react-dsfr';
 import React, { useEffect, useRef, useState } from 'react';
 import 'chart.js/auto';
 import { Bar } from 'react-chartjs-2';
@@ -7,7 +12,9 @@ import agent from '../frontend/services/agent';
 import { DPEResponse } from '../types/dpe';
 
 const Container = styled.div`
-  margin: 32px;
+  margin: auto;
+  padding: 32px;
+  max-width: 1200px;
 `;
 
 const Form = styled.div`
@@ -95,6 +102,13 @@ function DPE() {
 
   return (
     <Container>
+      <h1>
+        Quelle est la performance énergétique des maisons autour de vous ?
+      </h1>
+      <h2>
+        Entrer une adresse pour retrouver les diagnostiques de performance
+        énergétique (DPE) des maisons à proximité.{' '}
+      </h2>
       <Form>
         <SearchableSelect
           selected={selectedAddress ? selectedAddress.properties.label : ''}
@@ -120,12 +134,13 @@ function DPE() {
       {loading && <h2>Chargement des résultats en cours</h2>}
       {!loading && dpes && (
         <>
-          <h2>
-            Perfomance énergétique des {dpes.count} batiment autour de chez vous
-          </h2>
+          <h2>La répartition des note DPE en % autour de l’adresse entrée</h2>
           <Result>
             <div>
               <Bar
+                options={{
+                  indexAxis: 'y',
+                }}
                 data={{
                   labels: Object.keys(dpes.dpeEnergie),
                   datasets: [
@@ -133,12 +148,12 @@ function DPE() {
                       label: 'DPE Energie',
                       data: Object.values(dpes.dpeEnergie),
                       backgroundColor: [
-                        '#329A33',
-                        '#34CC33',
-                        '#34CC33',
+                        '#056303',
+                        '#09760a',
+                        '#6eab04',
                         '#FFFF00',
-                        '#FFCC01',
-                        '#FF9A32',
+                        '#ff7204',
+                        '#ff3e03',
                         '#FF0000',
                         '#999999',
                       ],
@@ -149,6 +164,9 @@ function DPE() {
             </div>
             <div>
               <Bar
+                options={{
+                  indexAxis: 'y',
+                }}
                 data={{
                   labels: Object.keys(dpes.dpeGES),
                   datasets: [
@@ -156,12 +174,12 @@ function DPE() {
                       label: 'DPE GES',
                       data: Object.values(dpes.dpeGES),
                       backgroundColor: [
-                        '#329A33',
-                        '#34CC33',
-                        '#34CC33',
+                        '#056303',
+                        '#09760a',
+                        '#6eab04',
                         '#FFFF00',
-                        '#FFCC01',
-                        '#FF9A32',
+                        '#ff7204',
+                        '#ff3e03',
                         '#FF0000',
                         '#999999',
                       ],
@@ -173,6 +191,31 @@ function DPE() {
           </Result>
         </>
       )}
+      <Accordion className="fr-mt-4w">
+        <AccordionItem title="Qu’est-ce que le Diagnostique de performance énergétique (DPE) ?">
+          Le diagnostic de performance énergétique (DPE) renseigne sur la
+          performance énergétique et climatique d’un logement ou d’un bâtiment
+          (étiquettes A à G), en évaluant sa consommation d’énergie et son
+          impact en terme d’émissions de gaz à effet de serre. Il s’inscrit dans
+          le cadre de la politique énergétique définie au niveau européen afin
+          de réduire la consommation d’énergie des bâtiments et de limiter les
+          émissions de gaz à effet de serre.
+          <br />
+          Un logement classé A est considéré comme très performant tandis qu’un
+          logement classé F ou G sera classé comme une passoires thermique.
+          <br />
+          Le DPE doit être effectué à linitiative du propriétaire qui loue ou
+          vend son logement. Il doit être réalisé par un professionnel certifié.
+          La durée de validité du DPE est de 10 ans.
+        </AccordionItem>
+        <AccordionItem title="A quoi sert le Diagnostique de performance énergétique (DPE) ?">
+          L’objectif du DPE est d’informer les occupants, les futurs acquéreurs
+          ou locataires des caractéristiques d’un bien immobilier. Il permet
+          notamment d’identifier les logements énergivores. En pratique, plus la
+          note DPE est basse, plus les risques d’inconfort et de factures
+          énergertiques élevé sont important.
+        </AccordionItem>
+      </Accordion>
     </Container>
   );
 }
