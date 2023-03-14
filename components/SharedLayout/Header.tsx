@@ -3,6 +3,7 @@ import {
   Badge,
   Header as DSFRHeader,
   HeaderBody,
+  HeaderOperator,
   Logo,
   Service,
 } from '@dataesr/react-dsfr';
@@ -14,6 +15,14 @@ function Header() {
     <DSFRHeader>
       <HeaderBody>
         <Logo splitCharacter={10}>République Française</Logo>
+        <HeaderOperator>
+          <img
+            src="/images/ademe-logo.svg"
+            alt="ADEME"
+            width={79}
+            height={83}
+          />
+        </HeaderOperator>
         <Service
           title={
             <>

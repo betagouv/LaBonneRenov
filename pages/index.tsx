@@ -1,8 +1,6 @@
 import React from 'react';
-import Home from '../components/Home';
+import PacHome from '../components/PacHome';
 
-function HomePage() {
-  return <Home />;
-}
+const index = () => <PacHome />;
 
-export default HomePage;
+export default index;

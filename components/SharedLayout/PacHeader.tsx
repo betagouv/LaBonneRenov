@@ -13,7 +13,7 @@ function PacHeader({ resume }: { resume?: boolean }) {
   return (
     <Header>
       <Breadcrumb>
-        <BreadcrumbItem asLink={<Link href="/" />}>Accueil</BreadcrumbItem>
+        <BreadcrumbItem asLink={<Link href="/pac" />}>Accueil</BreadcrumbItem>
         <BreadcrumbItem>
           Vérifier qu’une pompe à chaleur est adaptée à votre maison
         </BreadcrumbItem>

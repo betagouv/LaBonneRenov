@@ -25,7 +25,20 @@ export const HeaderDescription = styled.div`
   margin-bottom: 32px;
 `;
 
-export const FaqAnswer = styled.div`
+export const Hint = styled.div`
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #161616;
+`;
+
+export const ADEME = styled.div`
   display: flex;
-  gap: 24px;
+  gap: 32px;
+  align-items: center;
+  img {
+    height: 100%;
+    width: 100%;
+    min-width: 100px;
+  }
 `;
