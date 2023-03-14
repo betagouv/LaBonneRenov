@@ -22,7 +22,7 @@ export default function App({ Component, pageProps }: AppProps) {
           name="description"
           content="Mesurer l’impact des travaux de rénovation énergétique"
         />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" />
         <script
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
