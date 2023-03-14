@@ -5,17 +5,17 @@ import { Background, Container } from './Slice.styles';
 function Slice({
   color,
   fullHeight,
-  noPadding,
+  padding = 32,
   children,
 }: {
   color?: Color;
   fullHeight?: boolean;
-  noPadding?: boolean;
+  padding?: number;
   children: ReactNode;
 }) {
   return (
     <Background color={color} fullHeight={fullHeight}>
-      <Container noPadding={noPadding}>{children}</Container>
+      <Container padding={padding}>{children}</Container>
     </Background>
   );
 }
@@ -23,7 +23,7 @@ function Slice({
 Slice.defaultProps = {
   color: undefined,
   fullHeight: false,
-  noPadding: false,
+  padding: 32,
 };
 
 export default Slice;

@@ -1,33 +1,36 @@
-import React from 'react';
-import { Help } from '../../types/help';
+import React, { useRef, useState } from 'react';
 import { Result as ResultType } from '../../types/result';
 import PacHeader from '../SharedLayout/PacHeader';
 import Slice from '../Slice';
+import Explanations from './Explanations';
 import FranceRennov from './FranceRennov';
-import Gain from './Gain';
-import Helps from './Helps';
-import Justifications from './Justifications';
-import Synthese from './Syntheses';
+import RenoGlobal from './RenoGlobal';
+import SaveResult from './SaveResult';
+import Synthese from './Synthese';
 
-function Result({ result, help }: { result: ResultType; help?: Help }) {
+function Result({ result }: { result: ResultType }) {
+  const [openFranceRennov, setOpenFranceRennov] = useState(false);
+  const franceRennovRef = useRef<HTMLDivElement>(null);
   return (
     <>
-      <Slice noPadding>
+      <Slice padding={0}>
         <PacHeader />
         <h1>Résultats de votre simulation</h1>
       </Slice>
 
-      <Synthese result={result} />
-      <Justifications result={result} />
-      <Gain result={result} />
-      <Helps result={result} help={help} />
-      <FranceRennov />
+      <Synthese
+        result={result}
+        setOpenFranceRennov={setOpenFranceRennov}
+        franceRennovRef={franceRennovRef}
+      />
+      <Explanations result={result} />
+      <RenoGlobal />
+      <div ref={franceRennovRef}>
+        <FranceRennov openFranceRennov={openFranceRennov} />
+      </div>
+      <SaveResult />
     </>
   );
 }
-
-Result.defaultProps = {
-  help: null,
-};
 
 export default Result;

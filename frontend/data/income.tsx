@@ -24,10 +24,12 @@ const income: QuestionGroup = {
       },
       error: 'Année invalide.',
       step: 1,
-      recap: (value: string, onClick) => (
+      recap: (value: string, onClick, externalLink) => (
         <>
           Vôtre maison à été construite en{' '}
-          <ClickableAnswer onClick={onClick}>{value}</ClickableAnswer>
+          <ClickableAnswer onClick={onClick} externalLink={externalLink}>
+            {value}
+          </ClickableAnswer>
         </>
       ),
     },
@@ -39,20 +41,24 @@ const income: QuestionGroup = {
         {
           label: 'Propriétaire',
           value: Owner.PROPRIETAIRE,
-          recap: (onClick) => (
+          recap: (onClick, externalLink) => (
             <>
               Vous êtes{' '}
-              <ClickableAnswer onClick={onClick}>propriétaire</ClickableAnswer>
+              <ClickableAnswer onClick={onClick} externalLink={externalLink}>
+                propriétaire
+              </ClickableAnswer>
             </>
           ),
         },
         {
           label: 'Locataire',
           value: Owner.LOCATAIRE,
-          recap: (onClick) => (
+          recap: (onClick, externalLink) => (
             <>
               Vous êtes{' '}
-              <ClickableAnswer onClick={onClick}>locataire</ClickableAnswer>
+              <ClickableAnswer onClick={onClick} externalLink={externalLink}>
+                locataire
+              </ClickableAnswer>
             </>
           ),
         },
@@ -67,10 +73,10 @@ const income: QuestionGroup = {
         {
           label: 'Propriétaire occupant',
           value: UserSatus.PROPRIETAIRE_OCCUPANT,
-          recap: (onClick) => (
+          recap: (onClick, externalLink) => (
             <>
               Vous êtes{' '}
-              <ClickableAnswer onClick={onClick}>
+              <ClickableAnswer onClick={onClick} externalLink={externalLink}>
                 propriétaire occupant
               </ClickableAnswer>
             </>
@@ -79,10 +85,10 @@ const income: QuestionGroup = {
         {
           label: 'Propriétaire bailleur',
           value: UserSatus.PROPRIETAIRE_BAILLEUR,
-          recap: (onClick) => (
+          recap: (onClick, externalLink) => (
             <>
               Vous êtes{' '}
-              <ClickableAnswer onClick={onClick}>
+              <ClickableAnswer onClick={onClick} externalLink={externalLink}>
                 propriétaire bailleur
               </ClickableAnswer>
             </>
@@ -99,10 +105,10 @@ const income: QuestionGroup = {
         {
           label: 'Vôtre résidence principale',
           value: Residence.PRINCIPALE,
-          recap: (onClick) => (
+          recap: (onClick, externalLink) => (
             <>
               Vôtre maison est{' '}
-              <ClickableAnswer onClick={onClick}>
+              <ClickableAnswer onClick={onClick} externalLink={externalLink}>
                 vôtre résidence principale
               </ClickableAnswer>
             </>
@@ -111,10 +117,10 @@ const income: QuestionGroup = {
         {
           label: 'Vôtre résidence secondaire',
           value: Residence.SECONDAIRE,
-          recap: (onClick) => (
+          recap: (onClick, externalLink) => (
             <>
               Vôtre maison est{' '}
-              <ClickableAnswer onClick={onClick}>
+              <ClickableAnswer onClick={onClick} externalLink={externalLink}>
                 vôtre résidence secondaire
               </ClickableAnswer>
             </>
@@ -132,11 +138,13 @@ const income: QuestionGroup = {
       },
       error: 'Nombe de personnes invalide.',
       step: 1,
-      recap: (value: string, onClick) => (
+      recap: (value: string, onClick, externalLink) => (
         <>
           Vous vivez à{' '}
-          <ClickableAnswer onClick={onClick}>{value}</ClickableAnswer> dans
-          vôtre foyer
+          <ClickableAnswer onClick={onClick} externalLink={externalLink}>
+            {value}
+          </ClickableAnswer>{' '}
+          dans vôtre foyer
         </>
       ),
       clean: [QuestionId.INCOME],
@@ -151,10 +159,10 @@ const income: QuestionGroup = {
           {
             label: `Jusqu’à ${blue.toLocaleString()}€`,
             value: MaPrimeRenovCategory.BLUE,
-            recap: (onClick) => (
+            recap: (onClick, externalLink) => (
               <>
                 Vôtre dernier revenu de référence est de moins de{' '}
-                <ClickableAnswer onClick={onClick}>
+                <ClickableAnswer onClick={onClick} externalLink={externalLink}>
                   {blue.toLocaleString()}€
                 </ClickableAnswer>
               </>
@@ -163,10 +171,10 @@ const income: QuestionGroup = {
           {
             label: `Jusqu’à ${yellow.toLocaleString()}€`,
             value: MaPrimeRenovCategory.YELLOW,
-            recap: (onClick) => (
+            recap: (onClick, externalLink) => (
               <>
                 Vôtre dernier revenu de référence est entre{' '}
-                <ClickableAnswer onClick={onClick}>
+                <ClickableAnswer onClick={onClick} externalLink={externalLink}>
                   {(blue + 1).toLocaleString()}€ et {yellow.toLocaleString()}€
                 </ClickableAnswer>
               </>
@@ -175,10 +183,10 @@ const income: QuestionGroup = {
           {
             label: `Jusqu’à ${violet.toLocaleString()}€`,
             value: MaPrimeRenovCategory.VIOLET,
-            recap: (onClick) => (
+            recap: (onClick, externalLink) => (
               <>
                 Vôtre dernier revenu de référence est entre{' '}
-                <ClickableAnswer onClick={onClick}>
+                <ClickableAnswer onClick={onClick} externalLink={externalLink}>
                   {(yellow + 1).toLocaleString()}€ et {violet.toLocaleString()}€
                 </ClickableAnswer>
               </>
@@ -187,10 +195,10 @@ const income: QuestionGroup = {
           {
             label: `Supérieur à ${violet.toLocaleString()}€`,
             value: MaPrimeRenovCategory.PINK,
-            recap: (onClick) => (
+            recap: (onClick, externalLink) => (
               <>
                 Vôtre dernier revenu de référence est supérieur à{' '}
-                <ClickableAnswer onClick={onClick}>
+                <ClickableAnswer onClick={onClick} externalLink={externalLink}>
                   {violet.toLocaleString()}€
                 </ClickableAnswer>
               </>

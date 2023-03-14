@@ -9,7 +9,8 @@
     "react/jsx-props-no-spreading": "off",
     "no-irregular-whitespace": "off",
     "prettier/prettier": 2,
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "react/function-component-definition": "off"
   },
   "overrides": [
     {

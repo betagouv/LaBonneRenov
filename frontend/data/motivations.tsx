@@ -18,10 +18,10 @@ const motivations: QuestionGroup = {
         {
           value: 'pac',
           label: 'Installer une PAC',
-          recap: (onClick) => (
+          recap: (onClick, externalLink) => (
             <>
               Je veux{' '}
-              <ClickableAnswer onClick={onClick}>
+              <ClickableAnswer onClick={onClick} externalLink={externalLink}>
                 installer une PAC
               </ClickableAnswer>
             </>
@@ -67,16 +67,16 @@ const motivations: QuestionGroup = {
           recap: '',
         },
       ],
-      recap: (values: string[], onClick) =>
+      recap: (values: string[], onClick, externalLink) =>
         values.includes(UNKNOWN) ? (
-          <ClickableAnswer onClick={onClick}>
+          <ClickableAnswer onClick={onClick} externalLink={externalLink}>
             Je n&lsquo;ai pas d&lsquo;objectif principal pour
             l&lsquo;installation d&lsquo;une PAC.
           </ClickableAnswer>
         ) : (
           <>
             je veux{' '}
-            <ClickableAnswer onClick={onClick}>
+            <ClickableAnswer onClick={onClick} externalLink={externalLink}>
               {values.join(', ')}
             </ClickableAnswer>
           </>
@@ -91,10 +91,12 @@ const motivations: QuestionGroup = {
         {
           value: 'renseigne',
           label: 'Je me renseigne',
-          recap: (onClick) => (
+          recap: (onClick, externalLink) => (
             <>
               Je{' '}
-              <ClickableAnswer onClick={onClick}>me renseigne</ClickableAnswer>{' '}
+              <ClickableAnswer onClick={onClick} externalLink={externalLink}>
+                me renseigne
+              </ClickableAnswer>{' '}
               pour ce projet
             </>
           ),
@@ -102,10 +104,10 @@ const motivations: QuestionGroup = {
         {
           value: 'commence',
           label: 'Je commence mes démarches',
-          recap: (onClick) => (
+          recap: (onClick, externalLink) => (
             <>
               J&lsquo;ai{' '}
-              <ClickableAnswer onClick={onClick}>
+              <ClickableAnswer onClick={onClick} externalLink={externalLink}>
                 commencer mes démarches
               </ClickableAnswer>
             </>
@@ -114,10 +116,10 @@ const motivations: QuestionGroup = {
         {
           value: 'devis',
           label: "J'ai déjà fait des devis",
-          recap: (onClick) => (
+          recap: (onClick, externalLink) => (
             <>
               J&lsquo;ai{' '}
-              <ClickableAnswer onClick={onClick}>
+              <ClickableAnswer onClick={onClick} externalLink={externalLink}>
                 déjà fait des devis
               </ClickableAnswer>
             </>

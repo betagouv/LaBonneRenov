@@ -1,10 +1,9 @@
-import { Button } from '@dataesr/react-dsfr';
+import { Button, Link } from '@dataesr/react-dsfr';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { useStore } from '../frontend/stores';
 import Color from '../types/enum/Color';
 import {
-  ADEME,
   HeaderContent,
   HeaderDescription,
   Hint,
@@ -50,9 +49,9 @@ function Home() {
       </Slice>
       <Slice>
         <h2>À propos</h2>
-        <ADEME>
+        <HeaderContent>
           <div>
-            <img src="/images/ademe-logo.svg" alt="ADEME" />
+            <img src="/images/ademe-logo.svg" alt="ADEME" width={150} />
           </div>
           <div>
             La Bonne Rénov’ est un <b>service public gratuit</b> proposé par l’
@@ -61,11 +60,11 @@ function Home() {
             projet de rénovation énergétique performante.
             <br />
             <br />
-            <a href="https://www.ademe.fr/" target="_blank" rel="noreferrer">
+            <Link href="https://www.ademe.fr/" target="_blank" isSimple>
               Le site de l’ADEME
-            </a>
+            </Link>
           </div>
-        </ADEME>
+        </HeaderContent>
       </Slice>
     </>
   );

@@ -18,9 +18,9 @@ export const Answer = styled.div`
   line-height: 32px;
 `;
 
-export const ClickableAnswer = styled.span`
-  cursor: pointer;
-  text-decoration: underline;
+export const ClickableAnswer = styled.span<{ externalLink?: boolean }>`
+  ${({ externalLink }) =>
+    !externalLink && 'cursor: pointer;text-decoration: underline;'}
   font-weight: bold;
 `;
 

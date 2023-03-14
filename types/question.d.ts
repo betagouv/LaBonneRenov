@@ -20,17 +20,29 @@ type BaseQuestion = {
 export type TextQuestion = BaseQuestion & {
   type: QuestionType.TEXT;
   placeholder?: string;
-  recap: (value: string, onClick: () => void) => ReactNode;
+  recap: (
+    value: string,
+    onClick: () => void,
+    externalLink?: boolean
+  ) => ReactNode;
 };
 
 export type YesNoUnknownQuestion = BaseQuestion & {
   type: QuestionType.YESNOUNKNOWN;
-  recap: (value: string, onClick: () => void) => ReactNode;
+  recap: (
+    value: string,
+    onClick: () => void,
+    externalLink?: boolean
+  ) => ReactNode;
 };
 
 export type YesNoQuestion = BaseQuestion & {
   type: QuestionType.YESNO;
-  recap: (value: boolean, onClick: () => void) => ReactNode;
+  recap: (
+    value: boolean,
+    onClick: () => void,
+    externalLink?: boolean
+  ) => ReactNode;
 };
 
 export type NumberQuestion = BaseQuestion & {
@@ -39,7 +51,11 @@ export type NumberQuestion = BaseQuestion & {
   placeholder?: string;
   min?: number;
   max?: number;
-  recap: (value: string, onClick: () => void) => ReactNode;
+  recap: (
+    value: string,
+    onClick: () => void,
+    externalLink?: boolean
+  ) => ReactNode;
 };
 
 export type RadioQuestion = BaseQuestion & {
@@ -48,12 +64,12 @@ export type RadioQuestion = BaseQuestion & {
     | {
         label: string;
         value: string;
-        recap: (onClick: () => void) => ReactNode;
+        recap: (onClick: () => void, externalLink?: boolean) => ReactNode;
       }[]
     | ((answers: Answer[]) => {
         label: string;
         value: string;
-        recap: (onClick: () => void) => ReactNode;
+        recap: (onClick: () => void, externalLink?: boolean) => ReactNode;
       }[]);
 };
 
@@ -64,7 +80,11 @@ export type CheckBoxQuestion = BaseQuestion & {
     value: string;
     recap: string;
   }[];
-  recap: (values: string[], onClick: () => void) => ReactNode;
+  recap: (
+    values: string[],
+    onClick: () => void,
+    externalLink?: boolean
+  ) => ReactNode;
 };
 
 export type Question =

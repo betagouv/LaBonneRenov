@@ -11,6 +11,7 @@ export const PacImage = styled(Image)`
 export const HeaderContent = styled.div`
   display: flex;
   gap: 48px;
+  align-items: center;
   h1 {
     font-size: 40px;
     line-height: 48px;
@@ -30,15 +31,4 @@ export const Hint = styled.div`
   font-weight: 400;
   line-height: 24px;
   color: #161616;
-`;
-
-export const ADEME = styled.div`
-  display: flex;
-  gap: 32px;
-  align-items: center;
-  img {
-    height: 100%;
-    width: 100%;
-    min-width: 100px;
-  }
 `;

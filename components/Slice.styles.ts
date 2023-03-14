@@ -39,8 +39,8 @@ export const Background = styled.div<{ color?: Color; fullHeight?: boolean }>`
     `}
 `;
 
-export const Container = styled.div<{ noPadding?: boolean }>`
+export const Container = styled.div<{ padding: number }>`
   width: 100%;
-  ${({ noPadding }) => !noPadding && 'padding: 32px;'}
+  ${({ padding }) => `padding: ${padding}px;`}
   max-width: 1036px;
 `;

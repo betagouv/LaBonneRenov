@@ -1,8 +1,9 @@
 import { observer } from 'mobx-react';
 import { useRouter } from 'next/router';
-import React, { useCallback, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { steps } from '../../frontend/data/questions';
 import { useStore } from '../../frontend/stores';
+import { Answer as AnswerType } from '../../types/answer';
 import QuestionType from '../../types/enum/questionType';
 import {
   Answer,
@@ -12,6 +13,53 @@ import {
   ValidateButton,
 } from './index.styles';
 
+export const getRecap = (
+  currentAnswers: AnswerType[],
+  key: string,
+  currentAnswer: string | string[] | null,
+  onClick: () => void,
+  externalLink?: boolean
+) => {
+  if (currentAnswer === null) {
+    return null;
+  }
+  const question = steps
+    .flatMap((step) => step.questions)
+    .find((q) => q.id === key);
+
+  if (!question) {
+    return currentAnswer;
+  }
+
+  switch (question.type) {
+    case QuestionType.RADIO:
+      return (
+        typeof question.options === 'function'
+          ? question.options(currentAnswers)
+          : question.options
+      )
+        .find((option) => option.value === currentAnswer)
+        ?.recap(onClick, externalLink);
+    case QuestionType.CHECKBOX:
+      return question.recap(
+        question.options
+          .filter((option) => currentAnswer.includes(option.value))
+          .map((option) => option.recap),
+        onClick,
+        externalLink
+      );
+    case QuestionType.YESNO:
+      return question.recap(currentAnswer === 'true', onClick, externalLink);
+    case QuestionType.YESNOUNKNOWN:
+      return question.recap(currentAnswer as string, onClick, externalLink);
+    case QuestionType.TEXT:
+    case QuestionType.NUMBER:
+      return question.recap(currentAnswer as string, onClick, externalLink);
+    default:
+      return currentAnswer;
+  }
+};
+
 function Recap() {
   const { currentAnswers, skippedGroup, updateQuestion } = useStore();
   const router = useRouter();
@@ -19,53 +67,6 @@ function Recap() {
   useEffect(() => {
     updateQuestion(router);
   }, []);
-
-  const getRecap = useCallback(
-    (
-      key: string,
-      currentAnswer: string | string[] | null,
-      onClick: () => void
-    ) => {
-      if (currentAnswer === null) {
-        return null;
-      }
-      const question = steps
-        .flatMap((step) => step.questions)
-        .find((q) => q.id === key);
-
-      if (!question) {
-        return currentAnswer;
-      }
-
-      switch (question.type) {
-        case QuestionType.RADIO:
-          return (
-            typeof question.options === 'function'
-              ? question.options(currentAnswers)
-              : question.options
-          )
-            .find((option) => option.value === currentAnswer)
-            ?.recap(onClick);
-        case QuestionType.CHECKBOX:
-          return question.recap(
-            question.options
-              .filter((option) => currentAnswer.includes(option.value))
-              .map((option) => option.recap),
-            onClick
-          );
-        case QuestionType.YESNO:
-          return question.recap(currentAnswer === 'true', onClick);
-        case QuestionType.YESNOUNKNOWN:
-          return question.recap(currentAnswer as string, onClick);
-        case QuestionType.TEXT:
-        case QuestionType.NUMBER:
-          return question.recap(currentAnswer as string, onClick);
-        default:
-          return currentAnswer;
-      }
-    },
-    [currentAnswers]
-  );
 
   return (
     <>
@@ -80,7 +81,7 @@ function Recap() {
                 if (answer && answer.value !== undefined) {
                   return (
                     <Answer key={answer.id}>
-                      {getRecap(answer.id, answer.value, () =>
+                      {getRecap(currentAnswers, answer.id, answer.value, () =>
                         router.push(`/pac/${answer.id}`)
                       )}
                     </Answer>

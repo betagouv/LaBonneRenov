@@ -1,11 +1,8 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  display: flex;
-  gap: 32px;
-`;
-
 export const Logo = styled.div`
+  border: 1px solid #e3e3fd;
+  padding: 8px;
   background-color: white;
   align-self: stretch;
   display: flex;
