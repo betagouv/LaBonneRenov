@@ -1,10 +1,12 @@
 import { Button, TextInput } from '@dataesr/react-dsfr';
+import { observer } from 'mobx-react';
 import React from 'react';
+import { useStore } from '../../frontend/stores';
 import Color from '../../types/enum/Color';
 import Slice from '../Slice';
 
 function SaveResult() {
-  const id = window.localStorage.getItem('questionnaires_id');
+  const { id } = useStore();
   return id ? (
     <Slice color={Color.BLUE}>
       <h3>
@@ -12,14 +14,12 @@ function SaveResult() {
       </h3>
       <TextInput
         label="Lien vers votre résultat"
-        value={`labonnerenov.gouv.fr/pac/resultat?id=${id}`}
+        value={`labonnerenov.fr/pac/resultat?id=${id}`}
       />
       <Button
         secondary
         onClick={() =>
-          navigator.clipboard.writeText(
-            `labonnerenov.gouv.fr/pac/resultat?id=${id}`
-          )
+          navigator.clipboard.writeText(`labonnerenov.fr/pac/resultat?id=${id}`)
         }
       >
         Copier le lien
@@ -28,4 +28,4 @@ function SaveResult() {
   ) : null;
 }
 
-export default SaveResult;
+export default observer(SaveResult);

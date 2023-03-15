@@ -9,11 +9,14 @@ import { Result as ResultType } from '../../types/result';
 
 function Resultat() {
   const [result, setResult] = useState<ResultType>();
-  const { loading, currentAnswers, id } = useStore();
+  const { loading, currentAnswers, id, init } = useStore();
   const router = useRouter();
 
   useEffect(() => {
-    if (id && !loading && currentAnswers) {
+    if (router.query.id && id !== router.query.id) {
+      console.log('init');
+      init(router.query.id as string);
+    } else if (id && !loading && currentAnswers) {
       try {
         setResult(simulator(currentAnswers));
       } catch (e) {
@@ -21,7 +24,7 @@ function Resultat() {
         router.push('/pac');
       }
     }
-  }, [id, loading, currentAnswers, router]);
+  }, [id, loading, currentAnswers, router, init]);
 
   useEffect(() => {
     if (id && result) {
