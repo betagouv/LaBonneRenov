@@ -24,11 +24,12 @@ function Synthese({
   return (
     <Slice color={Color.BLUE}>
       <WithIcon>
-        <Icon name="ri-information-line" size="3x" />
+        <Icon name="ri-error-warning-line" size="3x" />
         <h3>{values[result.compatibility]}</h3>
       </WithIcon>
       <CenteredButton>
         <Button
+          size="lg"
           onClick={() => {
             setOpenFranceRennov(true);
             if (franceRennovRef) {

@@ -6,16 +6,20 @@ function Slice({
   color,
   fullHeight,
   padding = 32,
+  smallPadding = 32,
   children,
 }: {
   color?: Color;
   fullHeight?: boolean;
   padding?: number;
+  smallPadding?: number;
   children: ReactNode;
 }) {
   return (
     <Background color={color} fullHeight={fullHeight}>
-      <Container padding={padding}>{children}</Container>
+      <Container padding={padding} smallPadding={smallPadding}>
+        {children}
+      </Container>
     </Background>
   );
 }
@@ -24,6 +28,7 @@ Slice.defaultProps = {
   color: undefined,
   fullHeight: false,
   padding: 32,
+  smallPadding: 32,
 };
 
 export default Slice;

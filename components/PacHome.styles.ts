@@ -10,12 +10,16 @@ export const PacImage = styled(Image)`
 
 export const HeaderContent = styled.div`
   display: flex;
+  flex-direction: column;
   gap: 48px;
   align-items: center;
   h1 {
     font-size: 40px;
     line-height: 48px;
     margin-bottom: 24px;
+  }
+  @media (min-width: 768px) {
+    flex-direction: row;
   }
 `;
 

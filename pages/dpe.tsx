@@ -14,7 +14,7 @@ import { DPEResponse } from '../types/dpe';
 const Container = styled.div`
   margin: auto;
   padding: 32px;
-  max-width: 1200px;
+  max-width: 78rem;
 `;
 
 const Form = styled.div`

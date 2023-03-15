@@ -43,7 +43,7 @@ function FranceRennovAccordion({
           }
         }}
       >
-        <h4>{info.raison_sociale}</h4>
+        <h5>{info.raison_sociale}</h5>
         <span>
           {`${info.adresse_postale.adresse1} ${info.adresse_postale.code_postal} ${info.adresse_postale.ville} `}
           <Link
@@ -59,7 +59,7 @@ function FranceRennovAccordion({
         <Separator className="fr-mt-3w" />
         <Info>
           <div>
-            <h4>Coordonées</h4>
+            <h6>Coordonées</h6>
             {info.tel && (
               <Contact>
                 <Link isSimple href={`tel:${info.tel.replace(/ /g, '')}`}>
@@ -84,7 +84,7 @@ function FranceRennovAccordion({
           </div>
           {info.horaire && info.horaire.length > 0 && (
             <div>
-              <h4>Horaires d&lsquo;accueil</h4>
+              <h6>Horaires d&lsquo;accueil</h6>
               <ul>
                 {info.horaire.map((horaire) => (
                   <li key={horaire}>{horaire}</li>

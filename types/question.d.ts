@@ -14,7 +14,7 @@ type BaseQuestion = {
   context?: {
     title: string;
     description: ReactNode;
-  };
+  }[];
 };
 
 export type TextQuestion = BaseQuestion & {

@@ -5,6 +5,7 @@ export const Content = styled.div`
   padding: 32px;
   border: 1px solid #dddddd;
   margin: auto;
+  margin-bottom: 24px;
 `;
 
 export const Answers = styled.div`

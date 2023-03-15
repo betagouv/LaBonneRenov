@@ -69,41 +69,38 @@ function Recap() {
   }, []);
 
   return (
-    <>
-      <h1>Résumé du questionnaire</h1>
-      <Content>
-        <Answers>
-          {steps
-            .filter((step) => !skippedGroup.includes(step.id))
-            .map((step) =>
-              step.questions.map((question) => {
-                const answer = currentAnswers.find((a) => a.id === question.id);
-                if (answer && answer.value !== undefined) {
-                  return (
-                    <Answer key={answer.id}>
-                      {getRecap(currentAnswers, answer.id, answer.value, () =>
-                        router.push(`/pac/${answer.id}`)
-                      )}
-                    </Answer>
-                  );
-                }
-                return null;
-              })
-            )}
-        </Answers>
-        <Explanation>
-          <b>Cela ne vous correspond pas ?</b> Cliquez sur la valeur que vous
-          souhaitez modifier.
-        </Explanation>
-        <ValidateButton
-          icon="ri-arrow-right-line"
-          iconPosition="right"
-          onClick={() => router.push('/pac/resultat')}
-        >
-          Voir le résultat
-        </ValidateButton>
-      </Content>
-    </>
+    <Content>
+      <Answers>
+        {steps
+          .filter((step) => !skippedGroup.includes(step.id))
+          .map((step) =>
+            step.questions.map((question) => {
+              const answer = currentAnswers.find((a) => a.id === question.id);
+              if (answer && answer.value !== undefined) {
+                return (
+                  <Answer key={answer.id}>
+                    {getRecap(currentAnswers, answer.id, answer.value, () =>
+                      router.push(`/pac/${answer.id}`)
+                    )}
+                  </Answer>
+                );
+              }
+              return null;
+            })
+          )}
+      </Answers>
+      <Explanation>
+        <b>Cela ne vous correspond pas ?</b> Cliquez sur la valeur que vous
+        souhaitez modifier.
+      </Explanation>
+      <ValidateButton
+        icon="ri-arrow-right-line"
+        iconPosition="right"
+        onClick={() => router.push('/pac/resultat')}
+      >
+        Voir le résultat
+      </ValidateButton>
+    </Content>
   );
 }
 

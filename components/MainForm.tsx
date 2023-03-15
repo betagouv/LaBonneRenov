@@ -14,7 +14,6 @@ import QuestionType from '../types/enum/questionType';
 import { Question } from '../types/question';
 import {
   FormContainer,
-  Container,
   Step,
   Content,
   QuestionBox,
@@ -28,6 +27,7 @@ import YesNo from './Form/YesNo';
 import Number from './Form/Number';
 import Recap from './Recap';
 import PacHeader from './SharedLayout/PacHeader';
+import Slice from './Slice';
 
 const getQuestion = (
   question: Question,
@@ -119,55 +119,72 @@ function MainForm() {
     return <h2>Chargement de vos réponses en cours</h2>;
   }
   return (
-    <Container>
-      <PacHeader />
-      <FormContainer
-        ref={formRef}
-        onKeyUp={onKeyUp}
-        tabIndex={0}
-        onSubmit={next}
-      >
-        {currentQuestion ? (
-          <>
-            {stepInfo && <Step {...stepInfo} />}
-            <Content>
-              <QuestionBox>
-                <h3>{currentQuestion.label}</h3>
-                {getQuestion(currentQuestion, setValue, showError)}
-                <Button
-                  submit
-                  disabled={value === undefined}
-                  icon="ri-arrow-right-line"
-                  iconPosition="right"
-                >
-                  Continuer
-                </Button>
-                {stepInfo && stepInfo.step.skipable && (
-                  <SkipLink
-                    className="fr-link"
-                    onClick={() => skip(stepInfo.step.id, router)}
+    <>
+      <Slice padding={0} smallPadding={16}>
+        <PacHeader />
+        <h1>
+          {currentQuestion
+            ? 'Connaître votre situation'
+            : 'Résumé du questionnaire'}
+        </h1>
+      </Slice>
+      <Slice padding={0} smallPadding={0}>
+        <FormContainer
+          ref={formRef}
+          onKeyUp={onKeyUp}
+          tabIndex={0}
+          onSubmit={next}
+        >
+          {currentQuestion ? (
+            <>
+              {stepInfo && <Step {...stepInfo} />}
+              <Content>
+                <QuestionBox>
+                  <h3>{currentQuestion.label}</h3>
+                  {getQuestion(currentQuestion, setValue, showError)}
+                  <Button
+                    submit
+                    disabled={value === undefined}
+                    icon="ri-arrow-right-line"
+                    iconPosition="right"
                   >
-                    Passer ces questions
-                  </SkipLink>
+                    Continuer
+                  </Button>
+                  {stepInfo && stepInfo.step.skipable && (
+                    <SkipLink
+                      className="fr-link"
+                      onClick={() => skip(stepInfo.step.id, router)}
+                    >
+                      Passer ces questions
+                    </SkipLink>
+                  )}
+                </QuestionBox>
+                {currentQuestion.context && (
+                  <Explanation>
+                    {currentQuestion.context.map((callout, index, array) => (
+                      <>
+                        <CalloutTitle as="h4">{callout.title}</CalloutTitle>
+                        <CalloutText as="div">
+                          {callout.description}
+                        </CalloutText>
+                        {index !== array.length - 1 && (
+                          <>
+                            <br />
+                            <br />
+                          </>
+                        )}
+                      </>
+                    ))}
+                  </Explanation>
                 )}
-              </QuestionBox>
-              {currentQuestion.context && (
-                <Explanation>
-                  <CalloutTitle as="h4">
-                    {currentQuestion.context.title}
-                  </CalloutTitle>
-                  <CalloutText as="div">
-                    {currentQuestion.context.description}
-                  </CalloutText>
-                </Explanation>
-              )}
-            </Content>
-          </>
-        ) : (
-          <Recap />
-        )}
-      </FormContainer>
-    </Container>
+              </Content>
+            </>
+          ) : (
+            <Recap />
+          )}
+        </FormContainer>
+      </Slice>
+    </>
   );
 }
 

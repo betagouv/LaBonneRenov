@@ -1,12 +1,6 @@
 import { Callout, Stepper } from '@dataesr/react-dsfr';
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  max-width: 1200px;
-  margin: 0 auto 64px auto;
-  padding: 0 32px;
-`;
-
 export const FormContainer = styled.form`
   display: flex;
   align-items: flex-start;
@@ -32,10 +26,12 @@ export const QuestionBox = styled.div`
   padding: 32px;
   border: 1px solid #dddddd;
   flex-grow: 1;
+  margin-bottom: 24px;
 `;
 
 export const Explanation = styled(Callout)`
   width: 375px;
+  max-width: 100%;
 `;
 
 export const SkipLink = styled.button`

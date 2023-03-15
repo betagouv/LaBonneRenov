@@ -17,7 +17,7 @@ function Home() {
 
   return (
     <>
-      <Slice color={Color.GRAY}>
+      <Slice color={Color.GRAY} padding={128} smallPadding={32}>
         <HeaderContent>
           <PacImage
             width={315}

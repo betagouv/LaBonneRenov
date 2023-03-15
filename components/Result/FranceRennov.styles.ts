@@ -6,6 +6,7 @@ export const Logo = styled.div`
   background-color: white;
   align-self: stretch;
   display: flex;
+  justify-content: center;
   img {
     margin: auto 32px;
   }
@@ -16,6 +17,10 @@ export const Info = styled.div`
   display: flex;
   gap: 32px;
   justify-content: space-between;
+  flex-direction: column;
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 `;
 
 export const Contact = styled.div`

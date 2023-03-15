@@ -5,7 +5,8 @@ import { QuestionProps, TextQuestion } from '../../types/question';
 function Text({ question, answer, showError }: QuestionProps<TextQuestion>) {
   return (
     <TextInput
-      placeholder={question.placeholder}
+      label=" "
+      hint={question.placeholder}
       onChange={(e) => {
         answer(e.target.value);
       }}
