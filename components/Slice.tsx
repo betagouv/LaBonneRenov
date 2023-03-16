@@ -17,7 +17,11 @@ function Slice({
 }) {
   return (
     <Background color={color} fullHeight={fullHeight}>
-      <Container padding={padding} smallPadding={smallPadding}>
+      <Container
+        className="fr-container"
+        padding={padding}
+        smallPadding={smallPadding}
+      >
         {children}
       </Container>
     </Background>
@@ -27,8 +31,8 @@ function Slice({
 Slice.defaultProps = {
   color: undefined,
   fullHeight: false,
-  padding: 32,
-  smallPadding: 32,
+  padding: undefined,
+  smallPadding: undefined,
 };
 
 export default Slice;

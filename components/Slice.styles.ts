@@ -28,7 +28,6 @@ export const Background = styled.div<{ color?: Color; fullHeight?: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 24px;
 
   ${({ fullHeight }) =>
     fullHeight &&
@@ -42,10 +41,10 @@ export const Background = styled.div<{ color?: Color; fullHeight?: boolean }>`
 
 export const Container = styled.div<{ padding: number; smallPadding: number }>`
   width: 100%;
-  max-width: 78rem;
-  ${({ smallPadding }) => `padding: ${smallPadding}px 0;`}
+  ${({ smallPadding }) =>
+    smallPadding !== undefined && `padding: ${smallPadding}px 0;`}
 
   @media (min-width: 768px) {
-    ${({ padding }) => `padding: ${padding}px 0;`}
+    ${({ padding }) => padding !== undefined && `padding: ${padding}px 0;`}
   }
 `;

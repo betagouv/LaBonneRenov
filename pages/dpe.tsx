@@ -13,8 +13,6 @@ import { DPEResponse } from '../types/dpe';
 
 const Container = styled.div`
   margin: auto;
-  padding: 32px;
-  max-width: 78rem;
 `;
 
 const Form = styled.div`
@@ -101,7 +99,7 @@ function DPE() {
   }, [address]);
 
   return (
-    <Container>
+    <Container className="fr-container">
       <h1>
         Quelle est la performance énergétique des maisons autour de vous ?
       </h1>
