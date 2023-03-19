@@ -16,7 +16,7 @@ const income: QuestionGroup = {
   questions: [
     {
       id: QuestionId.CONSTRUCTION_YEAR,
-      label: "En quel année vôtre maison a t'elle été construite ?",
+      label: "En quel année votre maison a t'elle été construite ?",
       type: QuestionType.NUMBER,
       validate: (value) => {
         const nb = parseInt(value as string, 10);
@@ -26,7 +26,7 @@ const income: QuestionGroup = {
       step: 1,
       recap: (value: string, onClick, externalLink) => (
         <>
-          Vôtre maison à été construite en{' '}
+          Votre maison à été construite en{' '}
           <ClickableAnswer onClick={onClick} externalLink={externalLink}>
             {value}
           </ClickableAnswer>
@@ -99,29 +99,29 @@ const income: QuestionGroup = {
     {
       id: QuestionId.RESIDENCE_STATUS,
       dependsOn: [{ id: QuestionId.OWNER, value: Owner.PROPRIETAIRE }],
-      label: 'Vôtre maison est ?',
+      label: 'Votre maison est ?',
       type: QuestionType.RADIO,
       options: [
         {
-          label: 'Vôtre résidence principale',
+          label: 'Votre résidence principale',
           value: Residence.PRINCIPALE,
           recap: (onClick, externalLink) => (
             <>
-              Vôtre maison est{' '}
+              Votre maison est{' '}
               <ClickableAnswer onClick={onClick} externalLink={externalLink}>
-                vôtre résidence principale
+                votre résidence principale
               </ClickableAnswer>
             </>
           ),
         },
         {
-          label: 'Vôtre résidence secondaire',
+          label: 'Votre résidence secondaire',
           value: Residence.SECONDAIRE,
           recap: (onClick, externalLink) => (
             <>
-              Vôtre maison est{' '}
+              Votre maison est{' '}
               <ClickableAnswer onClick={onClick} externalLink={externalLink}>
-                vôtre résidence secondaire
+                votre résidence secondaire
               </ClickableAnswer>
             </>
           ),
@@ -130,7 +130,7 @@ const income: QuestionGroup = {
     },
     {
       id: QuestionId.NB_PERSONNES,
-      label: 'Combien de personnes vivent dans vôtre foyer ?',
+      label: 'Combien de personnes vivent dans votre foyer ?',
       type: QuestionType.NUMBER,
       validate: (value) => {
         const nb = parseInt(value as string, 10);
@@ -144,14 +144,14 @@ const income: QuestionGroup = {
           <ClickableAnswer onClick={onClick} externalLink={externalLink}>
             {value}
           </ClickableAnswer>{' '}
-          dans vôtre foyer
+          dans votre foyer
         </>
       ),
       clean: [QuestionId.INCOME],
     },
     {
       id: QuestionId.INCOME,
-      label: 'Quel est vôtre dernier revenu fiscal de référence ?',
+      label: 'Quel est votre dernier revenu fiscal de référence ?',
       type: QuestionType.RADIO,
       options: (answers) => {
         const { blue, yellow, violet } = getFranceRenovScale(answers);
@@ -161,7 +161,7 @@ const income: QuestionGroup = {
             value: MaPrimeRenovCategory.BLUE,
             recap: (onClick, externalLink) => (
               <>
-                Vôtre dernier revenu de référence est de moins de{' '}
+                Votre dernier revenu de référence est de moins de{' '}
                 <ClickableAnswer onClick={onClick} externalLink={externalLink}>
                   {blue.toLocaleString()}€
                 </ClickableAnswer>
@@ -173,7 +173,7 @@ const income: QuestionGroup = {
             value: MaPrimeRenovCategory.YELLOW,
             recap: (onClick, externalLink) => (
               <>
-                Vôtre dernier revenu de référence est entre{' '}
+                Votre dernier revenu de référence est entre{' '}
                 <ClickableAnswer onClick={onClick} externalLink={externalLink}>
                   {(blue + 1).toLocaleString()}€ et {yellow.toLocaleString()}€
                 </ClickableAnswer>
@@ -185,7 +185,7 @@ const income: QuestionGroup = {
             value: MaPrimeRenovCategory.VIOLET,
             recap: (onClick, externalLink) => (
               <>
-                Vôtre dernier revenu de référence est entre{' '}
+                Votre dernier revenu de référence est entre{' '}
                 <ClickableAnswer onClick={onClick} externalLink={externalLink}>
                   {(yellow + 1).toLocaleString()}€ et {violet.toLocaleString()}€
                 </ClickableAnswer>
@@ -197,7 +197,7 @@ const income: QuestionGroup = {
             value: MaPrimeRenovCategory.PINK,
             recap: (onClick, externalLink) => (
               <>
-                Vôtre dernier revenu de référence est supérieur à{' '}
+                Votre dernier revenu de référence est supérieur à{' '}
                 <ClickableAnswer onClick={onClick} externalLink={externalLink}>
                   {violet.toLocaleString()}€
                 </ClickableAnswer>

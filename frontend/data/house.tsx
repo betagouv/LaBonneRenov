@@ -19,14 +19,14 @@ const house: QuestionGroup[] = [
             description: (
               <>
                 <p>
-                  Le fonctionnement d’une pompe a chaleur est impacté par
-                  l’altitude et les témpérature trop rigoureuses. En répondant à
-                  cette question, nous prennons en compte la situation de votre
+                  Le fonctionnement d’une pompe à chaleur est impacté par
+                  l’altitude et les températures trop rigoureuses. En répondant
+                  à cette question, nous prenons en compte la situation de votre
                   maison.
                 </p>
                 <p>
                   Cette information nous permettra également de vous orienter
-                  vers les conseillers du réseaux France Rénov’ les plus proche
+                  vers les conseillers du réseaux France Rénov’ les plus proches
                   de votre domicile.
                 </p>
               </>
@@ -54,7 +54,7 @@ const house: QuestionGroup[] = [
           {
             title: 'Pourquoi cette question ?',
             description:
-              'Les normes liées à l’isolation ont évoluées dans le temps pour devenir de plus en plus performante. Connaitre la période de construction nous permet de faire une première évaluation de la performance énergétiques de votre maison. Les prochaines questions nous permettrons d’affiner cette évaluation pour obtenir un résultats personnalisé.',
+              'Les normes liées à l’isolation ont évolué dans le temps pour devenir de plus en plus performantes. Connaître la période de construction nous permet de faire une première évaluation de la performance énergétique de votre maison. Les prochaines questions nous permettront d’affiner cette évaluation pour obtenir un résultat personnalisé.',
           },
         ],
         type: QuestionType.RADIO,
@@ -214,7 +214,7 @@ const house: QuestionGroup[] = [
           {
             title: 'Comment répondre à cette question ?',
             description:
-              'Cette information peut être indiqué dans le DPE. En cas de doute, indiquez “je ne sais”. L’évaluation se basera sur l’année de construction de votre maison.',
+              'Cette information peut être indiquée dans le DPE. En cas de doute, indiquez “je ne sais”. L’évaluation se basera sur l’année de construction de votre maison.',
           },
         ],
         type: QuestionType.YESNOUNKNOWN,
@@ -247,7 +247,7 @@ const house: QuestionGroup[] = [
           {
             title: 'Comment répondre à cette question ?',
             description:
-              'Les combles sont l’espace situés sous la charpente d’une habitation. On dit qu’il sont “aménagés” lorsque cet espace est utilisé comme une pièce chauffée et habitée de la maison. Par exemple, un grenier utilisé pour le stockage, n’est pas un comble aménage.',
+              'Les combles sont l’espace situé sous la charpente d’une habitation. On dit qu’ils sont “aménagés” lorsque cet espace est utilisé comme une pièce chauffée et habitée de la maison. Par exemple, un grenier utilisé pour le stockage n’est pas un comble aménagé.',
           },
         ],
         type: QuestionType.YESNO,
@@ -268,12 +268,12 @@ const house: QuestionGroup[] = [
           {
             title: 'Comment répondre à cette question ?',
             description:
-              'Cette information peut être indiqué dans le DPE. En cas de doute, indiquez “non”',
+              'Cette information peut être indiquée dans le DPE. En cas de doute, indiquez “non”',
           },
           {
             title: 'Le saviez-vous ?',
             description:
-              'Une toiture non isolée peut représenter jusque 30% des déperditions énergétiques d’un logement.',
+              "Une toiture non isolée peut représenter jusqu'à 30% des déperditions énergétiques d’un logement.",
           },
         ],
         type: QuestionType.YESNOUNKNOWN,
@@ -307,12 +307,12 @@ const house: QuestionGroup[] = [
           {
             title: 'Comment répondre à cette question ?',
             description:
-              'Cette information peut être indiqué dans le DPE. En cas de doute, indiquez “non”',
+              'Cette information peut être indiquée dans le DPE. En cas de doute, indiquez “non”',
           },
           {
             title: 'Le saviez-vous ?',
             description:
-              'Une toiture non isolée peut représenter jusque 30% des déperditions énergétiques d’un logement.',
+              "Une toiture non isolée peut représenter jusqu'à 30% des déperditions énergétiques d’un logement.",
           },
         ],
         type: QuestionType.YESNOUNKNOWN,
@@ -347,7 +347,7 @@ const house: QuestionGroup[] = [
           {
             title: 'Comment répondre à cette question ?',
             description:
-              "Le vide sanitaire est l'espace situé entre le sol et le plancher bas de votre logement. Il sert de zone “tampon” entre la maison et le terrain sur laquelle elle est construite. Un vide sanitaire est compris entre 20 cm et 1.80m de hauteur. Si la maison n’est pas construire sur une cave, un garage ou un vide sanitaire, on parle de maison construite “sur terre-plein” ou pilotis.",
+              "Le vide sanitaire est l'espace situé entre le sol et le plancher bas de votre logement. Il sert de zone “tampon” entre la maison et le terrain sur laquelle elle est construite. Un vide sanitaire est compris entre 20 cm et 1.80m de hauteur. Si la maison n’est pas construite sur une cave, un garage ou un vide sanitaire, on parle de maison construite “sur terre-plein” ou pilotis.",
           },
         ],
         type: QuestionType.YESNOUNKNOWN,
@@ -384,7 +384,7 @@ const house: QuestionGroup[] = [
             description: (
               <>
                 <p>
-                  Cette information peut être indiquée dans le DPE. En cas de
+                  Cette information peut être indiquéee dans le DPE. En cas de
                   doute, indiquez “non”.
                 </p>
                 <p>
@@ -426,7 +426,7 @@ const house: QuestionGroup[] = [
           {
             title: 'Comment répondre à cette question ?',
             description:
-              'Si votre maison comporte un mixte des deux, répondez “non”.',
+              'Si votre maison comporte un mélange des deux, répondez “non”.',
           },
         ],
         type: QuestionType.YESNOUNKNOWN,
@@ -459,7 +459,7 @@ const house: QuestionGroup[] = [
           {
             title: 'Le saviez vous ?',
             description:
-              'La performance énergétique des fenêtre au delà de 15 n’est pas optimale.',
+              'La performance énergétique des fenêtres au-delà de 15 n’est pas optimale.',
           },
         ],
         type: QuestionType.YESNOUNKNOWN,
@@ -497,7 +497,7 @@ const house: QuestionGroup[] = [
           {
             title: 'Le saviez vous ?',
             description:
-              'Bien ventiler est logement est essentiel pour maintenir une bonne qualité d’air et assurer le confort des habitants. Une ventilation mécanique contrôlée (VMC) est un équipement qui renouvelle l’air de votre logement.',
+              'Bien ventiler son logement est essentiel pour maintenir une bonne qualité d’air et assurer le confort des habitants. Une ventilation mécanique contrôlée (VMC) est un équipement qui renouvelle l’air de votre logement.',
           },
         ],
         type: QuestionType.YESNOUNKNOWN,
@@ -647,12 +647,12 @@ const house: QuestionGroup[] = [
       },
       {
         id: QuestionId.EMETTEURS,
-        label: 'Quel sont vos émetteurs de chauffage ?',
+        label: 'Quels sont vos émetteurs de chauffage ?',
         context: [
           {
             title: 'Le saviez vous ?',
             description:
-              "Un émetteur de chauffage est l’appareil ou la surface qui diffuse la chaleur produite par un système de chauffage dans les pièces d'un logement. Dans les maison équipées d’une chaudière au fioul, au gaz ou à bois, les émetteurs sont des radiateurs muraux à eau chaude ou un système de plancher chauffant.",
+              "Un émetteur de chauffage est l’appareil ou la surface qui diffuse la chaleur produite par un système de chauffage dans les pièces d'un logement. Dans les maisons équipées d’une chaudière au fioul, au gaz ou à bois, les émetteurs sont des radiateurs muraux à eau chaude ou un système de plancher chauffant.",
           },
         ],
         dependsOn: [
@@ -672,9 +672,9 @@ const house: QuestionGroup[] = [
         ),
         options: [
           {
-            label: 'Radiateur mureaux',
-            value: 'radiateur mureaux',
-            recap: 'des radiateurs mureaux',
+            label: 'Radiateurs muraux',
+            value: 'radiateurs muraux',
+            recap: 'des radiateurs muraux',
           },
           {
             label: 'Plancher chauffant',

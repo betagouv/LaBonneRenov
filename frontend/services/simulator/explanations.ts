@@ -108,7 +108,7 @@ export const computeEmetteurs = (answers: Answers): Explanation => {
     (chauffage === 'chaudiere gaz' ||
       chauffage === 'chaudiere fioul' ||
       chauffage === 'chaudiere bois') &&
-    emetteurs === 'radiateur mureaux'
+    emetteurs === 'radiateurs muraux'
   ) {
     return explanationData.emetteurs[
       'Cas 4 - Radiateur à eau haute température'
