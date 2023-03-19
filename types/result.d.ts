@@ -1,6 +1,19 @@
+import { ReactNode } from 'react';
 import { RennovationResult } from './answer';
+import QuestionId from './enum/QuestionId';
 
-export type Result = {
+export type Explanation = {
+  title: string;
+  status: 'ok' | 'sok' | 'nok';
+  image: string;
+  tips: ReactNode;
+  dependencies: QuestionId[];
+  attentions: ReactNode;
+  further?: string;
+  furtherLinks?: string[];
+};
+
+export type PartialResult = {
   compatibility: 'ok' | 'nok' | 'sok';
   syntheses: {
     positiveTitle?: string;
@@ -17,4 +30,8 @@ export type Result = {
   todo: string;
   investment: number;
   rennovation?: RennovationResult;
+};
+
+export type Result = PartialResult & {
+  explanations: Explanation[];
 };

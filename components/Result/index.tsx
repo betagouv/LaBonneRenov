@@ -23,7 +23,7 @@ function Result({ result }: { result: ResultType }) {
         setOpenFranceRennov={setOpenFranceRennov}
         franceRennovRef={franceRennovRef}
       />
-      <Explanations />
+      <Explanations result={result} />
       <RenoGlobal />
       <div ref={franceRennovRef}>
         <FranceRennov openFranceRennov={openFranceRennov} />

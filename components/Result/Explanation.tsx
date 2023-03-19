@@ -4,6 +4,7 @@ import React from 'react';
 import { useStore } from '../../frontend/stores';
 import Color from '../../types/enum/Color';
 import QuestionId from '../../types/enum/QuestionId';
+import { Explanation as ExplanationType } from '../../types/result';
 import { getRecap } from '../Recap';
 import Slice from '../Slice';
 import {
@@ -14,14 +15,14 @@ import {
   Answer,
 } from './Explanation.styles';
 
-const Explanation = ({ values }: { values: any }) => {
+const Explanation = ({ explanation }: { explanation: ExplanationType }) => {
   const { currentAnswers } = useStore();
   return (
     <Container>
       <div>
         <Title>
-          <img src={values.icon} alt="" />
-          <h3>{values.title}</h3>
+          <img src={explanation.image} alt="" />
+          <h3>{explanation.title}</h3>
         </Title>
       </div>
       <div>
@@ -29,11 +30,11 @@ const Explanation = ({ values }: { values: any }) => {
           <Icon name="ri-information-line" size="lg" />
           <h5>Le saviez-vous ?</h5>
         </SubTitle>
-        {values.tips}
+        {explanation.tips}
       </div>
       <div>
         <Slice color={Color.BLUE} padding={16}>
-          {values.dependencies.map((dependency: QuestionId) => {
+          {explanation.dependencies.map((dependency: QuestionId) => {
             const answer = currentAnswers.find((a) => a.id === dependency);
             if (answer && answer.value !== undefined) {
               return (
@@ -67,18 +68,20 @@ const Explanation = ({ values }: { values: any }) => {
           <Icon name="ri-alert-line" size="lg" />
           <h5>Points d&lsquo;attention</h5>
         </RedSubTitle>
-        {values.attentions}
+        {explanation.attentions}
       </div>
-      <div>
-        <SubTitle>
-          <h5>{values.further}</h5>
-        </SubTitle>
-        {values.furtherLinks.map((link: string) => (
-          <Link key={link} href={link} isSimple target="_blank">
-            {link}
-          </Link>
-        ))}
-      </div>
+      {explanation.further && explanation.furtherLinks && (
+        <div>
+          <SubTitle>
+            <h5>{explanation.further}</h5>
+          </SubTitle>
+          {explanation.furtherLinks.map((link: string) => (
+            <Link key={link} href={link} isSimple target="_blank">
+              {link}
+            </Link>
+          ))}
+        </div>
+      )}
     </Container>
   );
 };

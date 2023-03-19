@@ -14,7 +14,6 @@ function Resultat() {
 
   useEffect(() => {
     if (router.query.id && id !== router.query.id) {
-      console.log('init');
       init(router.query.id as string);
     } else if (id && !loading && currentAnswers) {
       try {

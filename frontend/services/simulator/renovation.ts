@@ -4,7 +4,7 @@ import {
   RennovationResult,
 } from '../../../types/answer';
 import QuestionId from '../../../types/enum/QuestionId';
-import { Result } from '../../../types/result';
+import { PartialResult } from '../../../types/result';
 import { getSaving, getValue } from './utils';
 
 export const steps: Record<keyof IsolationResult, string> = {
@@ -45,7 +45,7 @@ const computePlancherBas = (answers: Answers): number => {
 const computeRenovation = (
   answers: Answers,
   isolation: IsolationResult,
-  result: Result
+  result: PartialResult
 ): RennovationResult => {
   const todo = Object.entries({
     mur: isolation.mur === 0 ? 1 : 3,

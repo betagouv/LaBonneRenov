@@ -1,11 +1,15 @@
 import { Answer, Answers } from '../../../types/answer';
-import { Result } from '../../../types/result';
+import { PartialResult, Result } from '../../../types/result';
 import computeChauffageRating from './chauffage';
 import computeConstuctionRating from './construction';
+import { computeExplanations } from './explanations';
 import computeIsolationRating from './isolation';
 import computeRenovation from './renovation';
 
-const basseTemperature = (answers: Answers, isolation: number): Result => {
+const basseTemperature = (
+  answers: Answers,
+  isolation: number
+): PartialResult => {
   switch (isolation) {
     case 1:
       return {
@@ -84,7 +88,10 @@ const basseTemperature = (answers: Answers, isolation: number): Result => {
   }
 };
 
-const hauteTemperature = (answers: Answers, isolation: number): Result => {
+const hauteTemperature = (
+  answers: Answers,
+  isolation: number
+): PartialResult => {
   const construction = computeConstuctionRating(answers);
   if (construction === 1 || construction === 2) {
     switch (isolation) {
@@ -208,7 +215,7 @@ const hauteTemperature = (answers: Answers, isolation: number): Result => {
   }
 };
 
-const other = (answers: Answers, isolation: number): Result => {
+const other = (answers: Answers, isolation: number): PartialResult => {
   switch (isolation) {
     case 1:
       return {
@@ -317,10 +324,12 @@ const simulator = (arrayAnswers: Answer[]): Result => {
   }
 
   const rennovation = computeRenovation(answers, isolationResult, result);
+  const explanations = computeExplanations(answers);
 
   return {
     ...result,
     rennovation,
+    explanations,
   };
 };
 

@@ -4,6 +4,9 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
+  h6 {
+    margin-bottom: 0;
+  }
 `;
 
 export const Title = styled.div`
@@ -12,6 +15,10 @@ export const Title = styled.div`
   align-items: center;
   h3 {
     margin-bottom: 0 !important;
+  }
+  img {
+    width: 57px;
+    height: 57px;
   }
 `;
 
