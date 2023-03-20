@@ -13,7 +13,7 @@ const plancherHautRating = (answers: Answers): number => {
   if (combles !== UNKNOWN) {
     const isolated = getValue(
       answers,
-      combles === 'true' ? QuestionId.COMBLES_ISOLES : QuestionId.TOITURE_ISOLE
+      combles === 'true' ? QuestionId.TOITURE_ISOLE : QuestionId.COMBLES_ISOLES
     );
 
     if (isolated === 'true') {

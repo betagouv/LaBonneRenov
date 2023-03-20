@@ -26,8 +26,8 @@ const computePlancherHaut = (answers: Answers): Explanation => {
   const combles = answers[QuestionId.COMBLES_AMENAGES];
   const isolated =
     combles === 'true'
-      ? answers[QuestionId.COMBLES_ISOLES]
-      : answers[QuestionId.TOITURE_ISOLE];
+      ? answers[QuestionId.TOITURE_ISOLE]
+      : answers[QuestionId.COMBLES_ISOLES];
   const old = isOld(answers);
 
   if (isolated === 'false') {
@@ -35,6 +35,7 @@ const computePlancherHaut = (answers: Answers): Explanation => {
       'Cas 1 - Combles non isolés (ancien/récent)'
     ];
   }
+
   if (isolated === 'true') {
     return old
       ? explanationData.plancherHaut['Cas 3 - Combles anciennes isolés']
