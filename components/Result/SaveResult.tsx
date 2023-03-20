@@ -17,6 +17,7 @@ function SaveResult() {
         <TextInput
           label="Lien vers votre résultat"
           value={`labonnerenov.fr/pac/resultat?id=${id}`}
+          onChange={() => {}}
         />
         <Button
           secondary
