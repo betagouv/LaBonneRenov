@@ -1,11 +1,13 @@
 import { useEffect } from 'react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import Script from 'next/script';
 import Header from '../components/SharedLayout/Header';
 import Footer from '../components/SharedLayout/Footer';
 import '@gouvfr/dsfr/dist/utility/icons/icons-system/icons-system.min.css';
 import GlobalStyle from '../components/SharedLayout/Global.styles';
 import { useStore } from '../frontend/stores';
+import { initGoogleAds } from '../frontend/services/googleAds';
 
 export default function App({ Component, pageProps }: AppProps) {
   const { init } = useStore();
@@ -13,6 +15,10 @@ export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     init(window.localStorage.getItem('questionnaires_id'));
   }, [init]);
+
+  useEffect(() => {
+    initGoogleAds();
+  }, []);
 
   return (
     <>
@@ -43,7 +49,10 @@ export default function App({ Component, pageProps }: AppProps) {
           }}
         />
       </Head>
-
+      <Script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=AW-11121531932"
+      />
       <Header />
       <GlobalStyle />
       <Component {...pageProps} />

@@ -1,5 +1,6 @@
 import { Accordion, AccordionItem, Link } from '@dataesr/react-dsfr';
 import React from 'react';
+import { googleAdsConversion } from '../../frontend/services/googleAds';
 import matomoEvent, {
   FRANCE_RENNOV,
 } from '../../frontend/services/matomoEvent';
@@ -18,6 +19,7 @@ export const sendFranceRennovEvent = (currentAnswers: Answer[]) => {
     );
     if (cp && cp.value) {
       matomoEvent([FRANCE_RENNOV, cp.value as string]);
+      googleAdsConversion();
     }
   }
 };
