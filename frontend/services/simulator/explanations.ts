@@ -6,6 +6,20 @@ import { explanationData } from './explanation.data';
 const isOld = (answers: Answers) =>
   answers[QuestionId.CONSTRUCTION] !== 'very recent';
 
+const unknownAge = (answers: Answers) => {
+  const age = answers[QuestionId.CONSTRUCTION];
+  switch (age) {
+    case 'very old':
+    case 'old':
+      return '- old';
+    case 'recent':
+      return '- recent';
+    case 'very recent':
+    default:
+      return '- very recent';
+  }
+};
+
 const computeMur = (answers: Answers): Explanation => {
   const isolation = answers[QuestionId.MUR_ISOLES] as string;
   const old = isOld(answers);
@@ -19,7 +33,7 @@ const computeMur = (answers: Answers): Explanation => {
       : explanationData.mur['Cas 4 - Murs récents isolés'];
   }
 
-  return explanationData.mur['Cas 5 - Ne sait pas'];
+  return explanationData.mur[`Cas 5 - Ne sait pas ${unknownAge(answers)}`];
 };
 
 const computePlancherHaut = (answers: Answers): Explanation => {
@@ -42,7 +56,9 @@ const computePlancherHaut = (answers: Answers): Explanation => {
       : explanationData.plancherHaut['Cas 4 - Combles récentes isolés'];
   }
 
-  return explanationData.plancherHaut['Cas 5 - Ne sait pas'];
+  return explanationData.plancherHaut[
+    `Cas 5 - Ne sait pas ${unknownAge(answers)}`
+  ];
 };
 
 const computePlancherBas = (answers: Answers): Explanation => {
@@ -61,7 +77,9 @@ const computePlancherBas = (answers: Answers): Explanation => {
     }
   }
 
-  return explanationData.plancherBas['Cas 5 - Ne sait pas'];
+  return explanationData.plancherBas[
+    `Cas 5 - Ne sait pas ${unknownAge(answers)}`
+  ];
 };
 
 export const computeMenuiserie = (answers: Answers): Explanation => {

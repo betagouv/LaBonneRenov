@@ -26,11 +26,11 @@ function Header() {
         <Service
           title={
             <>
-              La bonne rénov&lsquo;
+              La Bonne Rénov&lsquo;
               <Badge text="Bêta" colorFamily="green-emeraude" />
             </>
           }
-          description="Mesurer l’impact des travaux de rénovation énergétique"
+          description="Des travaux de rénovations énergétiques plus performants"
           asLink={<Link href="/" title="Revenir à l'accueil" />}
         />
       </HeaderBody>

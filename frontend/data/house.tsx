@@ -214,7 +214,7 @@ const house: QuestionGroup[] = [
           {
             title: 'Comment répondre à cette question ?',
             description:
-              'Cette information peut être indiquée dans le DPE. En cas de doute, indiquez “je ne sais”. L’évaluation se basera sur l’année de construction de votre maison.',
+              'Cette information peut être indiquée dans le DPE. En cas de doute, indiquez “je ne sais pas”. L’évaluation se basera sur l’année de construction de votre maison.',
           },
         ],
         type: QuestionType.YESNOUNKNOWN,

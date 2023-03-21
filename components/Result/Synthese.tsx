@@ -7,9 +7,9 @@ import Color from '../../types/enum/Color';
 import { CenteredButton } from './Synthese.styles';
 
 const values = {
-  ok: "L'installation d'une pompe à chaleur dans votre logement est pertinente.",
-  sok: "L'installation d'une pompe à chaleur dans votre logement ne sera pertinente que si vous réalisez d'autres travaux au préalable.",
-  nok: "L'installation d'une pompe à chaleur n'est pas pertinente pour votre logement, qui nécessite d'autres travaux de rénovation prioritaires.",
+  ok: "L'installation d'une pompe à chaleur semble adapté à votre logement.",
+  sok: 'Avant d’installer une pompe à chaleur, votre logement nécessite des travaux complémentaires qui maximiseront son efficacité.',
+  nok: "En l'état, l'installation d'une pompe à chaleur dans votre logement n'est pas recommandé. D'autres travaux prioritaires sont à prévoir en amont.",
 };
 
 function Synthese({

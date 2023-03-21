@@ -28,7 +28,7 @@ function Home() {
   return (
     <>
       <Slice color={Color.BLUE}>
-        <Title>La bonne rénov&lsquo;</Title>
+        <Title>La Bonne Rénov&lsquo;</Title>
         <h4>
           Vous aider à mesurer l’impact des travaux de rénovation énergétique.
         </h4>

@@ -35,7 +35,7 @@ function Statistics() {
         labels: Object.keys(actions),
         datasets: [
           {
-            label: '# de clique sur france rennov',
+            label: "# de clique sur France Rénov'",
             data: Object.values(actions),
             borderWidth: 1,
           },

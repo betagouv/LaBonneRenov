@@ -10,9 +10,7 @@ const Explanations = ({ result }: { result: Result }) => (
     <div className="fr-text--lead">
       <b>
         Pour que l’installation d’une pompe à chaleur soit vraiment efficace, il
-        est important de prendre en compte l’ensemble de votre maison. Vous
-        trouverez ci-dessous une liste de points d’attention et de bonnes
-        question à vous poser dans votre situation
+        est important de prendre en compte l’ensemble de votre maison.
       </b>
     </div>
     <Tabs className="fr-mt-4w">

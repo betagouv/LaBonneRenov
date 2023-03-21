@@ -39,7 +39,7 @@ function FranceRennov({ openFranceRennov }: { openFranceRennov: boolean }) {
       <HeaderContent>
         <Logo>
           <Image
-            src="/images/france-rennov.png"
+            src="/images/france-rennov.svg"
             alt="France rénnov"
             width={250}
             height={122.5}

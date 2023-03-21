@@ -2,16 +2,15 @@ import QuestionId from '../../../types/enum/QuestionId';
 import { Explanation } from '../../../types/result';
 
 const murTitle = 'Murs';
-const murDependencies = [QuestionId.CONSTRUCTION, QuestionId.MUR_ISOLES];
 const murImage = '/images/mur_icon.svg';
 const murFurther = 'En savoir plus sur l’isolation des murs';
 
-const plancherHautTitle = 'Plancher haut';
+const plancherHautTitle = 'Toit';
 const plancherHautImage = '/images/plancher_haut_icon.svg';
 const plancherHautFurther =
   'En savoir plus sur l’isolation des planchers hauts';
 
-const plancherBasTitle = 'Plancher bas (ou Sols)';
+const plancherBasTitle = 'Sols';
 const plancherBasImage = '/images/sol_icon.svg';
 const plancherBasFurther = 'En savoir plus sur l’isolation des planchers bas';
 
@@ -23,7 +22,7 @@ const ventilationTitle = 'Ventilation';
 const ventilationImage = '/images/ventilation_icon.svg';
 const ventilationFurther = 'En savoir plus sur la ventilation';
 
-const emetteursTitle = 'Emetteurs';
+const emetteursTitle = 'Chauffage';
 const emetteursImage = '/images/emetteurs_icon.svg';
 const emetteursFurther = 'En savoir plus';
 
@@ -31,7 +30,7 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
   mur: {
     'Cas 1 - Murs non isolés': {
       title: murTitle,
-      dependencies: murDependencies,
+      dependencies: [QuestionId.MUR_ISOLES],
       image: murImage,
       status: 'nok',
       tips: 'Une mauvaise isolation des murs peut représenter jusqu’à 25 % des déperdition de chaleur d’un logement et engendrer son vieillisement prématuré.',
@@ -42,7 +41,7 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           générer de l&lsquo;inconfort. Son prix d&lsquo;acquisition, vos
           factures et son volume seront supérieurs pour répondre à un écart de
           température et des besoins énergétiques plus importants, ce qui
-          réduira à termes sa durée de vie.
+          réduira à terme sa durée de vie.
           <h6>Pourquoi l&lsquo;ordre des travaux est important ?</h6>
           Si vous réalisez l&lsquo;isolation de vos murs après
           l&lsquo;installation d&lsquo;une PAC, cette dernière ne sera plus
@@ -59,7 +58,7 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
     },
     'Cas 3 - Murs anciens isolés': {
       title: murTitle,
-      dependencies: murDependencies,
+      dependencies: [QuestionId.CONSTRUCTION, QuestionId.MUR_ISOLES],
       image: murImage,
       status: 'sok',
       tips: "Vos murs semblent isolés, ce qui peut réduire les pertes de chaleur de votre logement jusqu'à 25 %. Mais êtes-vous sûr de l'état de votre isolation ?",
@@ -87,7 +86,7 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
     },
     'Cas 4 - Murs récents isolés': {
       title: murTitle,
-      dependencies: murDependencies,
+      dependencies: [QuestionId.CONSTRUCTION, QuestionId.MUR_ISOLES],
       image: murImage,
       status: 'ok',
       tips: "Vos murs sont isolés, ce qui peut réduire les pertes de chaleur de votre logement jusqu'à 25 % par rapport à des murs mal isolés.",
@@ -114,9 +113,9 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
         'https://librairie.ademe.fr/urbanisme-et-batiment/5038-isoler-sa-maison-9791029718717.html',
       ],
     },
-    'Cas 5 - Ne sait pas': {
+    'Cas 5 - Ne sait pas - old': {
       title: murTitle,
-      dependencies: murDependencies,
+      dependencies: [QuestionId.CONSTRUCTION, QuestionId.MUR_ISOLES],
       image: murImage,
       status: 'nok',
       tips: 'Une mauvaise isolation des murs peut représenter jusqu’à 25 % des déperditions de chaleur d’un logement et engendrer son vieillissement prématuré.',
@@ -131,7 +130,7 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           isolée va générer de l&lsquo;inconfort. Son prix d&lsquo;acquisition,
           vos factures et son volume seront supérieurs pour répondre à un écart
           de température et des besoins énergétiques plus importants, ce qui
-          réduira à termes sa durée de vie.
+          réduira à terme sa durée de vie.
           <br />
           <h6>Pourquoi l&lsquo;ordre des travaux est important ?</h6>
           Si vous réalisez l&lsquo;isolation de vos murs après
@@ -140,8 +139,21 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           isolation, ce qui impactera son fonctionnement, son rendement global
           et sa durée de vie. Il est possible de redimensionner votre
           équipement, mais des coûts de maintenance seront à prévoir.
-          <br />
-          <br />
+        </>
+      ),
+      further: murFurther,
+      furtherLinks: [
+        'https://france-renov.gouv.fr/renovation/isolation/murs-maison',
+      ],
+    },
+    'Cas 5 - Ne sait pas - recent': {
+      title: murTitle,
+      dependencies: [QuestionId.CONSTRUCTION, QuestionId.MUR_ISOLES],
+      image: murImage,
+      status: 'nok',
+      tips: 'Une mauvaise isolation des murs peut représenter jusqu’à 25 % des déperditions de chaleur d’un logement et engendrer son vieillissement prématuré.',
+      attentions: (
+        <>
           <h6>
             Si votre maison a été construite entre 1974 et 2000, sans rénovation
             depuis, il est fort probable que l&lsquo;isolation soit à refaire ou
@@ -160,8 +172,21 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           <br />
           Il est donc fortement recommandé de faire vérifier l&lsquo;état de
           l&lsquo;isolation de vos murs par un professionnel.
-          <br />
-          <br />
+        </>
+      ),
+      further: murFurther,
+      furtherLinks: [
+        'https://france-renov.gouv.fr/renovation/isolation/murs-maison',
+      ],
+    },
+    'Cas 5 - Ne sait pas - very recent': {
+      title: murTitle,
+      dependencies: [QuestionId.CONSTRUCTION, QuestionId.MUR_ISOLES],
+      image: murImage,
+      status: 'nok',
+      tips: 'Une mauvaise isolation des murs peut représenter jusqu’à 25 % des déperditions de chaleur d’un logement et engendrer son vieillissement prématuré.',
+      attentions: (
+        <>
           <h6>
             Si votre maison a été construite après 2000, elle devrait être
             isolée pour répondre aux réglementations thermiques en vigueur.
@@ -204,7 +229,7 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           générer de l&lsquo;inconfort. Son prix d&lsquo;acquisition, vos
           factures et son volume seront supérieurs pour répondre à un écart de
           température et des besoins énergétiques plus importants, ce qui
-          réduira à termes sa durée de vie.
+          réduira à terme sa durée de vie.
           <h6>Pourquoi l&lsquo;ordre des travaux est important ?</h6>
           Si vous réalisez l&lsquo;isolation de votre toiture après
           l&lsquo;installation d&lsquo;une PAC, cette dernière ne sera plus
@@ -285,9 +310,10 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
         'https://librairie.ademe.fr/urbanisme-et-batiment/5038-isoler-sa-maison-9791029718717.html',
       ],
     },
-    'Cas 5 - Ne sait pas': {
+    'Cas 5 - Ne sait pas - old': {
       title: plancherHautTitle,
       dependencies: [
+        QuestionId.CONSTRUCTION,
         QuestionId.COMBLES_AMENAGES,
         QuestionId.COMBLES_ISOLES,
         QuestionId.TOITURE_ISOLE,
@@ -306,7 +332,7 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           générer de l&lsquo;inconfort. Son prix d&lsquo;acquisition, vos
           factures et son volume seront supérieurs pour répondre à un écart de
           température et des besoins énergétiques plus importants, ce qui
-          réduira à termes sa durée de vie.
+          réduira à terme sa durée de vie.
           <h6>Pourquoi l&lsquo;ordre des travaux est important ?</h6>
           Si vous réalisez l&lsquo;isolation de votre toiture après
           l&lsquo;installation d&lsquo;une PAC, cette dernière ne sera plus
@@ -314,8 +340,26 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           isolation, ce qui impactera son fonctionnement, rendement global et sa
           durée de vie. Il est possible de redimensionner votre équipement, mais
           des coûts de maintenance seront à prévoir.
-          <br />
-          <br />
+        </>
+      ),
+      further: plancherHautFurther,
+      furtherLinks: [
+        'https://france-renov.gouv.fr/renovation/isolation/combles-maison',
+      ],
+    },
+    'Cas 5 - Ne sait pas - recent': {
+      title: plancherHautTitle,
+      dependencies: [
+        QuestionId.CONSTRUCTION,
+        QuestionId.COMBLES_AMENAGES,
+        QuestionId.COMBLES_ISOLES,
+        QuestionId.TOITURE_ISOLE,
+      ],
+      image: plancherHautImage,
+      status: 'nok',
+      tips: 'Une mauvaise isolation de la toiture peut représenter jusqu’à 30 % des déperditions de chaleur d’un logement et engendrer son vieillissement prématuré.',
+      attentions: (
+        <>
           <h6>
             Si votre maison a été construite entre 1974 et 2000, sans rénovation
             depuis, il est fort probable que l&lsquo;isolation soit à refaire ou
@@ -333,8 +377,26 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           <br />
           Il est donc fortement recommandé de faire vérifier l&lsquo;étanchéité
           et l&lsquo;isolation de votre toiture par un professionnel.
-          <br />
-          <br />
+        </>
+      ),
+      further: plancherHautFurther,
+      furtherLinks: [
+        'https://france-renov.gouv.fr/renovation/isolation/combles-maison',
+      ],
+    },
+    'Cas 5 - Ne sait pas - very recent': {
+      title: plancherHautTitle,
+      dependencies: [
+        QuestionId.CONSTRUCTION,
+        QuestionId.COMBLES_AMENAGES,
+        QuestionId.COMBLES_ISOLES,
+        QuestionId.TOITURE_ISOLE,
+      ],
+      image: plancherHautImage,
+      status: 'nok',
+      tips: 'Une mauvaise isolation de la toiture peut représenter jusqu’à 30 % des déperditions de chaleur d’un logement et engendrer son vieillissement prématuré.',
+      attentions: (
+        <>
           <h6>
             Si votre maison a été construite après 2000, elle devrait être
             isolée pour répondre aux réglementations thermiques en vigueur.
@@ -373,7 +435,7 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           générer de l&lsquo;inconfort. Son prix d&lsquo;acquisition, vos
           factures et son volume seront supérieurs pour répondre à un écart de
           température et des besoins énergétiques plus importants, ce qui
-          réduira à termes sa durée de vie.
+          réduira à terme sa durée de vie.
           <h6>Pourquoi l&lsquo;ordre des travaux est important ?</h6>
           Si vous réalisez l&lsquo;isolation du plancher bas après
           l&lsquo;installation d&lsquo;une PAC, cette dernière ne sera plus
@@ -447,7 +509,7 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
         </>
       ),
     },
-    'Cas 5 - Ne sait pas': {
+    'Cas 5 - Ne sait pas - old': {
       title: plancherBasTitle,
       dependencies: [
         QuestionId.CONSTRUCTION,
@@ -468,7 +530,7 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           générer de l&lsquo;inconfort. Son prix d&lsquo;acquisition, vos
           factures et son volume seront supérieurs pour répondre à un écart de
           température et des besoins énergétiques plus importants, ce qui
-          réduira à termes sa durée de vie.
+          réduira à terme sa durée de vie.
           <h6>Pourquoi l&lsquo;ordre des travaux est important ?</h6>
           Si vous réalisez l&lsquo;isolation du plancher bas après
           l&lsquo;installation d&lsquo;une PAC, cette dernière ne sera plus
@@ -476,8 +538,25 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           isolation, ce qui impactera son fonctionnement, son rendement global
           et sa durée de vie. Il est possible de redimensionner votre
           équipement, mais des coûts de maintenance seront à prévoir.
-          <br />
-          <br />
+        </>
+      ),
+      further: plancherBasFurther,
+      furtherLinks: [
+        'https://france-renov.gouv.fr/renovation/isolation/sous-sol-garage',
+      ],
+    },
+    'Cas 5 - Ne sait pas - recent': {
+      title: plancherBasTitle,
+      dependencies: [
+        QuestionId.CONSTRUCTION,
+        QuestionId.CAVE,
+        QuestionId.PLANCHER_BAS_ISOLE,
+      ],
+      image: plancherBasImage,
+      status: 'nok',
+      tips: 'Une mauvaise isolation d’un plancher bas peut représenter jusqu’à 10 % des déperditions de chaleur d’un logement.',
+      attentions: (
+        <>
           <h6>
             Si votre maison a été construite entre 1974 et 2000, sans rénovation
             depuis, il est fort probable que l&lsquo;isolation soit à refaire ou
@@ -495,8 +574,25 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           <br />
           Il est donc recommandé de faire vérifier l&lsquo;isolation de votre
           plancher bas par un professionnel.
-          <br />
-          <br />
+        </>
+      ),
+      further: plancherBasFurther,
+      furtherLinks: [
+        'https://france-renov.gouv.fr/renovation/isolation/sous-sol-garage',
+      ],
+    },
+    'Cas 5 - Ne sait pas - very recent': {
+      title: plancherBasTitle,
+      dependencies: [
+        QuestionId.CONSTRUCTION,
+        QuestionId.CAVE,
+        QuestionId.PLANCHER_BAS_ISOLE,
+      ],
+      image: plancherBasImage,
+      status: 'nok',
+      tips: 'Une mauvaise isolation d’un plancher bas peut représenter jusqu’à 10 % des déperditions de chaleur d’un logement.',
+      attentions: (
+        <>
           <h6>
             Si votre maison a été construite après 2000, elle devrait être
             isolée pour répondre aux réglementations thermiques en vigueur.
@@ -535,16 +631,16 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
             problèmes d&lsquo;humidité, d&lsquo;infiltration de l&lsquo;air et
             d&lsquo;une mauvaise isolation sonore.
           </h6>
-          Cela impacte à termes la santé et le confort des occupants d&lsquo;un
+          Cela impacte à terme la santé et le confort des occupants d&lsquo;un
           logement. Dans certains cas, les ouvrants (partie mobile de la
-          fenêtre) et des dormants (cadre fixe de la fenêtre) sont de mauvaises
+          fenêtre) et les dormants (cadre fixe de la fenêtre) sont de mauvaises
           qualités ou trop anciens et doivent être changés.
           <br />
           L&lsquo;installation d&lsquo;une PAC dans une maison mal isolée aura
           des conséquences sur son prix d&lsquo;acquisition, vos factures et son
           volume qui seront supérieurs pour répondre à un écart de température
-          et des besoins énergétiques plus importants, ce qui réduira à termes
-          sa durée de vie.
+          et des besoins énergétiques plus importants, ce qui réduira à terme sa
+          durée de vie.
         </>
       ),
       further: menuiserieFurther,
@@ -603,8 +699,8 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           L’installation de menuiseries neuves, dont l’étanchéité à l’air est
           bien plus élevée que les anciennes, peut venir perturber le
           renouvellement de l’air intérieur et l’évacuation des polluants et de
-          l’humidité. Cela peut avoir des répercussions à termes sur la santé
-          des occupants et à une détérioration du logement.
+          l’humidité. Cela peut avoir des répercussions à terme sur la santé des
+          occupants et à une détérioration du logement.
         </>
       ),
       further: menuiserieFurther,
@@ -630,11 +726,11 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           Si vous remarquez des problèmes d&lsquo;humidité, d&lsquo;infiltration
           de l&lsquo;air ou encore une mauvaise isolation sonore, cela signifie
           probablement que vos menuiseries sont mal isolées. Cela peut impacter
-          à termes la santé, le confort des occupants d&lsquo;un logement et le
+          à terme la santé, le confort des occupants d&lsquo;un logement et le
           bon fonctionnement d&lsquo;une PAC.
           <br />
           Dans certains cas, les parois vitrées peuvent être suffisamment
-          isolées, mais les ouvrants (partie mobile de la fenêtre) et des
+          isolées, mais les ouvrants (partie mobile de la fenêtre) et les
           dormants (cadre fixe de la fenêtre) sont de mauvaises qualités ou trop
           anciens et doivent être changés.
           <br />
@@ -735,7 +831,7 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
       dependencies: [QuestionId.CHAUFFAGE_PRINCIPAL],
       image: emetteursImage,
       status: 'nok',
-      tips: "La température de fonctionnement idéale d'une PAC est de 35/40 °. Elle permet une consommation en énergie moindre et de très bon rendement.",
+      tips: "La température de fonctionnement idéale d'une PAC est de 35/40°C. Elle permet une consommation en énergie moindre et de très bons rendements.",
       attentions: (
         <>
           <h6>
@@ -743,7 +839,7 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
             d&lsquo;une PAC air/eau.
           </h6>
           Les deux pré-requis à l&lsquo;installation d&lsquo;une PAC air/eau
-          basse température (35-45°C) sont la présence d&lsquo;un éméteur basse
+          basse température (35/40°C) sont la présence d&lsquo;un éméteur basse
           température et d&lsquo;une installation de chauffage utilisant un
           système hydraulique (type chaudière).
           <br />
@@ -764,7 +860,7 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
       dependencies: [QuestionId.CHAUFFAGE_PRINCIPAL, QuestionId.EMETTEURS],
       image: emetteursImage,
       status: 'ok',
-      tips: "La température de fonctionnement idéale d'une PAC est de 35/40 °. Elle permet une consommation en énergie moindre et de très bon rendement.",
+      tips: "La température de fonctionnement idéale d'une PAC est de 35/40°C. Elle permet une consommation en énergie moindre et de très bons rendements.",
       attentions: (
         <>
           <h6>
@@ -772,7 +868,7 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
             l&lsquo;installation d&lsquo;une PAC air/eau.
           </h6>
           Les deux pré-requis à l&lsquo;installation d&lsquo;une PAC air/eau
-          basse température (35-45°C) sont la présence d&lsquo;un éméteur basse
+          basse température (35/40°C) sont la présence d&lsquo;un éméteur basse
           température, ce qui est le cas d&lsquo;un plancher chaufant, et la
           présence d&lsquo;une installation de chauffage utilisant un système
           hydraulique (chaudière).
@@ -790,12 +886,12 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
       dependencies: [QuestionId.CHAUFFAGE_PRINCIPAL, QuestionId.EMETTEURS],
       image: emetteursImage,
       status: 'sok',
-      tips: "La température de fonctionnement idéale d'une PAC est de 35/40 °. Elle permet une consommation en énergie moindre et de très bon rendement.",
+      tips: "La température de fonctionnement idéale d'une PAC est de 35/40°C. Elle permet une consommation en énergie moindre et de très bons rendements.",
       attentions: (
         <>
           <h6>
             Votre système de chauffage actuel ne permet pas l&lsquo;installation
-            d&lsquo;une PAC air/eau basse température (35-45°C).
+            d&lsquo;une PAC air/eau basse température (35/40°C).
           </h6>
           En revanche, il semble possible d&lsquo;installer une PAC air/eau
           haute température (65-80°C) puisque vous bénéficiez d&lsquo;une
@@ -815,7 +911,7 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
       dependencies: [QuestionId.CHAUFFAGE_PRINCIPAL, QuestionId.EMETTEURS],
       image: emetteursImage,
       status: 'sok',
-      tips: "La température de fonctionnement idéale d'une PAC est de 35/40 °. Elle permet une consommation en énergie moindre et de très bon rendement.",
+      tips: "La température de fonctionnement idéale d'une PAC est de 35/40°C. Elle permet une consommation en énergie moindre et de très bons rendements.",
       attentions: (
         <>
           <h6>
@@ -823,7 +919,7 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
             d&lsquo;une PAC air/eau.
           </h6>
           Les deux pré-requis à l&lsquo;installation d&lsquo;une PAC air/eau
-          basse température (35-45°C) sont la présence d&lsquo;un éméteur basse
+          basse température (35/40°C) sont la présence d&lsquo;un éméteur basse
           température et d&lsquo;une installation de chauffage utilisant un
           système hydraulique (type chaudière).
           <br />

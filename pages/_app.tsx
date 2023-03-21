@@ -23,10 +23,15 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>La bonne rénov&lsquo;</title>
+        <title>La Bonne Rénov&lsquo;</title>
+        <meta property="og:title" content="La Bonne Rénov'" />
         <meta
           name="description"
-          content="Mesurer l’impact des travaux de rénovation énergétique"
+          content="Des travaux de rénovations énergétiques plus performants"
+        />
+        <meta
+          property="og:description"
+          content="Des travaux de rénovations énergétiques plus performants"
         />
         <link rel="icon" href="/favicon.svg" />
         <script

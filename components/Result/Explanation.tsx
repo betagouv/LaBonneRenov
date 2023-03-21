@@ -7,13 +7,7 @@ import QuestionId from '../../types/enum/QuestionId';
 import { Explanation as ExplanationType } from '../../types/result';
 import { getRecap } from '../Recap';
 import Slice from '../Slice';
-import {
-  Container,
-  Title,
-  SubTitle,
-  RedSubTitle,
-  Answer,
-} from './Explanation.styles';
+import { Container, Title, SubTitle, Answer } from './Explanation.styles';
 
 const Explanation = ({ explanation }: { explanation: ExplanationType }) => {
   const { currentAnswers } = useStore();
@@ -63,13 +57,7 @@ const Explanation = ({ explanation }: { explanation: ExplanationType }) => {
           })}
         </Slice>
       </div>
-      <div>
-        <RedSubTitle>
-          <Icon name="ri-alert-line" size="lg" />
-          <h5>Points d&lsquo;attention</h5>
-        </RedSubTitle>
-        {explanation.attentions}
-      </div>
+      <div>{explanation.attentions}</div>
       {explanation.further && explanation.furtherLinks && (
         <div>
           <SubTitle>
