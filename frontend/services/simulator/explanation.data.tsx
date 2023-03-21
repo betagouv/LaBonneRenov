@@ -121,16 +121,17 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
       tips: 'Une mauvaise isolation des murs peut représenter jusqu’à 25 % des déperditions de chaleur d’un logement et engendrer son vieillissement prématuré.',
       attentions: (
         <>
-          <h6>
-            Si votre maison a été construite avant 1974, sans rénovation depuis,
-            il est fort probable qu&lsquo;elle ne soit pas isolée.
-          </h6>
+          Votre maison a été construite avant 1974, sans rénovation depuis, il
+          est fort probable qu&lsquo;elle ne soit pas isolée.
+          <br />
+          <br />
           <h6>Pourquoi une isolation des murs est nécessaire ? </h6>
           L&lsquo;installation d&lsquo;une pompe à chaleur dans une maison mal
           isolée va générer de l&lsquo;inconfort. Son prix d&lsquo;acquisition,
           vos factures et son volume seront supérieurs pour répondre à un écart
           de température et des besoins énergétiques plus importants, ce qui
           réduira à terme sa durée de vie.
+          <br />
           <br />
           <h6>Pourquoi l&lsquo;ordre des travaux est important ?</h6>
           Si vous réalisez l&lsquo;isolation de vos murs après
@@ -155,7 +156,7 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
       attentions: (
         <>
           <h6>
-            Si votre maison a été construite entre 1974 et 2000, sans rénovation
+            Votre maison a été construite entre 1974 et 2000, sans rénovation
             depuis, il est fort probable que l&lsquo;isolation soit à refaire ou
             qu&lsquo;elle ne soit pas isolée.
           </h6>
@@ -188,8 +189,8 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
       attentions: (
         <>
           <h6>
-            Si votre maison a été construite après 2000, elle devrait être
-            isolée pour répondre aux réglementations thermiques en vigueur.
+            Votre maison a été construite après 2000, elle devrait être isolée
+            pour répondre aux réglementations thermiques en vigueur.
           </h6>
           Mais attention, toutes les isolations ne se valent pas ! Au niveau de
           l&lsquo;installation (ponts thermiques) mais également de la qualité
@@ -230,6 +231,8 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           factures et son volume seront supérieurs pour répondre à un écart de
           température et des besoins énergétiques plus importants, ce qui
           réduira à terme sa durée de vie.
+          <br />
+          <br />
           <h6>Pourquoi l&lsquo;ordre des travaux est important ?</h6>
           Si vous réalisez l&lsquo;isolation de votre toiture après
           l&lsquo;installation d&lsquo;une PAC, cette dernière ne sera plus
@@ -323,16 +326,18 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
       tips: 'Une mauvaise isolation de la toiture peut représenter jusqu’à 30 % des déperditions de chaleur d’un logement et engendrer son vieillissement prématuré.',
       attentions: (
         <>
-          <h6>
-            Si votre maison a été construite avant 1974, sans rénovation depuis,
-            il est fort probable qu&lsquo;elle ne soit pas isolée.
-          </h6>
+          votre maison a été construite avant 1974, sans rénovation depuis, il
+          est fort probable qu&lsquo;elle ne soit pas isolée.
+          <br />
+          <br />
           <h6>Pourquoi une isolation de votre toiture est nécessaire ? </h6>
           L&lsquo;installation d&lsquo;une PAC dans une maison mal isolée va
           générer de l&lsquo;inconfort. Son prix d&lsquo;acquisition, vos
           factures et son volume seront supérieurs pour répondre à un écart de
           température et des besoins énergétiques plus importants, ce qui
           réduira à terme sa durée de vie.
+          <br />
+          <br />
           <h6>Pourquoi l&lsquo;ordre des travaux est important ?</h6>
           Si vous réalisez l&lsquo;isolation de votre toiture après
           l&lsquo;installation d&lsquo;une PAC, cette dernière ne sera plus
@@ -361,7 +366,7 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
       attentions: (
         <>
           <h6>
-            Si votre maison a été construite entre 1974 et 2000, sans rénovation
+            Votre maison a été construite entre 1974 et 2000, sans rénovation
             depuis, il est fort probable que l&lsquo;isolation soit à refaire ou
             qu&lsquo;elle ne soit pas isolée.
           </h6>
@@ -398,8 +403,8 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
       attentions: (
         <>
           <h6>
-            Si votre maison a été construite après 2000, elle devrait être
-            isolée pour répondre aux réglementations thermiques en vigueur.
+            Votre maison a été construite après 2000, elle devrait être isolée
+            pour répondre aux réglementations thermiques en vigueur.
           </h6>
           Mais attention, toutes les isolations ne se valent pas ! Au niveau de
           l&lsquo;installation (ponts thermiques) mais également de la qualité
@@ -436,6 +441,8 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           factures et son volume seront supérieurs pour répondre à un écart de
           température et des besoins énergétiques plus importants, ce qui
           réduira à terme sa durée de vie.
+          <br />
+          <br />
           <h6>Pourquoi l&lsquo;ordre des travaux est important ?</h6>
           Si vous réalisez l&lsquo;isolation du plancher bas après
           l&lsquo;installation d&lsquo;une PAC, cette dernière ne sera plus
@@ -521,16 +528,18 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
       tips: 'Une mauvaise isolation d’un plancher bas peut représenter jusqu’à 10 % des déperditions de chaleur d’un logement.',
       attentions: (
         <>
-          <h6>
-            Si votre maison a été construite avant 1974, sans rénovation depuis,
-            il est fort probable qu&lsquo;elle ne soit pas isolée.
-          </h6>
+          Votre maison a été construite avant 1974, sans rénovation depuis, il
+          est fort probable qu&lsquo;elle ne soit pas isolée.
+          <br />
+          <br />
           <h6>Pourquoi une isolation du plancher bas est nécessaire ? </h6>
           L&lsquo;installation d&lsquo;une PAC dans une maison mal isolée va
           générer de l&lsquo;inconfort. Son prix d&lsquo;acquisition, vos
           factures et son volume seront supérieurs pour répondre à un écart de
           température et des besoins énergétiques plus importants, ce qui
           réduira à terme sa durée de vie.
+          <br />
+          <br />
           <h6>Pourquoi l&lsquo;ordre des travaux est important ?</h6>
           Si vous réalisez l&lsquo;isolation du plancher bas après
           l&lsquo;installation d&lsquo;une PAC, cette dernière ne sera plus
@@ -558,7 +567,7 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
       attentions: (
         <>
           <h6>
-            Si votre maison a été construite entre 1974 et 2000, sans rénovation
+            Votre maison a été construite entre 1974 et 2000, sans rénovation
             depuis, il est fort probable que l&lsquo;isolation soit à refaire ou
             qu&lsquo;elle ne soit pas isolée.
           </h6>
@@ -594,8 +603,8 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
       attentions: (
         <>
           <h6>
-            Si votre maison a été construite après 2000, elle devrait être
-            isolée pour répondre aux réglementations thermiques en vigueur.
+            Votre maison a été construite après 2000, elle devrait être isolée
+            pour répondre aux réglementations thermiques en vigueur.
           </h6>
           Mais attention, toutes les isolations ne se valent pas ! Au niveau de
           l&lsquo;installation (ponts thermiques) mais également de la qualité
