@@ -16,14 +16,14 @@ function SaveResult() {
       <Result>
         <TextInput
           label="Lien vers votre résultat"
-          value={`labonnerenov.fr/pac/resultat?id=${id}`}
+          value={`${process.env.NEXT_PUBLIC_SITE_NAME}/pac/resultat?id=${id}`}
           onChange={() => {}}
         />
         <Button
           secondary
           onClick={() =>
             navigator.clipboard.writeText(
-              `labonnerenov.fr/pac/resultat?id=${id}`
+              `${process.env.NEXT_PUBLIC_SITE_NAME}/pac/resultat?id=${id}`
             )
           }
         >
