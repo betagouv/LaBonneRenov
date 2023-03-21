@@ -112,14 +112,14 @@ export const computeVMC = (answers: Answers): Explanation => {
 
 export const computeEmetteurs = (answers: Answers): Explanation => {
   const chauffage = answers[QuestionId.CHAUFFAGE_PRINCIPAL];
-  const emetteurs = answers[QuestionId.EMETTEURS];
+  const emetteurs = answers[QuestionId.EMETTEURS] as string[];
   if (chauffage === 'electrique') {
     return explanationData.emetteurs['Cas 1 - Radiateurs éléctrique'];
   }
 
   if (
     (chauffage === 'chaudiere gaz' || chauffage === 'chaudiere fioul') &&
-    emetteurs === 'plancher chauffant'
+    emetteurs.includes('plancher chauffant')
   ) {
     return explanationData.emetteurs['Cas 3 - Plancher chauffant à eau'];
   }
@@ -127,7 +127,7 @@ export const computeEmetteurs = (answers: Answers): Explanation => {
     (chauffage === 'chaudiere gaz' ||
       chauffage === 'chaudiere fioul' ||
       chauffage === 'chaudiere bois') &&
-    emetteurs === 'radiateurs muraux'
+    emetteurs.includes('radiateurs muraux')
   ) {
     return explanationData.emetteurs[
       'Cas 4 - Radiateur à eau haute température'

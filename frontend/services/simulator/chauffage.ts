@@ -10,14 +10,14 @@ const efficientChauffages = [
 
 const emetteurRating = (answers: Answers): number => {
   const emetteurs = getValue(answers, QuestionId.EMETTEURS);
-  if (emetteurs?.includes('radiateurs muraux')) {
-    return 2;
-  }
   if (emetteurs?.includes('plancher chauffant')) {
     return 1;
   }
+  if (emetteurs?.includes('radiateurs muraux')) {
+    return 2;
+  }
   if (emetteurs?.includes('autres')) {
-    return 0;
+    return 3;
   }
 
   throw new Error(`Unknown ${QuestionId.EMETTEURS} values: ${emetteurs}`);
