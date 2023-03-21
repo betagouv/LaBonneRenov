@@ -42,6 +42,8 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           factures et son volume seront supérieurs pour répondre à un écart de
           température et des besoins énergétiques plus importants, ce qui
           réduira à terme sa durée de vie.
+          <br />
+          <br />
           <h6>Pourquoi l&lsquo;ordre des travaux est important ?</h6>
           Si vous réalisez l&lsquo;isolation de vos murs après
           l&lsquo;installation d&lsquo;une PAC, cette dernière ne sera plus
