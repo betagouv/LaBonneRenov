@@ -1,5 +1,4 @@
 import { observer } from 'mobx-react';
-import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import Result from '../../components/Result';
@@ -32,29 +31,10 @@ function Resultat() {
     }
   }, [id, result]);
 
-  return (
-    <>
-      <Head>
-        <script
-          type="text/javascript"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.$crisp=[];
-              window.CRISP_WEBSITE_ID="a773553c-07e5-4c2e-b0f7-f7946ce35435";
-              (function(){d=document;s=d.createElement("script");
-              s.src="https://client.crisp.chat/l.js";
-              s.async=1;
-              d.getElementsByTagName("head")[0].appendChild(s);
-              })();`,
-          }}
-        />
-      </Head>
-      {result ? (
-        <Result result={result} />
-      ) : (
-        <>Analyse de vos réponses en cours...</>
-      )}
-    </>
+  return result ? (
+    <Result result={result} />
+  ) : (
+    <>Analyse de vos réponses en cours...</>
   );
 }
 

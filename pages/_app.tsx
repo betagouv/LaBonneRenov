@@ -53,6 +53,21 @@ export default function App({ Component, pageProps }: AppProps) {
               `,
           }}
         />
+        <script
+          type="text/javascript"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: `
+                /* Crisp */
+                window.$crisp=[];
+                window.CRISP_WEBSITE_ID="a773553c-07e5-4c2e-b0f7-f7946ce35435";
+                (function(){d=document;s=d.createElement("script");
+                s.src="https://client.crisp.chat/l.js";
+                s.async=1;
+                d.getElementsByTagName("head")[0].appendChild(s);
+                })();`,
+          }}
+        />
       </Head>
       <Script
         async
