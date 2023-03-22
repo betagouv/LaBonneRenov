@@ -1,4 +1,4 @@
-import { Callout, Stepper } from '@dataesr/react-dsfr';
+import { Callout, CalloutText, Stepper } from '@dataesr/react-dsfr';
 import styled from 'styled-components';
 
 export const FormContainer = styled.form`
@@ -37,4 +37,11 @@ export const Explanation = styled(Callout)`
 export const SkipLink = styled.button`
   float: right;
   text-decoration: underline;
+`;
+
+export const CalloutDescription = styled(CalloutText)`
+  text-align: justify;
+  p {
+    margin-bottom: 8px;
+  }
 `;

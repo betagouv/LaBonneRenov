@@ -7,8 +7,7 @@ const murFurther = 'En savoir plus sur l’isolation des murs';
 
 const plancherHautTitle = 'Toit';
 const plancherHautImage = '/images/plancher_haut_icon.svg';
-const plancherHautFurther =
-  'En savoir plus sur l’isolation des planchers hauts';
+const plancherHautFurther = 'En savoir plus sur l’isolation de votre toiture';
 
 const plancherBasTitle = 'Sols';
 const plancherBasImage = '/images/sol_icon.svg';
@@ -842,7 +841,7 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
       dependencies: [QuestionId.CHAUFFAGE_PRINCIPAL],
       image: emetteursImage,
       status: 'nok',
-      tips: "La température de fonctionnement idéale d'une PAC est de 35/40°C. Elle permet une consommation en énergie moindre et de très bons rendements.",
+      tips: "La température de fonctionnement idéale d'une PAC air/eau est de 35/40°C. Elle permet une consommation en énergie moindre et de très bons rendements.",
       attentions: (
         <>
           <h6>
@@ -871,7 +870,7 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
       dependencies: [QuestionId.CHAUFFAGE_PRINCIPAL, QuestionId.EMETTEURS],
       image: emetteursImage,
       status: 'ok',
-      tips: "La température de fonctionnement idéale d'une PAC est de 35/40°C. Elle permet une consommation en énergie moindre et de très bons rendements.",
+      tips: "La température de fonctionnement idéale d'une PAC air/eau est de 35/40°C. Elle permet une consommation en énergie moindre et de très bons rendements.",
       attentions: (
         <>
           <h6>
@@ -897,7 +896,7 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
       dependencies: [QuestionId.CHAUFFAGE_PRINCIPAL, QuestionId.EMETTEURS],
       image: emetteursImage,
       status: 'sok',
-      tips: "La température de fonctionnement idéale d'une PAC est de 35/40°C. Elle permet une consommation en énergie moindre et de très bons rendements.",
+      tips: "La température de fonctionnement idéale d'une PAC air/eau est de 35/40°C. Elle permet une consommation en énergie moindre et de très bons rendements.",
       attentions: (
         <>
           <h6>
@@ -922,7 +921,7 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
       dependencies: [QuestionId.CHAUFFAGE_PRINCIPAL, QuestionId.EMETTEURS],
       image: emetteursImage,
       status: 'sok',
-      tips: "La température de fonctionnement idéale d'une PAC est de 35/40°C. Elle permet une consommation en énergie moindre et de très bons rendements.",
+      tips: "La température de fonctionnement idéale d'une PAC air/eau est de 35/40°C. Elle permet une consommation en énergie moindre et de très bons rendements.",
       attentions: (
         <>
           <h6>

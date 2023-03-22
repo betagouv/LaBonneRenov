@@ -7,9 +7,9 @@ import Color from '../../types/enum/Color';
 import { CenteredButton } from './Synthese.styles';
 
 const values = {
-  ok: "L'installation d'une pompe à chaleur semble adapté à votre logement.",
-  sok: 'Avant d’installer une pompe à chaleur, votre logement nécessite des travaux complémentaires qui maximiseront son efficacité.',
-  nok: "En l'état, l'installation d'une pompe à chaleur dans votre logement n'est pas recommandé. D'autres travaux prioritaires sont à prévoir en amont.",
+  ok: "L'installation d'une pompe à chaleur air/eau semble adapté à votre logement.",
+  sok: 'Avant d’installer une pompe à chaleur air/eau, votre logement nécessite des travaux complémentaires qui maximiseront son efficacité.',
+  nok: "En l'état, l'installation d'une pompe à chaleur air/eau dans votre logement n'est pas recommandé. D'autres travaux prioritaires sont à prévoir en amont.",
 };
 
 function Synthese({

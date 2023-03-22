@@ -24,11 +24,9 @@ const house: QuestionGroup[] = [
                   à cette question, nous prenons en compte la situation de votre
                   maison.
                 </p>
-                <p>
-                  Cette information nous permettra également de vous orienter
-                  vers les conseillers du réseaux France Rénov’ les plus proches
-                  de votre domicile.
-                </p>
+                Cette information nous permettra également de vous orienter vers
+                les conseillers du réseaux France Rénov’ les plus proches de
+                votre domicile.
               </>
             ),
           },
@@ -214,7 +212,7 @@ const house: QuestionGroup[] = [
           {
             title: 'Comment répondre à cette question ?',
             description:
-              'Cette information peut être indiquée dans le DPE. En cas de doute, indiquez “je ne sais pas”. L’évaluation se basera sur l’année de construction de votre maison.',
+              "Cette information peut être indiquée dans le DPE ou l'audit énergétique. En cas de doute, indiquez “je ne sais pas”. L’évaluation se basera sur l’année de construction de votre maison.",
           },
         ],
         type: QuestionType.YESNOUNKNOWN,
@@ -268,7 +266,7 @@ const house: QuestionGroup[] = [
           {
             title: 'Comment répondre à cette question ?',
             description:
-              'Cette information peut être indiquée dans le DPE. En cas de doute, indiquez “non”',
+              "Cette information peut être indiquée dans le DPE ou l'audit énergétique. En cas de doute, indiquez “non”",
           },
           {
             title: 'Le saviez-vous ?',
@@ -307,12 +305,7 @@ const house: QuestionGroup[] = [
           {
             title: 'Comment répondre à cette question ?',
             description:
-              'Cette information peut être indiquée dans le DPE. En cas de doute, indiquez “non”',
-          },
-          {
-            title: 'Le saviez-vous ?',
-            description:
-              "Une toiture non isolée peut représenter jusqu'à 30% des déperditions énergétiques d’un logement.",
+              "Cette information peut être indiquée dans le DPE ou l'audit énergétique. En cas de doute, indiquez “non”",
           },
         ],
         type: QuestionType.YESNOUNKNOWN,
@@ -346,8 +339,17 @@ const house: QuestionGroup[] = [
         context: [
           {
             title: 'Comment répondre à cette question ?',
-            description:
-              "Le vide sanitaire est l'espace situé entre le sol et le plancher bas de votre logement. Il sert de zone “tampon” entre la maison et le terrain sur laquelle elle est construite. Un vide sanitaire est compris entre 20 cm et 1.80m de hauteur. Si la maison n’est pas construite sur une cave, un garage ou un vide sanitaire, on parle de maison construite “sur terre-plein” ou pilotis.",
+            description: (
+              <>
+                <p>
+                  Le vide sanitaire est un espace vide entre le plancher de la
+                  maison et la terre sur laquelle elle est construite.
+                </p>
+                Si la maison n’est pas construite sur une cave, un garage ou un
+                vide sanitaire, on parle de maison construite “sur terre-plein”
+                ou pilotis.
+              </>
+            ),
           },
         ],
         type: QuestionType.YESNOUNKNOWN,
@@ -387,10 +389,8 @@ const house: QuestionGroup[] = [
                   Cette information peut être indiquéee dans le DPE. En cas de
                   doute, indiquez “non”.
                 </p>
-                <p>
-                  Une mauvaise isolation d’un vide sanitaire peut causer une
-                  perte de 7 à 10% de la chaleur d’une maison.
-                </p>
+                Une mauvaise isolation d’un vide sanitaire peut causer une perte
+                de 7 à 10% de la chaleur d’une maison.
               </>
             ),
           },
@@ -459,7 +459,7 @@ const house: QuestionGroup[] = [
           {
             title: 'Le saviez vous ?',
             description:
-              'La performance énergétique des fenêtres au-delà de 15 n’est pas optimale.',
+              'La performance énergétique des fenêtres au-delà de 15 ans n’est pas optimale.',
           },
         ],
         type: QuestionType.YESNOUNKNOWN,
@@ -588,7 +588,7 @@ const house: QuestionGroup[] = [
             ),
           },
           {
-            label: 'Autre',
+            label: 'Autres',
             value: 'autre',
             recap: (onClick, externalLink) => (
               <>
@@ -647,12 +647,12 @@ const house: QuestionGroup[] = [
       },
       {
         id: QuestionId.EMETTEURS,
-        label: 'Quels sont vos émetteurs de chauffage ?',
+        label: "Quel est le type d'émetteur de chauffage principal ?",
         context: [
           {
             title: 'Le saviez vous ?',
             description:
-              "Un émetteur de chauffage est l’appareil ou la surface qui diffuse la chaleur produite par un système de chauffage dans les pièces d'un logement. Dans les maisons équipées d’une chaudière au fioul, au gaz ou à bois, les émetteurs sont des radiateurs muraux à eau chaude ou un système de plancher chauffant.",
+              "Un émetteur est un élément d'un système de chauffage qui diffuse sa chaleur ou sa fraicheur à l'air ambiant.",
           },
         ],
         dependsOn: [

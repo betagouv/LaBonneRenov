@@ -27,7 +27,8 @@ function Home() {
           />
           <div>
             <h1>
-              Est-ce qu’une pompe à chaleur est bien adaptée à ma maison ?
+              Est-ce qu’une pompe à chaleur air/eau est bien adaptée à ma
+              maison ?
             </h1>
             <HeaderDescription>
               Posez-vous les bonnes questions avant de vous lancer dans vos

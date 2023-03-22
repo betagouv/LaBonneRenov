@@ -1,4 +1,4 @@
-import { Button, CalloutText, CalloutTitle } from '@dataesr/react-dsfr';
+import { Button, CalloutTitle } from '@dataesr/react-dsfr';
 import { observer } from 'mobx-react';
 import React, {
   FormEvent,
@@ -19,6 +19,7 @@ import {
   QuestionBox,
   Explanation,
   SkipLink,
+  CalloutDescription,
 } from './MainForm.styles';
 import CheckBox from './Form/CheckBox';
 import Radio from './Form/Radio';
@@ -164,9 +165,9 @@ function MainForm() {
                     {currentQuestion.context.map((callout, index, array) => (
                       <>
                         <CalloutTitle as="h4">{callout.title}</CalloutTitle>
-                        <CalloutText as="div">
+                        <CalloutDescription as="div">
                           {callout.description}
-                        </CalloutText>
+                        </CalloutDescription>
                         {index !== array.length - 1 && (
                           <>
                             <br />
