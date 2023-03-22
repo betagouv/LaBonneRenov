@@ -72,9 +72,11 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           hiver et des difficultés à se chauffer sont les signes d&lsquo;une
           mauvaise isolation.
           <br />
+          <br />
           L&lsquo;installation d&lsquo;une PAC dans une maison mal isolée
           générera de l&lsquo;inconfort, un prix d&lsquo;acquisition et des
           factures plus élevés, ainsi qu&lsquo;une durée de vie moindre.
+          <br />
           <br />
           Il est donc primordial de faire vérifier l&lsquo;état de
           l&lsquo;isolation de vos murs par un professionnel.
@@ -100,9 +102,11 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           hiver et des difficultés à se chauffer sont les signes d&lsquo;une
           mauvaise isolation.
           <br />
+          <br />
           L&lsquo;installation d&lsquo;une PAC dans une maison mal isolée
           générera de l&lsquo;inconfort, un prix d&lsquo;acquisition et des
           factures plus élevés, ainsi qu&lsquo;une durée de vie moindre.
+          <br />
           <br />
           Si vous avez un doute sur l&lsquo;installation ou la qualité de
           l&lsquo;isolant, il est recommandé de faire vérifier l&lsquo;état de
@@ -168,9 +172,11 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           des difficultés à se chauffer sont les signes d&lsquo;une mauvaise
           isolation.
           <br />
+          <br />
           L&lsquo;installation d&lsquo;une PAC dans une maison mal isolée
           générera de l&lsquo;inconfort, un prix d&lsquo;acquisition et des
           factures plus élevées, ainsi qu&lsquo;une durée de vie moindre.
+          <br />
           <br />
           Il est donc fortement recommandé de faire vérifier l&lsquo;état de
           l&lsquo;isolation de vos murs par un professionnel.
@@ -199,6 +205,7 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           humides (présence de condensation, de moisissure), froids en hiver et
           des difficultés à se chauffer sont les signes d&lsquo;une mauvaise
           isolation.
+          <br />
           <br />
           L&lsquo;installation d&lsquo;une PAC dans une maison mal isolée
           générera de l&lsquo;inconfort, un prix d&lsquo;acquisition et des
@@ -267,9 +274,11 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           plafonds humides, des fuites dans la toiture et des difficultés à se
           chauffer sont les signes d&lsquo;une mauvaise isolation.
           <br />
+          <br />
           L&lsquo;installation d&lsquo;une PAC dans une maison mal isolée
           générera de l&lsquo;inconfort, un prix d&lsquo;acquisition et des
           factures plus élevés, ainsi qu&lsquo;une durée de vie moindre.
+          <br />
           <br />
           Il est donc primordial de faire vérifier l&lsquo;étanchéité et
           l&lsquo;isolation de votre toiture par un professionnel.
@@ -299,9 +308,11 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           plafonds humides, des fuites dans la toiture et des difficultés à se
           chauffer sont les signes d&lsquo;une mauvaise isolation.
           <br />
+          <br />
           L&lsquo;installation d&lsquo;une PAC dans une maison mal isolée
           générera de l&lsquo;inconfort, un prix d&lsquo;acquisition et des
           factures plus élevés, ainsi qu&lsquo;une durée de vie moindre.
+          <br />
           <br />
           Si vous avez un doute sur l&lsquo;installation ou la qualité de
           l&lsquo;isolant, il est recommandé de faire vérifier
@@ -377,9 +388,11 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           humides, des fuites dans la toiture et des difficultés à se chauffer
           sont les signes d&lsquo;une mauvaise isolation.
           <br />
+          <br />
           L&lsquo;installation d&lsquo;une PAC dans une maison mal isolée
           générera de l&lsquo;inconfort, un prix d&lsquo;acquisition et des
           factures plus élevés, ainsi qu&lsquo;une durée de vie moindre.
+          <br />
           <br />
           Il est donc fortement recommandé de faire vérifier l&lsquo;étanchéité
           et l&lsquo;isolation de votre toiture par un professionnel.
@@ -413,9 +426,11 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           humides, des fuites dans la toiture et des difficultés à se chauffer
           sont les signes d&lsquo;une mauvaise isolation.
           <br />
+          <br />
           L&lsquo;installation d&lsquo;une PAC dans une maison mal isolée
           générera de l&lsquo;inconfort, un prix d&lsquo;acquisition et des
           factures plus élevés, ainsi qu&lsquo;une durée de vie moindre.
+          <br />
           <br />
           Il est donc recommandé de faire vérifier l&lsquo;étanchéité et
           l&lsquo;isolation de votre toiture par un professionnel.
@@ -476,9 +491,11 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           plancher bas froid et des difficultés à se chauffer peuvent être les
           signes d&lsquo;une mauvaise isolation.
           <br />
+          <br />
           L&lsquo;installation d&lsquo;une PAC dans une maison mal isolée
           générera de l&lsquo;inconfort, un prix d&lsquo;acquisition et des
           factures plus élevés, ainsi qu&lsquo;une durée de vie moindre.
+          <br />
           <br />
           Il est donc important de faire vérifier l&lsquo;isolation de votre
           plancher bas par un professionnel.
@@ -507,9 +524,11 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           plancher bas froid et des difficultés à se chauffer peuvent être les
           signes d&lsquo;une mauvaise isolation.
           <br />
+          <br />
           L&lsquo;installation d&lsquo;une PAC dans une maison mal isolée
           générera de l&lsquo;inconfort, un prix d&lsquo;acquisition et des
           factures plus élevés, ainsi qu&lsquo;une durée de vie moindre.
+          <br />
           <br />
           Si vous avez un doute sur l&lsquo;installation ou la qualité de
           l&lsquo;isolant, il est recommandé de faire vérifier l&lsquo;isolation
@@ -578,9 +597,11 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           froid et des difficultés à se chauffer peuvent être les signes
           d&lsquo;une mauvaise isolation.
           <br />
+          <br />
           L&lsquo;installation d&lsquo;une PAC dans une maison mal isolée
           générera de l&lsquo;inconfort, un prix d&lsquo;acquisition et des
           factures plus élevés, ainsi qu&lsquo;une durée de vie moindre.
+          <br />
           <br />
           Il est donc recommandé de faire vérifier l&lsquo;isolation de votre
           plancher bas par un professionnel.
@@ -613,9 +634,11 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           froid et des difficultés à se chauffer peuvent être les signes
           d&lsquo;une mauvaise isolation.
           <br />
+          <br />
           L&lsquo;installation d&lsquo;une PAC dans une maison mal isolée
           générera de l&lsquo;inconfort, un prix d&lsquo;acquisition et des
           factures plus élevés, ainsi qu&lsquo;une durée de vie moindre.
+          <br />
           <br />
           Il est donc recommandé de faire vérifier l&lsquo;isolation de votre
           plancher bas par un professionnel.
@@ -645,6 +668,7 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           logement. Dans certains cas, les ouvrants (partie mobile de la
           fenêtre) et les dormants (cadre fixe de la fenêtre) sont de mauvaises
           qualités ou trop anciens et doivent être changés.
+          <br />
           <br />
           L&lsquo;installation d&lsquo;une PAC dans une maison mal isolée aura
           des conséquences sur son prix d&lsquo;acquisition, vos factures et son
@@ -676,6 +700,7 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           Néanmoins, il est important de s&lsquo;attarder sur l&lsquo;ensemble
           de la structure de vos menuiseries et notamment sur la précision de la
           pose, ainsi que la qualité des dormants (cadre fixe de la fenêtre).
+          <br />
           <br />
           L&lsquo;âge des fenêtres joue également un rôle important dans son
           efficacité isolante, avec une durée de vie moyenne de 25-35 ans pour
@@ -739,10 +764,12 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           à terme la santé, le confort des occupants d&lsquo;un logement et le
           bon fonctionnement d&lsquo;une PAC.
           <br />
+          <br />
           Dans certains cas, les parois vitrées peuvent être suffisamment
           isolées, mais les ouvrants (partie mobile de la fenêtre) et les
           dormants (cadre fixe de la fenêtre) sont de mauvaises qualités ou trop
           anciens et doivent être changés.
+          <br />
           <br />
           Parlez-en avec votre conseiller France Rénov&lsquo;.
         </>
@@ -768,6 +795,7 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           </h6>
           Elle permet également la ventilation optimale d&lsquo;un logement, ce
           qui empêche sa détérioration, notamment celle de l&lsquo;isolation.
+          <br />
           <br />
           De plus, une isolation et des menuiseries performantes impliquent une
           étanchéité de l&lsquo;air très élevée, ce qui peut perturber
@@ -795,10 +823,12 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           empêche sa détérioration en évacuant l&lsquo;air vicié et
           l&lsquo;humidité.
           <br />
+          <br />
           Néanmoins, assurez-vous que votre VMC soit adaptée et en état. Afin de
           maximiser vos économies d&lsquo;énergie liées à l&lsquo;installation
           d&lsquo;une PAC, le bon état général de votre VMC est essentiel, et
           certains modèles sont à privilégiés.
+          <br />
           <br />
           Parlez-en avec votre conseiller France Rénov&lsquo;.
         </>
@@ -822,11 +852,13 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           La ventilation optimale d&lsquo;un logement empêche sa détérioration,
           notamment celle de l&lsquo;isolation.
           <br />
+          <br />
           De plus, une isolation et des menuiseries performantes impliquent une
           étanchéité de l&lsquo;air très élevée, ce qui peut perturber
           l&lsquo;évacuation de l&lsquo;air vicié et de l&lsquo;humidité. Un
           logement mal ventilé peut avoir des conséquences importantes sur la
           santé de ses occupants.
+          <br />
           <br />
           Parlez-en avec votre conseiller France Rénov&lsquo;.
         </>
@@ -853,9 +885,11 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           température et d&lsquo;une installation de chauffage utilisant un
           système hydraulique (type chaudière).
           <br />
+          <br />
           Son installation nécessiterait de changer complètement votre système
           de chauffage actuel. D&lsquo;autres systèmes de chauffage alternatifs
           pourrait convenir davantage à votre logement.
+          <br />
           <br />
           Parlez-en avec votre conseiller France Rénov&lsquo;.
         </>
@@ -883,6 +917,7 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           présence d&lsquo;une installation de chauffage utilisant un système
           hydraulique (chaudière).
           <br />
+          <br />
           Parlez-en avec votre conseiller France Rénov&lsquo;.
         </>
       ),
@@ -908,9 +943,11 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           installation de chauffage utilisant un système hydraulique et un
           éméteur haute température.
           <br />
+          <br />
           Ce système est moins optimal, car il engendre un coût d&lsquo;achat et
           des dépenses énergétiques supérieures, ainsi qu&lsquo;un rendement
           moindre. Néanmoins, il reste dans la plupart des cas très intéressant.
+          <br />
           <br />
           Parlez-en avec votre conseiller France Rénov&lsquo;.
         </>
@@ -933,9 +970,11 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
           température et d&lsquo;une installation de chauffage utilisant un
           système hydraulique (type chaudière).
           <br />
+          <br />
           Son installation nécessiterait de changer complètement votre système
           de chauffage actuel. D&lsquo;autres systèmes de chauffage alternatifs
           pourrait convenir davantage à votre logement.
+          <br />
           <br />
           Parlez-en avec votre conseiller France Rénov&lsquo;.
         </>
