@@ -89,10 +89,10 @@ export const computeMenuiserie = (answers: Answers): Explanation => {
   }
 
   if (menuiserie === 'true') {
-    const old = answers[QuestionId.MENUISERIES_RECENT];
-    return old
-      ? explanationData.menuiserie['Cas 2 - Double vitrage ancien']
-      : explanationData.menuiserie['Cas 3 - DV récent ou TV'];
+    const recent = answers[QuestionId.MENUISERIES_RECENT];
+    return recent === 'true'
+      ? explanationData.menuiserie['Cas 3 - DV récent ou TV']
+      : explanationData.menuiserie['Cas 2 - Double vitrage ancien'];
   }
 
   return explanationData.menuiserie['Cas 4 - Ne sait pas'];
