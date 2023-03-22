@@ -19,7 +19,12 @@ const Explanations = ({ result }: { result: Result }) => (
           key={explanation.title}
           label={
             <>
-              {explanation.status === 'nok' && (
+              {explanation.status === 'ok' ? (
+                <Icon
+                  name="ri-error-warning-line"
+                  color="var(--blue-france-sun-113-625)"
+                />
+              ) : (
                 <Icon name="ri-alert-line" color="#CE0500" />
               )}
               {explanation.title}
