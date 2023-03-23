@@ -935,18 +935,18 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
       attentions: (
         <>
           <h6>
-            Votre système de chauffage actuel ne permet pas l&lsquo;installation
-            d&lsquo;une PAC air/eau basse température (35/40°C).
+            Votre système de chauffage actuel permet l&lsquo;installation
+            d&lsquo;une PAC air/eau haute température (65-80°C).
           </h6>
-          En revanche, il semble possible d&lsquo;installer une PAC air/eau
-          haute température (65-80°C) puisque vous bénéficiez d&lsquo;une
-          installation de chauffage utilisant un système hydraulique et un
-          éméteur haute température.
+          En effet, vous bénéficiez d&lsquo;une installation de chauffage
+          utilisant un système hydraulique et d&lsquo;un émetteur haute
+          température.
           <br />
           <br />
           Ce système est moins optimal, car il engendre un coût d&lsquo;achat et
-          des dépenses énergétiques supérieures, ainsi qu&lsquo;un rendement
-          moindre. Néanmoins, il reste dans la plupart des cas très intéressant.
+          des dépenses énergétiques supérieures à un système basse température
+          (35/40°C), ainsi qu&lsquo;un rendement moindre. Néanmoins, il reste
+          dans la plupart des cas très intéressant.
           <br />
           <br />
           Parlez-en avec votre conseiller France Rénov&lsquo;.
@@ -957,7 +957,7 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
       title: emetteursTitle,
       dependencies: [QuestionId.CHAUFFAGE_PRINCIPAL, QuestionId.EMETTEURS],
       image: emetteursImage,
-      status: 'sok',
+      status: 'nok',
       tips: "La température de fonctionnement idéale d'une PAC air/eau est de 35/40°C. Elle permet une consommation en énergie moindre et de très bons rendements.",
       attentions: (
         <>
