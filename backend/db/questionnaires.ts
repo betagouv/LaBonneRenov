@@ -1,4 +1,4 @@
-export const questionnaires = 'tblrWa3D7VbvtnTTO';
+export const questionnaires = process.env.QUESTIONNAIRE_TABLE as string;
 
 export const columns = {
   id: 'Id',
