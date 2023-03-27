@@ -29,9 +29,7 @@ function Home() {
     <>
       <Slice color={Color.BLUE}>
         <Title>La Bonne Rénov&lsquo;</Title>
-        <h4>
-          Vous aider à mesurer l’impact des travaux de rénovation énergétique.
-        </h4>
+        <h4>Des travaux de rénovations énergétiques plus performants.</h4>
         <div>
           Court laïus sur la promesse du site et de pourquoi qu’il existe. Lorem
           ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
