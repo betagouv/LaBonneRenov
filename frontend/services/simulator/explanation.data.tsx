@@ -445,7 +445,11 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
   plancherBas: {
     'Cas 1 - Plancher bas non isolé': {
       title: plancherBasTitle,
-      dependencies: [QuestionId.CAVE, QuestionId.PLANCHER_BAS_ISOLE],
+      dependencies: [
+        QuestionId.CAVE,
+        QuestionId.PLANCHER_BAS_ISOLE,
+        QuestionId.CAVE_ISOLEE,
+      ],
       image: plancherBasImage,
       status: 'nok',
       tips: 'Une mauvaise isolation d’un plancher bas peut représenter jusqu’à 10 % des déperditions de chaleur d’un logement.',
@@ -478,6 +482,7 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
       dependencies: [
         QuestionId.CONSTRUCTION,
         QuestionId.CAVE,
+        QuestionId.CAVE_ISOLEE,
         QuestionId.PLANCHER_BAS_ISOLE,
       ],
       image: plancherBasImage,
@@ -511,6 +516,7 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
       dependencies: [
         QuestionId.CONSTRUCTION,
         QuestionId.CAVE,
+        QuestionId.CAVE_ISOLEE,
         QuestionId.PLANCHER_BAS_ISOLE,
       ],
       image: plancherBasImage,
@@ -541,6 +547,7 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
       dependencies: [
         QuestionId.CONSTRUCTION,
         QuestionId.CAVE,
+        QuestionId.CAVE_ISOLEE,
         QuestionId.PLANCHER_BAS_ISOLE,
       ],
       image: plancherBasImage,
@@ -579,6 +586,7 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
       dependencies: [
         QuestionId.CONSTRUCTION,
         QuestionId.CAVE,
+        QuestionId.CAVE_ISOLEE,
         QuestionId.PLANCHER_BAS_ISOLE,
       ],
       image: plancherBasImage,
@@ -617,6 +625,7 @@ export const explanationData: Record<string, Record<string, Explanation>> = {
       dependencies: [
         QuestionId.CONSTRUCTION,
         QuestionId.CAVE,
+        QuestionId.CAVE_ISOLEE,
         QuestionId.PLANCHER_BAS_ISOLE,
       ],
       image: plancherBasImage,

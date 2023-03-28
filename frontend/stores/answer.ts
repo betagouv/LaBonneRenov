@@ -94,10 +94,11 @@ export default class AnswerStore {
   }
 
   async init(id: string | null) {
-    if (id) {
+    if (id && id !== this.id) {
       const response = await agent.Answers.get(id);
       if (response) {
         runInAction(() => {
+          localStorage.setItem('questionnaires_id', id);
           this.id = id;
           this.currentAnswers = JSON.parse(response.values);
         });

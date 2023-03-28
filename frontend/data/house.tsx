@@ -377,7 +377,7 @@ const house: QuestionGroup[] = [
         },
       },
       {
-        id: QuestionId.PLANCHER_BAS_ISOLE,
+        id: QuestionId.CAVE_ISOLEE,
         label:
           "Le plancher au dessus de la cave, du garage ou d'une vide sanitaire est-il isolé ?",
         context: [
@@ -397,6 +397,40 @@ const house: QuestionGroup[] = [
         ],
         type: QuestionType.YESNOUNKNOWN,
         dependsOn: [{ id: QuestionId.CAVE, value: 'true' }],
+        recap: (value: string, onClick, externalLink) => {
+          if (value === UNKNOWN) {
+            return (
+              <>
+                <ClickableAnswer onClick={onClick} externalLink={externalLink}>
+                  Je ne sais pas
+                </ClickableAnswer>{' '}
+                si mon plancher est isolé
+              </>
+            );
+          }
+          return (
+            <>
+              Mon plancher{' '}
+              <ClickableAnswer onClick={onClick} externalLink={externalLink}>
+                {value === 'true' ? 'est' : "n'est pas"}
+              </ClickableAnswer>{' '}
+              isolé
+            </>
+          );
+        },
+      },
+      {
+        id: QuestionId.PLANCHER_BAS_ISOLE,
+        label: 'Votre plancher est-il isolé ?',
+        context: [
+          {
+            title: 'Comment répondre à cette question ?',
+            description:
+              'Cette information peut être indiquéee dans le DPE. En cas de doute, indiquez “non”.',
+          },
+        ],
+        type: QuestionType.YESNOUNKNOWN,
+        dependsOn: [{ id: QuestionId.CAVE, value: 'false' }],
         recap: (value: string, onClick, externalLink) => {
           if (value === UNKNOWN) {
             return (
@@ -661,30 +695,43 @@ const house: QuestionGroup[] = [
             values: ['chaudiere gaz', 'chaudiere fioul', 'chaudiere bois'],
           },
         ],
-        type: QuestionType.CHECKBOX,
-        recap: (values: string[], onClick, externalLink) => (
-          <>
-            Je me chauffe avec{' '}
-            <ClickableAnswer onClick={onClick} externalLink={externalLink}>
-              {values.join(', ')}
-            </ClickableAnswer>
-          </>
-        ),
+        type: QuestionType.RADIO,
         options: [
           {
             label: 'Radiateurs muraux',
             value: 'radiateurs muraux',
-            recap: 'des radiateurs muraux',
+            recap: (onClick, externalLink) => (
+              <>
+                Je me chauffe avec{' '}
+                <ClickableAnswer onClick={onClick} externalLink={externalLink}>
+                  des radiateurs mureaux
+                </ClickableAnswer>
+              </>
+            ),
           },
           {
             label: 'Plancher chauffant',
             value: 'plancher chauffant',
-            recap: 'un plancher chauffant',
+            recap: (onClick, externalLink) => (
+              <>
+                Je me chauffe avec{' '}
+                <ClickableAnswer onClick={onClick} externalLink={externalLink}>
+                  un plancher chauffant
+                </ClickableAnswer>
+              </>
+            ),
           },
           {
             label: 'Autres',
             value: 'autres',
-            recap: 'un autre mode de chauffage',
+            recap: (onClick, externalLink) => (
+              <>
+                Je me chauffe avec{' '}
+                <ClickableAnswer onClick={onClick} externalLink={externalLink}>
+                  un autre mode de chauffage
+                </ClickableAnswer>
+              </>
+            ),
           },
         ],
       },
