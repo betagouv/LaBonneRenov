@@ -64,6 +64,18 @@ const computePlancherHaut = (answers: Answers): Explanation => {
 const computePlancherBas = (answers: Answers): Explanation => {
   const cave = answers[QuestionId.CAVE];
   if (cave === 'true') {
+    const isolated = answers[QuestionId.CAVE_ISOLEE];
+    const old = isOld(answers);
+    if (isolated === 'false') {
+      return explanationData.plancherBas['Cas 1 - Plancher bas non isolé'];
+    }
+
+    if (isolated === 'true') {
+      return old
+        ? explanationData.plancherBas['Cas 3 - Plancher bas isolé']
+        : explanationData.plancherBas['Cas 1 - Plancher bas récent isolé'];
+    }
+  } else if (cave === 'false') {
     const isolated = answers[QuestionId.PLANCHER_BAS_ISOLE];
     const old = isOld(answers);
     if (isolated === 'false') {
@@ -112,14 +124,14 @@ export const computeVMC = (answers: Answers): Explanation => {
 
 export const computeEmetteurs = (answers: Answers): Explanation => {
   const chauffage = answers[QuestionId.CHAUFFAGE_PRINCIPAL];
-  const emetteurs = answers[QuestionId.EMETTEURS] as string[];
+  const emetteurs = answers[QuestionId.EMETTEURS] as string;
   if (chauffage === 'electrique') {
     return explanationData.emetteurs['Cas 1 - Radiateurs éléctrique'];
   }
 
   if (
     (chauffage === 'chaudiere gaz' || chauffage === 'chaudiere fioul') &&
-    emetteurs.includes('plancher chauffant')
+    emetteurs === 'plancher chauffant'
   ) {
     return explanationData.emetteurs['Cas 3 - Plancher chauffant à eau'];
   }
@@ -127,7 +139,7 @@ export const computeEmetteurs = (answers: Answers): Explanation => {
     (chauffage === 'chaudiere gaz' ||
       chauffage === 'chaudiere fioul' ||
       chauffage === 'chaudiere bois') &&
-    emetteurs.includes('radiateurs muraux')
+    emetteurs === 'radiateurs muraux'
   ) {
     return explanationData.emetteurs[
       'Cas 4 - Radiateur à eau haute température'

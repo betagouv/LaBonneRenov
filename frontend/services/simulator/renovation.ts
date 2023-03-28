@@ -35,7 +35,7 @@ const computeMenuiserie = (answers: Answers): number => {
 
 const computePlancherBas = (answers: Answers): number => {
   const cave = getValue(answers, QuestionId.CAVE);
-  const isolated = getValue(answers, QuestionId.PLANCHER_BAS_ISOLE);
+  const isolated = getValue(answers, QuestionId.CAVE_ISOLEE);
   if (cave !== 'true' && isolated !== 'true') {
     return 1;
   }

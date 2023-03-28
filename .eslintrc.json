@@ -10,7 +10,8 @@
     "no-irregular-whitespace": "off",
     "prettier/prettier": 2,
     "import/prefer-default-export": "off",
-    "react/function-component-definition": "off"
+    "react/function-component-definition": "off",
+    "no-plusplus": "off"
   },
   "overrides": [
     {

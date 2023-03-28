@@ -12,6 +12,7 @@ enum QuestionId {
   TOITURE_ISOLE = 'toiture_isole',
   COMBLES_ISOLES = 'combles_isoles',
   CAVE = 'cave',
+  CAVE_ISOLEE = 'cave_isolee',
   PLANCHER_BAS_ISOLE = 'plancher_bas_isole',
   MENUISERIES_DOUBLE_VITRAGE = 'menuiseries_double_vitrage',
   MENUISERIES_RECENT = 'menuiseries_recent',
