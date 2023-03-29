@@ -12,7 +12,7 @@ import Link from 'next/link';
 function Footer() {
   return (
     <FooterDSFR>
-      <FooterBody description="Mesurer l’impact des travaux de rénovation énergétique">
+      <FooterBody description="Des travaux de rénovations énergétiques plus performants">
         <Logo
           splitCharacter={10}
           asLink={<Link href="/" title="Revenir à l'accueil" />}
