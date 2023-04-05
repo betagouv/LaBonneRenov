@@ -3,7 +3,11 @@ import { Crisp } from 'crisp-sdk-web';
 import React, { useEffect, useState } from 'react';
 import Color from '../types/enum/Color';
 import Ademe from './Ademe';
-import { HeaderContent, HeaderDescription, PacImage } from './PacHome.styles';
+import {
+  HeaderContent,
+  HeaderDescription,
+  DesktopImage,
+} from './PacHome.styles';
 import Slice from './Slice';
 
 const Conseiller = () => {
@@ -21,7 +25,7 @@ const Conseiller = () => {
     <>
       <Slice color={Color.GRAY} padding={128} smallPadding={32}>
         <HeaderContent>
-          <PacImage
+          <DesktopImage
             width={315}
             height={256}
             src="/images/conseiller.svg"

@@ -1,13 +1,13 @@
 import React from 'react';
 import Color from '../../types/enum/Color';
-import { HeaderContent, PacImage } from '../PacHome.styles';
+import { HeaderContent, DesktopImage } from '../PacHome.styles';
 import Slice from '../Slice';
 
 function RenoGlobal() {
   return (
     <Slice color={Color.GRAY}>
       <HeaderContent>
-        <PacImage
+        <DesktopImage
           width={315}
           height={256}
           src="/images/reno-globale.svg"
