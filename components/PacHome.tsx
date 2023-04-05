@@ -1,8 +1,9 @@
-import { Button, Link } from '@dataesr/react-dsfr';
+import { Button } from '@dataesr/react-dsfr';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { useStore } from '../frontend/stores';
 import Color from '../types/enum/Color';
+import Ademe from './Ademe';
 import {
   HeaderContent,
   HeaderDescription,
@@ -31,8 +32,10 @@ function Home() {
               maison ?
             </h1>
             <HeaderDescription>
-              Posez-vous les bonnes questions avant de vous lancer dans vos
-              travaux de rénovation énergétique.
+              <b>
+                Posez-vous les bonnes questions avant de vous lancer dans vos
+                travaux de rénovation énergétique.
+              </b>
             </HeaderDescription>
             <Button
               iconPosition="right"
@@ -49,23 +52,7 @@ function Home() {
         </HeaderContent>
       </Slice>
       <Slice>
-        <h2>À propos</h2>
-        <HeaderContent>
-          <div>
-            <img src="/images/ademe-logo.svg" alt="ADEME" width={150} />
-          </div>
-          <div>
-            La Bonne Rénov’ est un <b>service public gratuit</b> proposé par l’
-            <b>Agence pour la Transition Écologique (ADEME)</b>. Notre mission :
-            aider les propriétaires de maisons individuelles à construire un
-            projet de rénovation énergétique performante.
-            <br />
-            <br />
-            <Link href="https://www.ademe.fr/" target="_blank" isSimple>
-              Le site de l’ADEME
-            </Link>
-          </div>
-        </HeaderContent>
+        <Ademe />
       </Slice>
     </>
   );

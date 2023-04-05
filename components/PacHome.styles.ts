@@ -26,7 +26,6 @@ export const HeaderContent = styled.div`
 export const HeaderDescription = styled.div`
   font-size: 20px;
   line-height: 32px;
-  font-weight: bold;
   margin-bottom: 32px;
 `;
 
