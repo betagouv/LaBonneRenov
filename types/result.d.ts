@@ -34,4 +34,5 @@ export type PartialResult = {
 
 export type Result = PartialResult & {
   explanations: Explanation[];
+  tooHigh: boolean;
 };

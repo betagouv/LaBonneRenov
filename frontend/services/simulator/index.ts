@@ -1,10 +1,13 @@
 import { Answer, Answers } from '../../../types/answer';
+import QuestionId from '../../../types/enum/QuestionId';
 import { PartialResult, Result } from '../../../types/result';
 import computeChauffageRating from './chauffage';
 import computeConstuctionRating from './construction';
 import { computeExplanations } from './explanations';
+import highPostCode from './highPostCode';
 import computeIsolationRating from './isolation';
 import computeRenovation from './renovation';
+import { getValue } from './utils';
 
 const basseTemperature = (
   answers: Answers,
@@ -326,10 +329,14 @@ const simulator = (arrayAnswers: Answer[]): Result => {
   const rennovation = computeRenovation(answers, isolationResult, result);
   const explanations = computeExplanations(answers);
 
+  const postCode = getValue(answers, QuestionId.CODE_POSTAL) as string;
+  const tooHigh = highPostCode.includes(postCode);
+
   return {
     ...result,
     rennovation,
     explanations,
+    tooHigh,
   };
 };
 

@@ -1,11 +1,19 @@
-import { Icon, Tab, Tabs } from '@dataesr/react-dsfr';
 import React from 'react';
+import { Alert, Icon, Tab, Tabs } from '@dataesr/react-dsfr';
 import { Result } from '../../types/result';
 import Slice from '../Slice';
 import Explanation from './Explanation';
 
 const Explanations = ({ result }: { result: Result }) => (
   <Slice>
+    {result.tooHigh && (
+      <Alert
+        className="fr-mb-3w"
+        type="warning"
+        title="Votre situation géographique est potentiellement incompatible avec l'installation d'une pompe à chaleur air/eau."
+        description="D'autres systèmes de chauffage peuvent être envisagés."
+      />
+    )}
     <h2>Pourquoi ce résultat ?</h2>
     <div className="fr-text--lead">
       <b>
