@@ -7,9 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "lint:fix": "next lint --fix"
+    "lint:fix": "next lint --fix",
+    "predev": "only-include-used-icons",
+    "prebuild": "only-include-used-icons"
   },
   "dependencies": {
+    "@codegouvfr/react-dsfr": "^0.50.0",
     "@dataesr/react-dsfr": "^3.5.11",
     "@gouvfr/dsfr": "1.7.2",
     "@types/node": "^18.15.3",

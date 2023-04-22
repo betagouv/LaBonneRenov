@@ -4,12 +4,37 @@ import Head from 'next/head';
 import Script from 'next/script';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
+import { createNextDsfrIntegrationApi } from '@codegouvfr/react-dsfr/next-pagesdir';
+import { ConsentBanner } from '@codegouvfr/react-dsfr/ConsentBanner';
 import Header from '../components/SharedLayout/Header';
 import Footer from '../components/SharedLayout/Footer';
 import '@gouvfr/dsfr/dist/utility/icons/icons-system/icons-system.min.css';
 import GlobalStyle from '../components/SharedLayout/Global.styles';
 import { useStore } from '../frontend/stores';
 import { initGoogleAds } from '../frontend/services/googleAds';
+
+declare module '@codegouvfr/react-dsfr/gdpr' {
+  interface RegisterGdprServices {
+    'mandatory-cookie-consumer': true;
+    'cookie-matomo': never;
+    'cookie-hotjar': never;
+    'cookie-google': never;
+  }
+}
+
+declare module '@codegouvfr/react-dsfr/next-pagesdir' {
+  interface RegisterLink {
+    Link: typeof Link;
+  }
+}
+
+const { withDsfr, dsfrDocumentApi } = createNextDsfrIntegrationApi({
+  defaultColorScheme: 'light',
+  Link,
+});
+
+export { dsfrDocumentApi };
 
 const metaData: Record<string, { title: string; description: string }> = {
   default: {
@@ -23,7 +48,7 @@ const metaData: Record<string, { title: string; description: string }> = {
   },
 };
 
-export default function App({ Component, pageProps }: AppProps) {
+const App = ({ Component, pageProps }: AppProps) => {
   const { init } = useStore();
   const router = useRouter();
 
@@ -42,6 +67,36 @@ export default function App({ Component, pageProps }: AppProps) {
   const content = metaData[router.pathname] || metaData.default;
   return (
     <>
+      <ConsentBanner
+        gdprLinkProps={{ href: '#' }}
+        services={[
+          {
+            name: 'mandatory-cookie-consumer',
+            title: 'La Bonne rénov` 🍪',
+            description: 'Cookies essentiels au bon fonctionnement du site.',
+            mandatory: true,
+          },
+          {
+            name: 'cookie-matomo',
+            title: 'Matomo',
+            description:
+              "Service nous permettant de suivre l'utilisation du site.",
+          },
+          {
+            name: 'cookie-hotjar',
+            title: 'Hotjar',
+            description:
+              'Service nous permettant de vous fournir une meilleure experience utilisateur.',
+          },
+          {
+            name: 'cookie-google',
+            title: 'Google ads',
+            description:
+              "Service nous permettant d'optimiser l'affichage de nos pubs google.",
+          },
+        ]}
+        siteName="La Bonne Renov`"
+      />
       <Head>
         <title>{content.title}</title>
         <meta property="og:title" content={content.title} />
@@ -53,19 +108,19 @@ export default function App({ Component, pageProps }: AppProps) {
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
             __html: `
-              /* Matomo */
-              var _paq = window._paq = window._paq || [];
-              /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-              _paq.push(['trackPageView']);
-              _paq.push(['enableLinkTracking']);
-              (function() {
-                var u="https://stats.data.gouv.fr/";
-                _paq.push(['setTrackerUrl', u+'piwik.php']);
-                _paq.push(['setSiteId', '282']);
-                var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-                g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-              })();
-              `,
+            /* Matomo */
+            var _paq = window._paq = window._paq || [];
+            /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+            _paq.push(['trackPageView']);
+            _paq.push(['enableLinkTracking']);
+            (function() {
+              var u="https://stats.data.gouv.fr/";
+              _paq.push(['setTrackerUrl', u+'piwik.php']);
+              _paq.push(['setSiteId', '282']);
+              var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+              g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+            })();
+            `,
           }}
         />
         <script
@@ -112,4 +167,6 @@ export default function App({ Component, pageProps }: AppProps) {
       <Footer />
     </>
   );
-}
+};
+
+export default withDsfr(App);

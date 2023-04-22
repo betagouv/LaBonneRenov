@@ -7,6 +7,10 @@ import Document, {
   NextScript,
 } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
+import { dsfrDocumentApi } from './_app';
+
+const { getColorSchemeHtmlAttributes, augmentDocumentForDsfr } =
+  dsfrDocumentApi;
 
 export default class MyDocument extends Document {
   static async getInitialProps(
@@ -39,7 +43,7 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <Html lang="fr">
+      <Html lang="fr" {...getColorSchemeHtmlAttributes(this.props)}>
         <Head>
           <link
             rel="stylesheet"
@@ -54,3 +58,5 @@ export default class MyDocument extends Document {
     );
   }
 }
+
+augmentDocumentForDsfr(Document);
